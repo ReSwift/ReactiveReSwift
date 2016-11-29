@@ -95,10 +95,10 @@
 		9E1F6F861DED0CEA00912955 /* ObservableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F841DED0CEA00912955 /* ObservableProperty.swift */; };
 		9E1F6F871DED0CEA00912955 /* ObservableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F841DED0CEA00912955 /* ObservableProperty.swift */; };
 		9E1F6F881DED0CEA00912955 /* ObservableProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F841DED0CEA00912955 /* ObservableProperty.swift */; };
-		9E1F6F8A1DED0D1100912955 /* ObservableSubscriptionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F891DED0D1100912955 /* ObservableSubscriptionReference.swift */; };
-		9E1F6F8B1DED0D1100912955 /* ObservableSubscriptionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F891DED0D1100912955 /* ObservableSubscriptionReference.swift */; };
-		9E1F6F8C1DED0D1100912955 /* ObservableSubscriptionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F891DED0D1100912955 /* ObservableSubscriptionReference.swift */; };
-		9E1F6F8D1DED0D1100912955 /* ObservableSubscriptionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F891DED0D1100912955 /* ObservableSubscriptionReference.swift */; };
+		9E1F6F8A1DED0D1100912955 /* ObservablePropertySubscriptionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F891DED0D1100912955 /* ObservablePropertySubscriptionReference.swift */; };
+		9E1F6F8B1DED0D1100912955 /* ObservablePropertySubscriptionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F891DED0D1100912955 /* ObservablePropertySubscriptionReference.swift */; };
+		9E1F6F8C1DED0D1100912955 /* ObservablePropertySubscriptionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F891DED0D1100912955 /* ObservablePropertySubscriptionReference.swift */; };
+		9E1F6F8D1DED0D1100912955 /* ObservablePropertySubscriptionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F891DED0D1100912955 /* ObservablePropertySubscriptionReference.swift */; };
 		9E1F6F8F1DED0D5400912955 /* SubscriptionReferenceBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F8E1DED0D5400912955 /* SubscriptionReferenceBag.swift */; };
 		9E1F6F901DED0D5400912955 /* SubscriptionReferenceBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F8E1DED0D5400912955 /* SubscriptionReferenceBag.swift */; };
 		9E1F6F911DED0D5400912955 /* SubscriptionReferenceBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F8E1DED0D5400912955 /* SubscriptionReferenceBag.swift */; };
@@ -171,7 +171,7 @@
 		9E1F6F441DE7D15200912955 /* RxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RxTests.swift; path = Observable/RxTests.swift; sourceTree = "<group>"; };
 		9E1F6F7F1DED0CB000912955 /* SubscriptionReferenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubscriptionReferenceType.swift; path = ReSwiftRx/Rx/SubscriptionReferenceType.swift; sourceTree = SOURCE_ROOT; };
 		9E1F6F841DED0CEA00912955 /* ObservableProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObservableProperty.swift; path = ReSwiftRx/Rx/ObservableProperty.swift; sourceTree = SOURCE_ROOT; };
-		9E1F6F891DED0D1100912955 /* ObservableSubscriptionReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObservableSubscriptionReference.swift; path = ReSwiftRx/Rx/ObservableSubscriptionReference.swift; sourceTree = SOURCE_ROOT; };
+		9E1F6F891DED0D1100912955 /* ObservablePropertySubscriptionReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObservablePropertySubscriptionReference.swift; path = ReSwiftRx/Rx/ObservablePropertySubscriptionReference.swift; sourceTree = SOURCE_ROOT; };
 		9E1F6F8E1DED0D5400912955 /* SubscriptionReferenceBag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubscriptionReferenceBag.swift; path = ReSwiftRx/Rx/SubscriptionReferenceBag.swift; sourceTree = SOURCE_ROOT; };
 		9E1F6F9A1DED120A00912955 /* ObservablePropertyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObservablePropertyType.swift; path = ReSwiftRx/Rx/ObservablePropertyType.swift; sourceTree = SOURCE_ROOT; };
 		9E1F6F9B1DED120A00912955 /* StreamType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamType.swift; path = ReSwiftRx/Rx/StreamType.swift; sourceTree = SOURCE_ROOT; };
@@ -316,7 +316,7 @@
 			children = (
 				9E1F6F841DED0CEA00912955 /* ObservableProperty.swift */,
 				9E1F6F9A1DED120A00912955 /* ObservablePropertyType.swift */,
-				9E1F6F891DED0D1100912955 /* ObservableSubscriptionReference.swift */,
+				9E1F6F891DED0D1100912955 /* ObservablePropertySubscriptionReference.swift */,
 				9E1F6F9B1DED120A00912955 /* StreamType.swift */,
 				9E1F6F8E1DED0D5400912955 /* SubscriptionReferenceBag.swift */,
 				9E1F6F7F1DED0CB000912955 /* SubscriptionReferenceType.swift */,
@@ -647,7 +647,7 @@
 				9E1F6F831DED0CB000912955 /* SubscriptionReferenceType.swift in Sources */,
 				9E1F6E851DDD190B00912955 /* StoreType.swift in Sources */,
 				9E1F6FA31DED120A00912955 /* StreamType.swift in Sources */,
-				9E1F6F8D1DED0D1100912955 /* ObservableSubscriptionReference.swift in Sources */,
+				9E1F6F8D1DED0D1100912955 /* ObservablePropertySubscriptionReference.swift in Sources */,
 				9E1F6F881DED0CEA00912955 /* ObservableProperty.swift in Sources */,
 				73E545D81D22BC3900D114E8 /* Assertions.swift in Sources */,
 				25DBCF461C30C16000D63A58 /* Middleware.swift in Sources */,
@@ -670,7 +670,7 @@
 				9E1F6F821DED0CB000912955 /* SubscriptionReferenceType.swift in Sources */,
 				9E1F6E841DDD190B00912955 /* StoreType.swift in Sources */,
 				9E1F6FA21DED120A00912955 /* StreamType.swift in Sources */,
-				9E1F6F8C1DED0D1100912955 /* ObservableSubscriptionReference.swift in Sources */,
+				9E1F6F8C1DED0D1100912955 /* ObservablePropertySubscriptionReference.swift in Sources */,
 				9E1F6F871DED0CEA00912955 /* ObservableProperty.swift in Sources */,
 				73E545D71D22BC3900D114E8 /* Assertions.swift in Sources */,
 				25DBCF5D1C30C19500D63A58 /* Middleware.swift in Sources */,
@@ -711,7 +711,7 @@
 				9E1F6F811DED0CB000912955 /* SubscriptionReferenceType.swift in Sources */,
 				9E1F6E831DDD190B00912955 /* StoreType.swift in Sources */,
 				9E1F6FA11DED120A00912955 /* StreamType.swift in Sources */,
-				9E1F6F8B1DED0D1100912955 /* ObservableSubscriptionReference.swift in Sources */,
+				9E1F6F8B1DED0D1100912955 /* ObservablePropertySubscriptionReference.swift in Sources */,
 				9E1F6F861DED0CEA00912955 /* ObservableProperty.swift in Sources */,
 				73E545D61D22BC3900D114E8 /* Assertions.swift in Sources */,
 				25DBCF991C30C4F000D63A58 /* Middleware.swift in Sources */,
@@ -752,7 +752,7 @@
 				9E1F6F801DED0CB000912955 /* SubscriptionReferenceType.swift in Sources */,
 				73E545D51D22BC3900D114E8 /* Assertions.swift in Sources */,
 				9E1F6FA01DED120A00912955 /* StreamType.swift in Sources */,
-				9E1F6F8A1DED0D1100912955 /* ObservableSubscriptionReference.swift in Sources */,
+				9E1F6F8A1DED0D1100912955 /* ObservablePropertySubscriptionReference.swift in Sources */,
 				9E1F6F851DED0CEA00912955 /* ObservableProperty.swift in Sources */,
 				625E66BE1C1FFC880027C288 /* Reducer.swift in Sources */,
 				625E66B41C1FFC830027C288 /* TypeHelper.swift in Sources */,

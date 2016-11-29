@@ -7,9 +7,9 @@
 //
 
 public final class ObservableProperty<ValueType>: ObservablePropertyType {
-    internal typealias ObservableSubscriptionReferenceType =
-        ObservableSubscriptionReference<ValueType>
-    internal var subscriptions = [ObservableSubscriptionReferenceType : (ValueType) -> Void]()
+    internal typealias ObservablePropertySubscriptionReferenceType =
+        ObservablePropertySubscriptionReference<ValueType>
+    internal var subscriptions = [ObservablePropertySubscriptionReferenceType : (ValueType) -> ()]()
     private var subscriptionToken: Int = 0
     public var value: ValueType {
         didSet {
@@ -24,13 +24,13 @@ public final class ObservableProperty<ValueType>: ObservablePropertyType {
     @discardableResult
     public func subscribe(_ function: @escaping (ValueType) -> Void) -> SubscriptionReferenceType? {
         defer { subscriptionToken += 1 }
-        let reference = ObservableSubscriptionReferenceType(key: String(subscriptionToken),
+        let reference = ObservablePropertySubscriptionReferenceType(key: String(subscriptionToken),
                                                             stream: self)
         subscriptions.updateValue(function, forKey: reference)
         return reference
     }
 
-    internal func unsubscribe(reference: ObservableSubscriptionReferenceType) {
+    internal func unsubscribe(reference: ObservablePropertySubscriptionReferenceType) {
         subscriptions.removeValue(forKey: reference)
     }
 }

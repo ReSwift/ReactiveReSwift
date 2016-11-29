@@ -1,12 +1,12 @@
 //
-//  ObservableSubscriptionReference.swift
+//  ObservablePropertySubscriptionReference.swift
 //  ReSwiftRx
 //
 //  Created by Charlotte Tortorella on 29/11/16.
 //  Copyright © 2016 Benjamin Encz. All rights reserved.
 //
 
-internal struct ObservableSubscriptionReference<T> {
+internal struct ObservablePropertySubscriptionReference<T> {
     internal let key: String
     internal weak var stream: ObservableProperty<T>?
 
@@ -16,19 +16,19 @@ internal struct ObservableSubscriptionReference<T> {
     }
 }
 
-extension ObservableSubscriptionReference: SubscriptionReferenceType {
+extension ObservablePropertySubscriptionReference: SubscriptionReferenceType {
     func dispose() {
         stream?.unsubscribe(reference: self)
     }
 }
 
-extension ObservableSubscriptionReference: Equatable, Hashable {
+extension ObservablePropertySubscriptionReference: Equatable, Hashable {
     var hashValue: Int {
         return key.hash
     }
 
-    static func == <T>(lhs: ObservableSubscriptionReference<T>,
-                        rhs: ObservableSubscriptionReference<T>) -> Bool {
+    static func == <T>(lhs: ObservablePropertySubscriptionReference<T>,
+                        rhs: ObservablePropertySubscriptionReference<T>) -> Bool {
         return lhs.key == rhs.key
     }
 }
