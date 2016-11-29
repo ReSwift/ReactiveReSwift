@@ -12,12 +12,17 @@ import XCTest
 class RxTests: XCTestCase {
 
     func testObservablePropertySendsNewValues() {
-        let property = ObservableProperty(10)
-        XCTAssertEqual(property.value, 10)
-        property.value = 20
-        XCTAssertEqual(property.value, 20)
-        property.value = 30
-        XCTAssertEqual(property.value, 30)
+        let values = (10, 20, 30)
+        var receivedValue: Int?
+        let property = ObservableProperty(values.0)
+        property.subscribe {
+            receivedValue = $0
+        }
+        XCTAssertEqual(receivedValue, values.0)
+        property.value = values.1
+        XCTAssertEqual(receivedValue, values.1)
+        property.value = values.2
+        XCTAssertEqual(receivedValue, values.2)
     }
 
     func testObservablePropertyDisposesOfReferences() {
