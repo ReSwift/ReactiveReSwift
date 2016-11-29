@@ -138,7 +138,7 @@ This is a very basic example that only shows a subset of ReSwift's features, rea
 
 # Reactive Extensions
 
-Here are some examples of how to use Reactive libraries with ReSwiftRx
+Here are some examples of what your code would look like if you were to leverage certain FRP libraries when writing your application.
 
 ## ReactiveSwift + ReactiveCocoa
 
@@ -159,19 +159,19 @@ class ViewController: UIViewController {
 }
 ```
 
-[Documentation for ReactiveSwift + ReactiveCocoa](https://github.com/ReSwift/ReSwiftRx/Docs/RAC.md)
+[Documentation for ReactiveSwift + ReactiveCocoa](https://github.com/ReSwift/ReSwiftRx/Docs/Rx/RAC.md)
 
 ## ReactiveKit
 
-[Documentation for ReactiveKit](https://github.com/ReSwift/ReSwiftRx/Docs/ReactiveKit.md)
+[Documentation for ReactiveKit](https://github.com/ReSwift/ReSwiftRx/Docs/Rx/ReactiveKit.md)
 
 ## RxSwift
 
-[Documentation for RxSwift](https://github.com/ReSwift/ReSwiftRx/Docs/RxSwift.md)
+[Documentation for RxSwift](https://github.com/ReSwift/ReSwiftRx/Docs/Rx/RxSwift.md)
 
 ## Interstellar
 
-[Documentation for Interstellar](https://github.com/ReSwift/ReSwiftRx/Docs/Interstellar.md)
+[Documentation for Interstellar](https://github.com/ReSwift/ReSwiftRx/Docs/Rx/Interstellar.md)
 
 # Why ReSwiftRx?
 
