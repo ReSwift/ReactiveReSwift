@@ -12,7 +12,7 @@ import Foundation
  initial store setup:
 
  ```swift
- let reducer = CombinedReducer([IncreaseByOneReducer(), IncreaseByTwoReducer()])
+ let reducer = CombinedReducer(IncreaseByOneReducer(), IncreaseByTwoReducer())
  Store(reducer: reducer, appState: CounterState())
  ```
 
