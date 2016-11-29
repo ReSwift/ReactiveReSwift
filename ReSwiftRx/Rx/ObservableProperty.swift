@@ -24,6 +24,7 @@ public final class ObservableProperty<ValueType>: ObservablePropertyType {
     @discardableResult
     public func subscribe(_ function: @escaping (ValueType) -> Void) -> SubscriptionReferenceType? {
         defer { subscriptionToken += 1 }
+        defer { function(value) }
         let reference = ObservablePropertySubscriptionReferenceType(key: String(subscriptionToken),
                                                             stream: self)
         subscriptions.updateValue(function, forKey: reference)
