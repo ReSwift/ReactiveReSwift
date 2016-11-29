@@ -2,7 +2,7 @@
 
 # Setup
 
-You'll need to add the following "glue code" to your application, ideally as ReSwiftRxBridge:
+You'll need to add the following "glue code" to your application, ideally as `ReSwiftRxBridge.swift`:
 
 ```swift
 import ReSwift

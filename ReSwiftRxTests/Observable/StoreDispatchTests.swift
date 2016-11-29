@@ -12,7 +12,7 @@ import ReSwiftRx
 fileprivate typealias StoreTestType = Store<ObservableProperty<TestAppState>>
 
 class ObservableStoreDispatchTests: XCTestCase {
-    
+
     fileprivate var store: StoreTestType!
     var reducer: TestReducer!
 

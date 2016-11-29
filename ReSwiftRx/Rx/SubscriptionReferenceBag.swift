@@ -8,24 +8,24 @@
 
 public class SubscriptionReferenceBag {
     fileprivate var references: [SubscriptionReferenceType] = []
-    
+
     public init() {
     }
-    
+
     public init(references: SubscriptionReferenceType?...) {
         self.references = references.flatMap({ $0 })
     }
-    
+
     deinit {
         dispose()
     }
-    
+
     public func addReference(reference: SubscriptionReferenceType?) {
         if let reference = reference {
             references.append(reference)
         }
     }
-    
+
     public static func += (lhs: SubscriptionReferenceBag, rhs: SubscriptionReferenceType?) {
         lhs.addReference(reference: rhs)
     }
