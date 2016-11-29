@@ -9,14 +9,11 @@
 import XCTest
 import ReSwift
 
-fileprivate typealias ObservableStoreTestType = ObservableStore<ObservableProperty<TestAppState>>
+fileprivate typealias StoreTestType = Store<ObservableProperty<TestAppState>>
 
 class ObservableStoreDispatchTests: XCTestCase {
-
-    typealias TestSubscriber = TestStoreSubscriber<TestAppState>
-    typealias CallbackSubscriber = CallbackStoreSubscriber<TestAppState>
-
-    fileprivate var store: ObservableStoreTestType!
+    
+    fileprivate var store: StoreTestType!
     var reducer: TestReducer!
 
     private struct EmptyAction: Action {
@@ -25,7 +22,7 @@ class ObservableStoreDispatchTests: XCTestCase {
     override func setUp() {
         super.setUp()
         reducer = TestReducer()
-        store = ObservableStore(reducer: reducer,
+        store = Store(reducer: reducer,
                                 stateType: TestAppState.self,
                                 observable: ObservableProperty(TestAppState()))
     }
@@ -46,7 +43,7 @@ class ObservableStoreDispatchTests: XCTestCase {
     func testThrowsExceptionWhenReducersDispatch() {
         // Expectation lives in the `DispatchingReducer` class
         let reducer = ObservableDispatchingReducer()
-        store = ObservableStore(reducer: reducer,
+        store = Store(reducer: reducer,
                                 stateType: TestAppState.self,
                                 observable: ObservableProperty(TestAppState()))
         reducer.store = store
@@ -58,7 +55,7 @@ class ObservableStoreDispatchTests: XCTestCase {
      */
     func testLiftingWorksAsExpected() {
         let property = ObservableProperty(SetValueAction(10))
-        store = ObservableStore(reducer: reducer,
+        store = Store(reducer: reducer,
                                 stateType: TestAppState.self,
                                 observable: ObservableProperty(TestAppState()))
         store.lift(property)
@@ -69,12 +66,12 @@ class ObservableStoreDispatchTests: XCTestCase {
 
 // Needs to be class so that shared reference can be modified to inject store
 class ObservableDispatchingReducer: XCTestCase, Reducer {
-    fileprivate var store: ObservableStoreTestType? = nil
+    fileprivate var store: StoreTestType? = nil
 
-    func handleAction(action: Action, state: TestAppState?) -> TestAppState {
+    func handleAction(action: Action, state: TestAppState) -> TestAppState {
         expectFatalError {
             self.store?.dispatch(SetValueAction(20))
         }
-        return state ?? TestAppState()
+        return state
     }
 }

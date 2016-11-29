@@ -65,13 +65,10 @@ struct SetValueStringAction: StandardActionConvertible {
 }
 
 struct TestReducer: Reducer {
-    func handleAction(action: Action, state: TestAppState?) -> TestAppState {
-        var state = state ?? TestAppState()
-
+    func handleAction(action: Action, state: TestAppState) -> TestAppState {
         switch action {
         case let action as SetValueAction:
-            state.testValue = action.value
-            return state
+            return TestAppState(testValue: action.value)
         default:
             return state
         }
@@ -79,52 +76,25 @@ struct TestReducer: Reducer {
 }
 
 struct TestValueStringReducer: Reducer {
-    func handleAction(action: Action, state: TestStringAppState?) -> TestStringAppState {
-        var state = state ?? TestStringAppState()
-
+    func handleAction(action: Action, state: TestStringAppState) -> TestStringAppState {
         switch action {
         case let action as SetValueStringAction:
-            state.testValue = action.value
-            return state
+            return TestStringAppState(testValue: action.value)
         default:
             return state
         }
     }
 }
 
-class TestStoreSubscriber<T>: StoreSubscriber {
+class TestStoreSubscriber<T> {
     var receivedStates: [T] = []
-
+    var subscription: (T) -> Void = { _ in }
+    
+    init() {
+        subscription = { self.receivedStates.append($0) }
+    }
+    
     func newState(state: T) {
         receivedStates.append(state)
-    }
-}
-
-class DispatchingSubscriber: StoreSubscriber {
-    var store: Store<TestAppState>
-
-    init(store: Store<TestAppState>) {
-        self.store = store
-    }
-
-    func newState(state: TestAppState) {
-        // Test if we've already dispatched this action to
-        // avoid endless recursion
-        if state.testValue != 5 {
-            self.store.dispatch(SetValueAction(5))
-        }
-    }
-}
-
-class CallbackStoreSubscriber<T>: StoreSubscriber {
-
-    let handler: (T) -> Void
-
-    init(handler: @escaping (T) -> Void) {
-        self.handler = handler
-    }
-
-    func newState(state: T) {
-        handler(state)
     }
 }

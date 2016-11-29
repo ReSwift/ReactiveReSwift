@@ -16,9 +16,9 @@ class ObservableStoreTests: XCTestCase {
      */
     func testInit() {
         let reducer = MockReducer()
-        _ = ObservableStore(reducer: reducer,
-                            stateType: CounterState.self,
-                            observable: ObservableProperty(CounterState()))
+        _ = Store(reducer: reducer,
+                  stateType: CounterState.self,
+                  observable: ObservableProperty(CounterState()))
 
         XCTAssert(reducer.calledWithAction.first is ReSwiftInit?)
     }
@@ -30,7 +30,7 @@ class ObservableStoreTests: XCTestCase {
         var deInitCount = 0
 
         autoreleasepool {
-            _ = DeInitObservableStore(reducer: TestReducer(),
+            _ = DeInitStore(reducer: TestReducer(),
                                       stateType: TestAppState.self,
                                       observable: ObservableProperty(TestAppState()),
                                       deInitAction: { deInitCount += 1 })
@@ -42,7 +42,7 @@ class ObservableStoreTests: XCTestCase {
 }
 
 // Used for deinitialization test
-class DeInitObservableStore<State: StateType>: ObservableStore<ObservableProperty<State>> {
+class DeInitStore<State: StateType>: Store<ObservableProperty<State>> {
     var deInitAction: (() -> Void)?
 
     deinit {

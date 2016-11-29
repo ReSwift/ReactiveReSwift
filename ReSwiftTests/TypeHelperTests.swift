@@ -22,10 +22,10 @@ class TypeHelperTests: XCTestCase {
      */
     func testSourceTypeCasting() {
         var called = false
-        let reducerFunction: (Action, AppState1?) -> AppState1 = { action, state in
+        let reducerFunction: (Action, AppState1) -> AppState1 = { action, state in
             called = true
 
-            return state ?? AppState1()
+            return state
         }
 
         withSpecificTypes(StandardAction(type: ""), state: AppState1(), function: reducerFunction)
@@ -38,13 +38,13 @@ class TypeHelperTests: XCTestCase {
      */
     func testCallsIfSourceTypeIsNil() {
         var called = false
-        let reducerFunction: (Action, AppState1?) -> AppState1 = { action, state in
+        let reducerFunction: (Action, AppState1) -> AppState1 = { action, state in
             called = true
 
-            return state ?? AppState1()
+            return state
         }
 
-        withSpecificTypes(StandardAction(type: ""), state: nil, function: reducerFunction)
+        withSpecificTypes(StandardAction(type: ""), state: AppState1(), function: reducerFunction)
 
         XCTAssertTrue(called)
     }

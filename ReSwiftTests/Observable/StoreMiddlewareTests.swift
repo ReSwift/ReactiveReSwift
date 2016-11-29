@@ -10,18 +10,18 @@ import XCTest
 import ReSwift
 
 // swiftlint:disable function_body_length
-class ObservableStoreMiddlewareTests: XCTestCase {
+class StoreMiddlewareTests: XCTestCase {
 
     /**
      it can decorate dispatch function
      */
     func testDecorateDispatch() {
-        let store = ObservableStore(reducer: TestValueStringReducer(),
+        let store = Store(reducer: TestValueStringReducer(),
             stateType: TestStringAppState.self,
             observable: ObservableProperty(TestStringAppState()),
             middleware: [firstMiddleware, secondMiddleware])
 
-        let subscriber = ObservableTestStoreSubscriber<TestStringAppState>()
+        let subscriber = TestStoreSubscriber<TestStringAppState>()
         store.observable.subscribe(subscriber.subscription)
 
         let action = SetValueStringAction("OK")
@@ -34,12 +34,12 @@ class ObservableStoreMiddlewareTests: XCTestCase {
      it can dispatch actions
      */
     func testCanDispatch() {
-        let store = ObservableStore(reducer: TestValueStringReducer(),
+        let store = Store(reducer: TestValueStringReducer(),
             stateType: TestStringAppState.self,
             observable: ObservableProperty(TestStringAppState()),
             middleware: [firstMiddleware, secondMiddleware, dispatchingMiddleware])
 
-        let subscriber = ObservableTestStoreSubscriber<TestStringAppState>()
+        let subscriber = TestStoreSubscriber<TestStringAppState>()
         store.observable.subscribe(subscriber.subscription)
 
         let action = SetValueAction(10)
@@ -52,7 +52,7 @@ class ObservableStoreMiddlewareTests: XCTestCase {
      it can change the return value of the dispatch function
      */
     func testCanChangeReturnValue() {
-        let store = ObservableStore(reducer: TestValueStringReducer(),
+        let store = Store(reducer: TestValueStringReducer(),
             stateType: TestStringAppState.self,
             observable: ObservableProperty(TestStringAppState()),
             middleware: [firstMiddleware, secondMiddleware, dispatchingMiddleware])
@@ -68,7 +68,7 @@ class ObservableStoreMiddlewareTests: XCTestCase {
      */
     func testMiddlewareCanAccessState() {
         let property = ObservableProperty(TestStringAppState(testValue: "OK"))
-        let store = ObservableStore(reducer: TestValueStringReducer(),
+        let store = Store(reducer: TestValueStringReducer(),
                                     stateType: TestStringAppState.self,
                                     observable: property,
                                     middleware: [stateAccessingMiddleware])

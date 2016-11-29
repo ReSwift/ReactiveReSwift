@@ -13,31 +13,23 @@ class MockReducer: Reducer {
 
     var calledWithAction: [Action] = []
 
-    func handleAction(action: Action, state: CounterState?) -> CounterState {
+    func handleAction(action: Action, state: CounterState) -> CounterState {
         calledWithAction.append(action)
 
-        return state ?? CounterState()
+        return state
     }
 
 }
 
 class IncreaseByOneReducer: Reducer {
-    func handleAction(action: Action, state: CounterState?) -> CounterState {
-        var state = state ?? CounterState()
-
-        state.count = state.count + 1
-
-        return state
+    func handleAction(action: Action, state: CounterState) -> CounterState {
+        return CounterState(count: state.count + 1)
     }
 }
 
 class IncreaseByTwoReducer: Reducer {
-    func handleAction(action: Action, state: CounterState?) -> CounterState {
-        var state = state ?? CounterState()
-
-        state.count = state.count + 2
-
-        return state
+    func handleAction(action: Action, state: CounterState) -> CounterState {
+        return CounterState(count: state.count + 2)
     }
 }
 
@@ -50,7 +42,7 @@ class CombinedReducerTest: XCTestCase {
         let mockReducer1 = MockReducer()
         let mockReducer2 = MockReducer()
 
-        let combinedReducer = CombinedReducer([mockReducer1, mockReducer2])
+        let combinedReducer = CombinedReducer(mockReducer1, mockReducer2)
 
         _ = combinedReducer._handleAction(
             action: StandardAction(type: emptyAction),
@@ -69,7 +61,7 @@ class CombinedReducerTest: XCTestCase {
         let increaseByOneReducer = IncreaseByOneReducer()
         let increaseByTwoReducer = IncreaseByTwoReducer()
 
-        let combinedReducer = CombinedReducer([increaseByOneReducer, increaseByTwoReducer])
+        let combinedReducer = CombinedReducer(increaseByOneReducer, increaseByTwoReducer)
 
         let newState = combinedReducer._handleAction(
             action: StandardAction(type: emptyAction),
