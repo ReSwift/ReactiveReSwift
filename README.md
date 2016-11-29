@@ -128,18 +128,50 @@ class CounterViewController: UIViewController {
 }
 ```
 
-[Example with ReactiveSwift + ReactiveCocoa](https://github.com/ReSwift/ReSwiftRx/Docs/Examples/RAC.md)
-[Example with ReactiveKit](https://github.com/ReSwift/ReSwiftRx/Docs/Examples/ReactiveKit.md)
-[Example with RxSwift](https://github.com/ReSwift/ReSwiftRx/Docs/Examples/RxSwift.md)
-[Example with Interstellar](https://github.com/ReSwift/ReSwiftRx/Docs/Examples/Interstellar.md)
-
 The `mainStore.observable.subscribe` block will be called by the `ObservableStore` whenever a new app state is available, this is where we need to adjust our view to reflect the latest app state.
 
 Button taps result in dispatched actions that will be handled by the store and its reducers, resulting in a new app state.
 
-This is a very basic example that only shows a subset of ReSwift's features, read the Getting Started Guide to see how you can build entire apps with this architecture. For a complete implementation of this example see the [CounterExample](https://github.com/ReSwift/CounterExample) project.
+This is a very basic example that only shows a subset of ReSwift's features, read the Getting Started Guide to see how you can build entire apps with this architecture. For a complete implementation of this example see the [CounterExample](https://github.com/ReSwift/RxCounterExample) project.
 
 [You can also watch this talk on the motivation behind ReSwift](https://realm.io/news/benji-encz-unidirectional-data-flow-swift/).
+
+# Reactive Extensions
+
+Here are some examples of how to use Reactive libraries with ReSwiftRx
+
+## ReactiveSwift + ReactiveCocoa
+
+```swift
+class ViewController: UIViewController {
+    @IBOutlet weak var counterLabel: UILabel!
+    @IBOutlet weak var decreaseButton: UIButton!
+    @IBOutlet weak var increaseButton: UIButton!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        counterLabel.reactive.text <~ store.observable.producer.map { String($0.counter) }
+        let increaseSignal = decreaseButton.reactive.trigger(for: UIControlEvents.touchUpInside).map { AppAction.Increase }
+        let decreaseSignal = increaseButton.reactive.trigger(for: UIControlEvents.touchUpInside).map { AppAction.Decrease }
+        let counterSignal = SignalProducer(values: [increaseSignal, decreaseSignal]).flatten(.merge)
+        store.lift(counterSignal)
+    }
+}
+```
+
+[Documentation for ReactiveSwift + ReactiveCocoa](https://github.com/ReSwift/ReSwiftRx/Docs/RAC.md)
+
+## ReactiveKit
+
+[Documentation for ReactiveKit](https://github.com/ReSwift/ReSwiftRx/Docs/ReactiveKit.md)
+
+## RxSwift
+
+[Documentation for RxSwift](https://github.com/ReSwift/ReSwiftRx/Docs/RxSwift.md)
+
+## Interstellar
+
+[Documentation for Interstellar](https://github.com/ReSwift/ReSwiftRx/Docs/Interstellar.md)
 
 # Why ReSwiftRx?
 
