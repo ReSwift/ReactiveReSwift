@@ -64,7 +64,7 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType
 
     @discardableResult
     public func dispatch(_ action: Action) {
-        let mappedAction = dispatchMiddleware.run(state: observable.value,
+        let mappedAction = dispatchMiddleware.run(state: { self.observable.value },
                                               dispatch: { self.dispatch($0) },
                                               argument: action)
         defaultDispatch(action: mappedAction)

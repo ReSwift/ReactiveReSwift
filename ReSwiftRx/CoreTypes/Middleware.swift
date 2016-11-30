@@ -8,12 +8,13 @@
 
 // swiftlint:disable line_length
 
-public typealias DispatchFunction = (Action) -> Void
-
 public struct Middleware<State: StateType> {
-    private let transform: (State, DispatchFunction, Action) -> Action
+    public typealias DispatchFunction = (Action) -> Void
+    public typealias GetState = () -> State
 
-    public init(_ transform: @escaping (State, DispatchFunction, Action) -> Action) {
+    private let transform: (GetState, DispatchFunction, Action) -> Action
+
+    public init(_ transform: @escaping (GetState, DispatchFunction, Action) -> Action) {
         self.transform = transform
     }
 
@@ -23,7 +24,7 @@ public struct Middleware<State: StateType> {
         }
     }
 
-    internal func run(state: State, dispatch: DispatchFunction, argument: Action) -> Action {
+    internal func run(state: GetState, dispatch: DispatchFunction, argument: Action) -> Action {
         return transform(state, dispatch, argument)
     }
 
@@ -31,13 +32,13 @@ public struct Middleware<State: StateType> {
         return map(other.transform)
     }
 
-    public func map(_ transform: @escaping (State, DispatchFunction, Action) -> Action) -> Middleware<State> {
+    public func map(_ transform: @escaping (GetState, DispatchFunction, Action) -> Action) -> Middleware<State> {
         return Middleware<State> {
             transform($0, $1, self.transform($0, $1, $2))
         }
     }
 
-    public func flatMap(_ transform: @escaping (State, DispatchFunction, Action) -> Middleware<State>) -> Middleware<State> {
+    public func flatMap(_ transform: @escaping (GetState, DispatchFunction, Action) -> Middleware<State>) -> Middleware<State> {
         return Middleware<State> {
             transform($0, $1, self.transform($0, $1, $2)).transform($0, $1, $2)
         }
