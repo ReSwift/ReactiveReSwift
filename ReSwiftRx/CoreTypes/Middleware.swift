@@ -6,7 +6,6 @@
 //  Copyright © 2016 Charlotte Tortorella. All rights reserved.
 //
 
-// swiftlint:disable variable_name
 // swiftlint:disable line_length
 
 public typealias DispatchFunction = (Action) -> Void
@@ -32,11 +31,15 @@ public struct Middleware<State: StateType> {
         return map(other.transform)
     }
 
-    public func map(_ f: @escaping (State, DispatchFunction, Action) -> Action) -> Middleware<State> {
-        return Middleware<State> { f($0, $1, self.transform($0, $1, $2)) }
+    public func map(_ transform: @escaping (State, DispatchFunction, Action) -> Action) -> Middleware<State> {
+        return Middleware<State> {
+            transform($0, $1, self.transform($0, $1, $2))
+        }
     }
 
-    public func flatMap(_ f: @escaping (State, DispatchFunction, Action) -> Middleware<State>) -> Middleware<State> {
-        return Middleware<State> { f($0, $1, self.transform($0, $1, $2)).transform($0, $1, $2) }
+    public func flatMap(_ transform: @escaping (State, DispatchFunction, Action) -> Middleware<State>) -> Middleware<State> {
+        return Middleware<State> {
+            transform($0, $1, self.transform($0, $1, $2)).transform($0, $1, $2)
+        }
     }
 }
