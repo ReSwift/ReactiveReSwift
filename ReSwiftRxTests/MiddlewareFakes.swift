@@ -25,7 +25,7 @@ let secondMiddleware = Middleware<TestStringAppState> { state, dispatch, action 
 let dispatchingMiddleware = Middleware<TestStringAppState> { state, dispatch, action in
     if let action = action as? SetValueAction {
         dispatch(SetValueStringAction("\(action.value)"))
-        return NoOpAction()
+        return nil
     }
     return action
 }
@@ -36,7 +36,7 @@ let stateAccessingMiddleware = Middleware<TestStringAppState> { state, dispatch,
         if state().testValue == "OK" && action.value != "Not OK" {
             dispatch(SetValueStringAction("Not OK"))
             //Swallow the action
-            return NoOpAction()
+            return nil
         }
     }
     return action
