@@ -27,7 +27,7 @@ public protocol StoreType {
     init(reducer: AnyReducer,
          stateType: State.Type,
          observable: ObservableProperty,
-         middleware: Reader<State>)
+         middleware: Middleware<State>)
 
     /// The observable of values stored in the store.
     var observable: ObservableProperty! { get }
@@ -36,7 +36,7 @@ public protocol StoreType {
      The main dispatch function that is used by all convenience `dispatch` methods.
      This dispatch function can be extended by providing middlewares.
      */
-    var dispatchReader: Reader<State>! { get }
+    var dispatchMiddleware: Middleware<State>! { get }
 
     /**
      Dispatches an action. This is the simplest way to modify the stores state.

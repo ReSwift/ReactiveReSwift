@@ -8,21 +8,21 @@
 
 import ReSwiftRx
 
-let firstReader = Reader<TestStringAppState> { state, dispatch, action in
+let firstMiddleware = Middleware<TestStringAppState> { state, dispatch, action in
     if let action = action as? SetValueStringAction {
         return SetValueStringAction(action.value + " First Middleware")
     }
     return action
 }
 
-let secondReader = Reader<TestStringAppState> { state, dispatch, action in
+let secondMiddleware = Middleware<TestStringAppState> { state, dispatch, action in
     if let action = action as? SetValueStringAction {
         return SetValueStringAction(action.value + " Second Middleware")
     }
     return action
 }
 
-let dispatchingReader = Reader<TestStringAppState> { state, dispatch, action in
+let dispatchingMiddleware = Middleware<TestStringAppState> { state, dispatch, action in
     if let action = action as? SetValueAction {
         dispatch(SetValueStringAction("\(action.value)"))
         return NoOpAction()
@@ -30,7 +30,7 @@ let dispatchingReader = Reader<TestStringAppState> { state, dispatch, action in
     return action
 }
 
-let stateAccessingReader = Reader<TestStringAppState> { state, dispatch, action in
+let stateAccessingMiddleware = Middleware<TestStringAppState> { state, dispatch, action in
     if let action = action as? SetValueStringAction {
         if state.testValue == "OK" && action.value != "Not OK" {
             dispatch(SetValueStringAction("Not OK"))

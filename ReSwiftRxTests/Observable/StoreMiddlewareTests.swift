@@ -19,7 +19,7 @@ class StoreMiddlewareTests: XCTestCase {
         let store = Store(reducer: TestValueStringReducer(),
             stateType: TestStringAppState.self,
             observable: ObservableProperty(TestStringAppState()),
-            middleware: Reader(firstReader, secondReader))
+            middleware: Middleware(firstMiddleware, secondMiddleware))
 
         let subscriber = TestStoreSubscriber<TestStringAppState>()
         store.observable.subscribe(subscriber.subscription)
@@ -37,7 +37,7 @@ class StoreMiddlewareTests: XCTestCase {
         let store = Store(reducer: TestValueStringReducer(),
             stateType: TestStringAppState.self,
             observable: ObservableProperty(TestStringAppState()),
-            middleware: Reader(firstReader, secondReader, dispatchingReader))
+            middleware: Middleware(firstMiddleware, secondMiddleware, dispatchingMiddleware))
 
         let subscriber = TestStoreSubscriber<TestStringAppState>()
         store.observable.subscribe(subscriber.subscription)
@@ -56,7 +56,7 @@ class StoreMiddlewareTests: XCTestCase {
         let store = Store(reducer: TestValueStringReducer(),
                                     stateType: TestStringAppState.self,
                                     observable: property,
-                                    middleware: stateAccessingReader)
+                                    middleware: stateAccessingMiddleware)
 
         store.dispatch(SetValueStringAction("Action That Won't Go Through"))
 
