@@ -12,18 +12,6 @@ import XCTest
 class ObservableStoreTests: XCTestCase {
 
     /**
-     it dispatches an Init action when it doesn't receive an initial state
-     */
-    func testInit() {
-        let reducer = MockReducer()
-        _ = Store(reducer: reducer,
-                  stateType: CounterState.self,
-                  observable: ObservableProperty(CounterState()))
-
-        XCTAssert(reducer.calledWithAction.first is ReSwiftInit?)
-    }
-
-    /**
      it deinitializes when no reference is held
      */
     func testDeinit() {
