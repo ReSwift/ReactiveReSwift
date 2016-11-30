@@ -23,7 +23,7 @@ public struct Middleware<State: StateType> {
         }
     }
 
-    public func run(state: State, dispatch: DispatchFunction, argument: Action) -> Action {
+    internal func run(state: State, dispatch: DispatchFunction, argument: Action) -> Action {
         return transform(state, dispatch, argument)
     }
 
