@@ -64,10 +64,11 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType
 
     @discardableResult
     public func dispatch(_ action: Action) {
-        let mappedAction = dispatchMiddleware.run(state: { self.observable.value },
+        if let mappedAction = dispatchMiddleware.run(state: { self.observable.value },
                                               dispatch: { self.dispatch($0) },
-                                              argument: action)
-        defaultDispatch(action: mappedAction)
+                                              argument: action) {
+            defaultDispatch(action: mappedAction)
+        }
     }
 
     public func dispatch<S: StreamType>(_ stream: S) where S.ValueType: Action {
