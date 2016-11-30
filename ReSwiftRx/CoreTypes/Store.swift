@@ -17,9 +17,11 @@ import Foundation
  */
 
 public class Store<ObservableProperty: ObservablePropertyType>: StoreType
-                where ObservableProperty.ValueType: StateType {
+                    where ObservableProperty.ValueType: StateType {
 
-    public var dispatchFunction: DispatchFunction!
+    public typealias StoreReader = Reader<ObservableProperty.ValueType>
+
+    public var dispatchReader: Reader<ObservableProperty.ValueType>!
 
     private var reducer: AnyReducer
 
@@ -32,29 +34,22 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType
     public required convenience init(reducer: AnyReducer,
                                      stateType: ObservableProperty.ValueType.Type,
                                      observable: ObservableProperty) {
-        self.init(reducer: reducer, stateType: stateType, observable: observable, middleware: [])
+        self.init(reducer: reducer,
+                  stateType: stateType,
+                  observable: observable,
+                  middleware: Reader { $2 })
     }
 
     public required init(reducer: AnyReducer,
                          stateType: ObservableProperty.ValueType.Type,
                          observable: ObservableProperty,
-                         middleware: [Middleware]) {
+                         middleware: StoreReader) {
         self.reducer = reducer
         self.observable = observable
-
-        // Wrap the dispatch function with all middlewares
-        self.dispatchFunction = middleware
-            .reversed()
-            .reduce({ [unowned self] action in
-                return self._defaultDispatch(action: action)
-            }) {
-                [weak self] dispatchFunction, middleware in
-                let getState = { self?.observable.value }
-                return middleware(self?.dispatch, getState)(dispatchFunction)
-            }
+        self.dispatchReader = middleware
     }
 
-    public func _defaultDispatch(action: Action) -> Any {
+    private func defaultDispatch(action: Action) {
         guard !isDispatching else {
             raiseFatalError(
                 "ReSwift:IllegalDispatchFromReducer - Reducers may not dispatch actions.")
@@ -65,13 +60,14 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType
         isDispatching = false
 
         observable.value = newState as! ObservableProperty.ValueType
-
-        return action
     }
 
     @discardableResult
-    public func dispatch(_ action: Action) -> Any {
-        return dispatchFunction(action)
+    public func dispatch(_ action: Action) {
+        let mappedAction = dispatchReader.run(state: observable.value,
+                                              dispatch: { self.dispatch($0) },
+                                              argument: action)
+        defaultDispatch(action: mappedAction)
     }
 
     public func dispatch<S: StreamType>(_ stream: S) where S.ValueType: Action {

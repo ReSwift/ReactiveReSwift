@@ -54,14 +54,17 @@ class DeInitStore<State: StateType>: Store<ObservableProperty<State>> {
         stateType: ObservableProperty.ValueType.Type,
         observable: ObservableProperty,
         deInitAction: (() -> Void)?) {
-        self.init(reducer: reducer, stateType: stateType, observable: observable, middleware: [])
+        self.init(reducer: reducer,
+                  stateType: stateType,
+                  observable: observable,
+                  middleware: Reader { $2 })
         self.deInitAction = deInitAction
     }
 
     required init(reducer: AnyReducer,
                   stateType: ObservableProperty.ValueType.Type,
                   observable: ObservableProperty,
-                  middleware: [Middleware]) {
+                  middleware: Reader<ObservableProperty.ValueType>) {
         super.init(reducer: reducer,
                    stateType: stateType,
                    observable: observable,

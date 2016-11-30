@@ -28,16 +28,6 @@ class ObservableStoreDispatchTests: XCTestCase {
     }
 
     /**
-     it returns the dispatched action
-     */
-    func testReturnsDispatchedAction() {
-        let action = SetValueAction(10)
-        let returnValue = store.dispatch(action)
-
-        XCTAssertEqual((returnValue as? SetValueAction)?.value, action.value)
-    }
-
-    /**
      it throws an exception when a reducer dispatches an action
      */
     func testThrowsExceptionWhenReducersDispatch() {

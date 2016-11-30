@@ -19,7 +19,7 @@ class StoreMiddlewareTests: XCTestCase {
         let store = Store(reducer: TestValueStringReducer(),
             stateType: TestStringAppState.self,
             observable: ObservableProperty(TestStringAppState()),
-            middleware: [firstMiddleware, secondMiddleware])
+            middleware: Reader(firstReader, secondReader))
 
         let subscriber = TestStoreSubscriber<TestStringAppState>()
         store.observable.subscribe(subscriber.subscription)
@@ -37,7 +37,7 @@ class StoreMiddlewareTests: XCTestCase {
         let store = Store(reducer: TestValueStringReducer(),
             stateType: TestStringAppState.self,
             observable: ObservableProperty(TestStringAppState()),
-            middleware: [firstMiddleware, secondMiddleware, dispatchingMiddleware])
+            middleware: Reader(firstReader, secondReader, dispatchingReader))
 
         let subscriber = TestStoreSubscriber<TestStringAppState>()
         store.observable.subscribe(subscriber.subscription)
@@ -49,21 +49,6 @@ class StoreMiddlewareTests: XCTestCase {
     }
 
     /**
-     it can change the return value of the dispatch function
-     */
-    func testCanChangeReturnValue() {
-        let store = Store(reducer: TestValueStringReducer(),
-            stateType: TestStringAppState.self,
-            observable: ObservableProperty(TestStringAppState()),
-            middleware: [firstMiddleware, secondMiddleware, dispatchingMiddleware])
-
-        let action = SetValueAction(10)
-        let returnValue = store.dispatch(action) as? String
-
-        XCTAssertEqual(returnValue, "Converted Action Successfully")
-    }
-
-    /**
      it middleware can access the store's state
      */
     func testMiddlewareCanAccessState() {
@@ -71,7 +56,7 @@ class StoreMiddlewareTests: XCTestCase {
         let store = Store(reducer: TestValueStringReducer(),
                                     stateType: TestStringAppState.self,
                                     observable: property,
-                                    middleware: [stateAccessingMiddleware])
+                                    middleware: stateAccessingReader)
 
         store.dispatch(SetValueStringAction("Action That Won't Go Through"))
 

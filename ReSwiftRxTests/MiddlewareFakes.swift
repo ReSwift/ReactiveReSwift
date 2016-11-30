@@ -8,63 +8,34 @@
 
 import ReSwiftRx
 
-let firstMiddleware: Middleware = { dispatch, getState in
-    return { next in
-        return { action in
-            if var action = action as? SetValueStringAction {
-                action.value = action.value + " First Middleware"
-                return next(action)
-            } else {
-                return next(action)
-            }
-        }
+let firstReader = Reader<TestStringAppState> { state, dispatch, action in
+    if let action = action as? SetValueStringAction {
+        return SetValueStringAction(action.value + " First Middleware")
     }
+    return action
 }
 
-let secondMiddleware: Middleware = { dispatch, getState in
-    return { next in
-        return { action in
-            if var action = action as? SetValueStringAction {
-                action.value = action.value + " Second Middleware"
-                return next(action)
-            } else {
-                return next(action)
-            }
-        }
+let secondReader = Reader<TestStringAppState> { state, dispatch, action in
+    if let action = action as? SetValueStringAction {
+        return SetValueStringAction(action.value + " Second Middleware")
     }
+    return action
 }
 
-let dispatchingMiddleware: Middleware = { dispatch, getState in
-    return { next in
-        return { action in
-            if var action = action as? SetValueAction {
-                _ = dispatch?(SetValueStringAction("\(action.value)"))
-
-                return "Converted Action Successfully"
-            }
-
-            return next(action)
-        }
+let dispatchingReader = Reader<TestStringAppState> { state, dispatch, action in
+    if let action = action as? SetValueAction {
+        dispatch(SetValueStringAction("\(action.value)"))
+        return NoOpAction()
     }
+    return action
 }
 
-let stateAccessingMiddleware: Middleware = { dispatch, getState in
-    return { next in
-        return { action in
-
-            let appState = getState() as? TestStringAppState,
-            stringAction = action as? SetValueStringAction
-
-            // avoid endless recursion by checking if we've dispatched exactly this action
-            if appState?.testValue == "OK" && stringAction?.value != "Not OK" {
-                // dispatch a new action
-                _ = dispatch?(SetValueStringAction("Not OK"))
-
-                // and swallow the current one
-                return next(StandardAction(type: "No-Op-Action"))
-            }
-
-            return next(action)
+let stateAccessingReader = Reader<TestStringAppState> { state, dispatch, action in
+    if let action = action as? SetValueStringAction {
+        if state.testValue == "OK" && action.value != "Not OK" {
+            dispatch(SetValueStringAction("Not OK"))
+            return NoOpAction()
         }
     }
+    return action
 }

@@ -43,6 +43,8 @@ struct SetValueAction: StandardActionConvertible {
 
 }
 
+struct NoOpAction: Action {}
+
 struct SetValueStringAction: StandardActionConvertible {
 
     var value: String
