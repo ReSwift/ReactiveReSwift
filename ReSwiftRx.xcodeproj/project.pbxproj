@@ -36,9 +36,6 @@
 		25DBCFA01C30C50000D63A58 /* TestFakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259737FA1C2C618A00869B8F /* TestFakes.swift */; };
 		621C06861C277759008029AE /* CombinedReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C06851C277759008029AE /* CombinedReducerTests.swift */; };
 		621C068C1C278BEF008029AE /* TypeHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C068B1C278BEF008029AE /* TypeHelperTests.swift */; };
-		625AA6331C33AFB600FEB431 /* StandardActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625AA6311C33AFA600FEB431 /* StandardActionTests.swift */; };
-		625AA6341C33AFB700FEB431 /* StandardActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625AA6311C33AFA600FEB431 /* StandardActionTests.swift */; };
-		625AA6351C33AFB800FEB431 /* StandardActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625AA6311C33AFA600FEB431 /* StandardActionTests.swift */; };
 		625E66871C1FF97E0027C288 /* ReSwiftRx.h in Headers */ = {isa = PBXBuildFile; fileRef = 625E66861C1FF97E0027C288 /* ReSwiftRx.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		625E669F1C1FFA3C0027C288 /* ReSwiftRx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 625E66831C1FF97E0027C288 /* ReSwiftRx.framework */; };
 		625E66B31C1FFC830027C288 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625E66B11C1FFC830027C288 /* Coding.swift */; };
@@ -146,7 +143,6 @@
 		25DBCF871C30C4DB00D63A58 /* ReSwiftRx-macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ReSwiftRx-macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		621C06851C277759008029AE /* CombinedReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombinedReducerTests.swift; sourceTree = "<group>"; };
 		621C068B1C278BEF008029AE /* TypeHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeHelperTests.swift; sourceTree = "<group>"; };
-		625AA6311C33AFA600FEB431 /* StandardActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardActionTests.swift; sourceTree = "<group>"; };
 		625E66831C1FF97E0027C288 /* ReSwiftRx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReSwiftRx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		625E66861C1FF97E0027C288 /* ReSwiftRx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReSwiftRx.h; sourceTree = "<group>"; };
 		625E66881C1FF97E0027C288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -275,7 +271,6 @@
 				621C06851C277759008029AE /* CombinedReducerTests.swift */,
 				9E1F6F251DE7C01F00912955 /* MiddlewareFakes.swift */,
 				9E1F6F441DE7D15200912955 /* RxTests.swift */,
-				625AA6311C33AFA600FEB431 /* StandardActionTests.swift */,
 				9E1F6F3F1DE7D15200912955 /* StoreDispatchTests.swift */,
 				9E1F6F401DE7D15200912955 /* StoreMiddlewareTests.swift */,
 				9E1F6F411DE7D15200912955 /* StoreTests.swift */,
@@ -689,7 +684,6 @@
 				9E1F6F281DE7C01F00912955 /* MiddlewareFakes.swift in Sources */,
 				9E1F6F4A1DE7D15200912955 /* StoreDispatchTests.swift in Sources */,
 				9E1F6F501DE7D15200912955 /* StoreTests.swift in Sources */,
-				625AA6351C33AFB800FEB431 /* StandardActionTests.swift in Sources */,
 				25DBCF731C30C34000D63A58 /* CombinedReducerTests.swift in Sources */,
 				9E1F6F591DE7D15200912955 /* RxTests.swift in Sources */,
 				25DBCF741C30C34000D63A58 /* TypeHelperTests.swift in Sources */,
@@ -730,7 +724,6 @@
 				9E1F6F271DE7C01F00912955 /* MiddlewareFakes.swift in Sources */,
 				9E1F6F491DE7D15200912955 /* StoreDispatchTests.swift in Sources */,
 				9E1F6F4F1DE7D15200912955 /* StoreTests.swift in Sources */,
-				625AA6341C33AFB700FEB431 /* StandardActionTests.swift in Sources */,
 				25DBCF9E1C30C50000D63A58 /* CombinedReducerTests.swift in Sources */,
 				9E1F6F581DE7D15200912955 /* RxTests.swift in Sources */,
 				25DBCF9F1C30C50000D63A58 /* TypeHelperTests.swift in Sources */,
@@ -772,7 +765,6 @@
 				9E1F6F261DE7C01F00912955 /* MiddlewareFakes.swift in Sources */,
 				9E1F6F481DE7D15200912955 /* StoreDispatchTests.swift in Sources */,
 				9E1F6F4E1DE7D15200912955 /* StoreTests.swift in Sources */,
-				625AA6331C33AFB600FEB431 /* StandardActionTests.swift in Sources */,
 				621C068C1C278BEF008029AE /* TypeHelperTests.swift in Sources */,
 				9E1F6F571DE7D15200912955 /* RxTests.swift in Sources */,
 				621C06861C277759008029AE /* CombinedReducerTests.swift in Sources */,

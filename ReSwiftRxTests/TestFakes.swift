@@ -9,7 +9,7 @@
 import Foundation
 import ReSwiftRx
 
-let emptyAction = "EMPTY_ACTION"
+struct NoOpAction: Action {}
 
 struct CounterState: StateType {
     var count: Int = 0
@@ -23,43 +23,22 @@ struct TestStringAppState: StateType {
     var testValue: String?
 }
 
-struct SetValueAction: StandardActionConvertible {
+struct SetValueAction: Action {
 
     let value: Int
-    static let type = "SetValueAction"
 
     init (_ value: Int) {
         self.value = value
     }
 
-    init(_ standardAction: StandardAction) {
-        self.value = standardAction.payload!["value"] as! Int
-    }
-
-    func toStandardAction() -> StandardAction {
-        return StandardAction(type: SetValueAction.type, payload: ["value": value as AnyObject],
-                                isTypedAction: true)
-    }
-
 }
 
-struct SetValueStringAction: StandardActionConvertible {
+struct SetValueStringAction: Action {
 
     var value: String
-    static let type = "SetValueStringAction"
 
     init (_ value: String) {
         self.value = value
-    }
-
-    init(_ standardAction: StandardAction) {
-        self.value = standardAction.payload!["value"] as! String
-    }
-
-    func toStandardAction() -> StandardAction {
-        return StandardAction(type: SetValueStringAction.type,
-                              payload: ["value": value as AnyObject],
-                              isTypedAction: true)
     }
 
 }
