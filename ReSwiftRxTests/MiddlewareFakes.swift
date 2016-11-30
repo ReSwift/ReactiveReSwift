@@ -32,8 +32,10 @@ let dispatchingMiddleware = Middleware<TestStringAppState> { state, dispatch, ac
 
 let stateAccessingMiddleware = Middleware<TestStringAppState> { state, dispatch, action in
     if let action = action as? SetValueStringAction {
+        //Avoid endless recursion by checking if we've exactly this action
         if state.testValue == "OK" && action.value != "Not OK" {
             dispatch(SetValueStringAction("Not OK"))
+            //Swallow the action
             return NoOpAction()
         }
     }
