@@ -58,7 +58,7 @@ class ObservableStoreDispatchTests: XCTestCase {
         store = Store(reducer: reducer,
                                 stateType: TestAppState.self,
                                 observable: ObservableProperty(TestAppState()))
-        store.lift(property)
+        store.dispatch(property)
         property.value = SetValueAction(20)
         XCTAssertEqual(store.observable.value.testValue, 20)
     }

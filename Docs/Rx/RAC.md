@@ -76,7 +76,7 @@ class ViewController: UIViewController {
         let increaseSignal = decreaseButton.reactive.trigger(for: UIControlEvents.touchUpInside).map { AppAction.Increase }
         let decreaseSignal = increaseButton.reactive.trigger(for: UIControlEvents.touchUpInside).map { AppAction.Decrease }
         let counterSignal = SignalProducer(values: [increaseSignal, decreaseSignal]).flatten(.merge)
-        store.lift(counterSignal)
+        store.dispatch(counterSignal)
     }
 }
 ```

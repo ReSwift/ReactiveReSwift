@@ -52,4 +52,17 @@ public protocol StoreType {
      return type, e.g. to return promises
      */
     func dispatch(_ action: Action) -> Any
+
+    /**
+     Dispatches any actions that flow down the stream.
+     
+     Example of dispatching an action:
+     
+     ```
+     store.dispatch( observable )
+     ```
+     
+     - parameter action: The stream of actions that are being dispatched to the store
+     */
+    func dispatch<S: StreamType>(_ stream: S) where S.ValueType: Action
 }

@@ -74,7 +74,7 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType
         return dispatchFunction(action)
     }
 
-    public func lift<Stream: StreamType>(_ stream: Stream) where Stream.ValueType: Action {
+    public func dispatch<S: StreamType>(_ stream: S) where S.ValueType: Action {
         disposeBag += stream.subscribe { [unowned self] action in
             self.dispatch(action)
         }
