@@ -35,8 +35,7 @@ class RxTests: XCTestCase {
 
     func testSubscriptionBagDisposesOfReferences() {
         let property = ObservableProperty(())
-        let bag = SubscriptionReferenceBag()
-        bag += property.subscribe({})
+        let bag = SubscriptionReferenceBag(references: property.subscribe({}))
         bag += property.subscribe({})
         XCTAssertEqual(property.subscriptions.count, 2)
         bag.dispose()
