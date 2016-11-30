@@ -37,10 +37,4 @@ public struct Middleware<State: StateType> {
             transform($0, $1, self.transform($0, $1, $2))
         }
     }
-
-    public func flatMap(_ transform: @escaping (GetState, DispatchFunction, Action) -> Middleware<State>) -> Middleware<State> {
-        return Middleware<State> {
-            transform($0, $1, self.transform($0, $1, $2)).transform($0, $1, $2)
-        }
-    }
 }
