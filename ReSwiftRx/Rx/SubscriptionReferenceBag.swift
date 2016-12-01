@@ -12,7 +12,7 @@ public class SubscriptionReferenceBag {
     public init() {
     }
 
-    public init(references: SubscriptionReferenceType?...) {
+    public init(_ references: SubscriptionReferenceType?...) {
         self.references = references.flatMap({ $0 })
     }
 
