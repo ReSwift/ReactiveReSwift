@@ -59,8 +59,8 @@ class ReducerTests: XCTestCase {
 
         let newState = combinedReducer.run(
             action: NoOpAction(),
-            state: CounterState()) as? CounterState
+            state: CounterState())
 
-        XCTAssertEqual(newState?.count, 3)
+        XCTAssertEqual(newState.count, 3)
     }
 }
