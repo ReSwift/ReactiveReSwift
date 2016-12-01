@@ -2,10 +2,10 @@
 
 # Setup
 
-You'll need to add the following "glue code" to your application, ideally as `ReSwiftRxBridge.swift`:
+You'll need to add the following "glue code" to your application, ideally as `ReactiveReSwiftBridge.swift`:
 
 ```swift
-import ReSwiftRx
+import ReactiveReSwift
 import ReactiveSwift
 
 extension MutableProperty: ObservablePropertyType {
@@ -47,7 +47,7 @@ extension SignalProducer: StreamType {
 extension AnyDisposable: SubscriptionReferenceType {}
 ```
 
-This code conforms ReactiveSwift's types to the protocols used in ReSwiftRx.
+This code conforms ReactiveSwift's types to the protocols used in ReactiveReSwift.
 
 To create a `mainStore` with ReactiveSwift you'll need to use a MutableProperty as observable.
 

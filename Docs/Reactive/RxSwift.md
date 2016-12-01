@@ -2,10 +2,10 @@
 
 # Setup
 
-You'll need to add the following "glue code" to your application, ideally as `ReSwiftRxBridge.swift`:
+You'll need to add the following "glue code" to your application, ideally as `ReactiveReSwiftBridge.swift`:
 
 ```swift
-import ReSwiftRx
+import ReactiveReSwift
 import RxSwift
 
 extension Variable: ObservablePropertyType {
