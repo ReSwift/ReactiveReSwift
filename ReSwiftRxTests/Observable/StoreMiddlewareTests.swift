@@ -63,6 +63,9 @@ class StoreMiddlewareTests: XCTestCase {
         XCTAssertEqual(store.observable.value.testValue, "Not OK")
     }
 
+    /**
+     it middleware should not be executed if the previous middleware returned nil
+     */
     func testMiddlewareSkipsReducersWhenPassedNil() {
         let filteringMiddleware = Middleware<TestStringAppState> { _, _, _ in nil }.map { _, _, action in
             XCTFail()
