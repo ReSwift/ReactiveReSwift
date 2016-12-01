@@ -11,5 +11,6 @@ import Foundation
 public protocol StreamType {
     associatedtype ValueType
     associatedtype DisposableType
+
     func subscribe(_ function: @escaping (ValueType) -> Void) -> DisposableType?
 }
