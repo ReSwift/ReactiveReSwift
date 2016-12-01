@@ -73,8 +73,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         counterLabel.reactive.text <~ store.observable.producer.map { String($0.counter) }
-        let increaseSignal = increaseButton.reactive.trigger(for: UIControlEvents.touchUpInside).map { AppAction.Increase }
-        let decreaseSignal = decreaseButton.reactive.trigger(for: UIControlEvents.touchUpInside).map { AppAction.Decrease }
+        let increaseSignal = increaseButton.reactive.trigger(for: UIControlEvents.touchUpInside).map {
+            AppAction.Increase
+        }
+        let decreaseSignal = decreaseButton.reactive.trigger(for: UIControlEvents.touchUpInside).map {
+            AppAction.Decrease
+        }
         let counterSignal = SignalProducer(values: [increaseSignal, decreaseSignal]).flatten(.merge)
         store.dispatch(counterSignal)
     }
