@@ -27,8 +27,7 @@ extension ObservablePropertySubscriptionReference: Equatable, Hashable {
         return key.hash
     }
 
-    public static func == <T>(lhs: ObservablePropertySubscriptionReference<T>,
-                        rhs: ObservablePropertySubscriptionReference<T>) -> Bool {
+    public static func == <T>(lhs: ObservablePropertySubscriptionReference<T>, rhs: ObservablePropertySubscriptionReference<T>) -> Bool {
         return lhs.key == rhs.key
     }
 }
