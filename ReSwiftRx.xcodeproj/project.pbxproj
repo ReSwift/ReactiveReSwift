@@ -11,28 +11,21 @@
 		25DBCF401C30C16000D63A58 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625E66B61C1FFC880027C288 /* Action.swift */; };
 		25DBCF421C30C16000D63A58 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625E66B81C1FFC880027C288 /* Reducer.swift */; };
 		25DBCF431C30C16000D63A58 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625E66B91C1FFC880027C288 /* State.swift */; };
-		25DBCF481C30C16000D63A58 /* TypeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625E66B21C1FFC830027C288 /* TypeHelper.swift */; };
 		25DBCF571C30C19500D63A58 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625E66B61C1FFC880027C288 /* Action.swift */; };
 		25DBCF591C30C19500D63A58 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625E66B81C1FFC880027C288 /* Reducer.swift */; };
 		25DBCF5A1C30C19500D63A58 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625E66B91C1FFC880027C288 /* State.swift */; };
-		25DBCF5F1C30C19500D63A58 /* TypeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625E66B21C1FFC830027C288 /* TypeHelper.swift */; };
 		25DBCF691C30C1AC00D63A58 /* ReSwiftRx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25DBCF4E1C30C18D00D63A58 /* ReSwiftRx.framework */; };
 		25DBCF731C30C34000D63A58 /* ReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C06851C277759008029AE /* ReducerTests.swift */; };
-		25DBCF741C30C34000D63A58 /* TypeHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C068B1C278BEF008029AE /* TypeHelperTests.swift */; };
 		25DBCF751C30C34000D63A58 /* TestFakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259737FA1C2C618A00869B8F /* TestFakes.swift */; };
 		25DBCF8C1C30C4DB00D63A58 /* ReSwiftRx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25DBCF7B1C30C4AA00D63A58 /* ReSwiftRx.framework */; };
 		25DBCF931C30C4F000D63A58 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625E66B61C1FFC880027C288 /* Action.swift */; };
 		25DBCF951C30C4F000D63A58 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625E66B81C1FFC880027C288 /* Reducer.swift */; };
 		25DBCF961C30C4F000D63A58 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625E66B91C1FFC880027C288 /* State.swift */; };
-		25DBCF9B1C30C4F000D63A58 /* TypeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625E66B21C1FFC830027C288 /* TypeHelper.swift */; };
 		25DBCF9E1C30C50000D63A58 /* ReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C06851C277759008029AE /* ReducerTests.swift */; };
-		25DBCF9F1C30C50000D63A58 /* TypeHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C068B1C278BEF008029AE /* TypeHelperTests.swift */; };
 		25DBCFA01C30C50000D63A58 /* TestFakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259737FA1C2C618A00869B8F /* TestFakes.swift */; };
 		621C06861C277759008029AE /* ReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C06851C277759008029AE /* ReducerTests.swift */; };
-		621C068C1C278BEF008029AE /* TypeHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C068B1C278BEF008029AE /* TypeHelperTests.swift */; };
 		625E66871C1FF97E0027C288 /* ReSwiftRx.h in Headers */ = {isa = PBXBuildFile; fileRef = 625E66861C1FF97E0027C288 /* ReSwiftRx.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		625E669F1C1FFA3C0027C288 /* ReSwiftRx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 625E66831C1FF97E0027C288 /* ReSwiftRx.framework */; };
-		625E66B41C1FFC830027C288 /* TypeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625E66B21C1FFC830027C288 /* TypeHelper.swift */; };
 		625E66BC1C1FFC880027C288 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625E66B61C1FFC880027C288 /* Action.swift */; };
 		625E66BE1C1FFC880027C288 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625E66B81C1FFC880027C288 /* Reducer.swift */; };
 		625E66BF1C1FFC880027C288 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625E66B91C1FFC880027C288 /* State.swift */; };
@@ -134,13 +127,11 @@
 		25DBCF7B1C30C4AA00D63A58 /* ReSwiftRx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReSwiftRx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25DBCF871C30C4DB00D63A58 /* ReSwiftRx-macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ReSwiftRx-macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		621C06851C277759008029AE /* ReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReducerTests.swift; sourceTree = "<group>"; };
-		621C068B1C278BEF008029AE /* TypeHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeHelperTests.swift; sourceTree = "<group>"; };
 		625E66831C1FF97E0027C288 /* ReSwiftRx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReSwiftRx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		625E66861C1FF97E0027C288 /* ReSwiftRx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReSwiftRx.h; sourceTree = "<group>"; };
 		625E66881C1FF97E0027C288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		625E669A1C1FFA3C0027C288 /* ReSwiftRx-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ReSwiftRx-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		625E669E1C1FFA3C0027C288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		625E66B21C1FFC830027C288 /* TypeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeHelper.swift; sourceTree = "<group>"; };
 		625E66B61C1FFC880027C288 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		625E66B81C1FFC880027C288 /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		625E66B91C1FFC880027C288 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
@@ -265,7 +256,6 @@
 				9E1F6F401DE7D15200912955 /* StoreMiddlewareTests.swift */,
 				9E1F6F411DE7D15200912955 /* StoreTests.swift */,
 				259737FA1C2C618A00869B8F /* TestFakes.swift */,
-				621C068B1C278BEF008029AE /* TypeHelperTests.swift */,
 				73E545D91D22BCD600D114E8 /* XCTest+Assertions.swift */,
 				73723E031D30AEF3006139F0 /* XCTest+Compatibility.swift */,
 			);
@@ -276,7 +266,6 @@
 			isa = PBXGroup;
 			children = (
 				73E545D41D22BC3900D114E8 /* Assertions.swift */,
-				625E66B21C1FFC830027C288 /* TypeHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -633,7 +622,6 @@
 				9E1F6F8D1DED0D1100912955 /* ObservablePropertySubscriptionReference.swift in Sources */,
 				9E1F6F881DED0CEA00912955 /* ObservableProperty.swift in Sources */,
 				73E545D81D22BC3900D114E8 /* Assertions.swift in Sources */,
-				25DBCF481C30C16000D63A58 /* TypeHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,7 +642,6 @@
 				9E1F6F8C1DED0D1100912955 /* ObservablePropertySubscriptionReference.swift in Sources */,
 				9E1F6F871DED0CEA00912955 /* ObservableProperty.swift in Sources */,
 				73E545D71D22BC3900D114E8 /* Assertions.swift in Sources */,
-				25DBCF5F1C30C19500D63A58 /* TypeHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,7 +657,6 @@
 				9E1F6F501DE7D15200912955 /* StoreTests.swift in Sources */,
 				25DBCF731C30C34000D63A58 /* ReducerTests.swift in Sources */,
 				9E1F6F591DE7D15200912955 /* RxTests.swift in Sources */,
-				25DBCF741C30C34000D63A58 /* TypeHelperTests.swift in Sources */,
 				25DBCF751C30C34000D63A58 /* TestFakes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -692,7 +678,6 @@
 				9E1F6F8B1DED0D1100912955 /* ObservablePropertySubscriptionReference.swift in Sources */,
 				9E1F6F861DED0CEA00912955 /* ObservableProperty.swift in Sources */,
 				73E545D61D22BC3900D114E8 /* Assertions.swift in Sources */,
-				25DBCF9B1C30C4F000D63A58 /* TypeHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,7 +693,6 @@
 				9E1F6F4F1DE7D15200912955 /* StoreTests.swift in Sources */,
 				25DBCF9E1C30C50000D63A58 /* ReducerTests.swift in Sources */,
 				9E1F6F581DE7D15200912955 /* RxTests.swift in Sources */,
-				25DBCF9F1C30C50000D63A58 /* TypeHelperTests.swift in Sources */,
 				25DBCFA01C30C50000D63A58 /* TestFakes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -729,7 +713,6 @@
 				9E1F6F8A1DED0D1100912955 /* ObservablePropertySubscriptionReference.swift in Sources */,
 				9E1F6F851DED0CEA00912955 /* ObservableProperty.swift in Sources */,
 				625E66BE1C1FFC880027C288 /* Reducer.swift in Sources */,
-				625E66B41C1FFC830027C288 /* TypeHelper.swift in Sources */,
 				625E66BF1C1FFC880027C288 /* State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -745,7 +728,6 @@
 				9E1F6F261DE7C01F00912955 /* MiddlewareFakes.swift in Sources */,
 				9E1F6F481DE7D15200912955 /* StoreDispatchTests.swift in Sources */,
 				9E1F6F4E1DE7D15200912955 /* StoreTests.swift in Sources */,
-				621C068C1C278BEF008029AE /* TypeHelperTests.swift in Sources */,
 				9E1F6F571DE7D15200912955 /* RxTests.swift in Sources */,
 				621C06861C277759008029AE /* ReducerTests.swift in Sources */,
 			);
