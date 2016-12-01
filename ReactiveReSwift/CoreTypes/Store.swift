@@ -47,10 +47,8 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType where 
         }
 
         isDispatching = true
-        let newState = reducer.run(action: action, state: observable.value)
+        observable.value = reducer.run(action: action, state: observable.value)
         isDispatching = false
-
-        observable.value = newState
     }
 
     @discardableResult
