@@ -1,4 +1,4 @@
-# ReactiveSwift + ReactiveCocoa
+# ReactiveSwift
 
 # Setup
 
@@ -61,29 +61,3 @@ let mainStore = Store(
 ```
 
 That's it, you're all set up.
-
-# Usage
-
-You can now use the `observable` property of `mainStore` as you would any other ReactiveSwift `MutableProperty`.
-Here's an example from the RxCounterExample project:
-
-```swift
-class ViewController: UIViewController {
-    @IBOutlet weak var counterLabel: UILabel!
-    @IBOutlet weak var decreaseButton: UIButton!
-    @IBOutlet weak var increaseButton: UIButton!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        counterLabel.reactive.text <~ store.observable.producer.map { String($0.counter) }
-        let increaseSignal = increaseButton.reactive.trigger(for: UIControlEvents.touchUpInside).map {
-            AppAction.Increase
-        }
-        let decreaseSignal = decreaseButton.reactive.trigger(for: UIControlEvents.touchUpInside).map {
-            AppAction.Decrease
-        }
-        let counterSignal = SignalProducer(values: [increaseSignal, decreaseSignal]).flatten(.merge)
-        store.dispatch(counterSignal)
-    }
-}
-```
