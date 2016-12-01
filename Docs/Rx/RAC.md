@@ -10,9 +10,10 @@ import ReactiveSwift
 
 extension MutableProperty: ObservablePropertyType {
     public typealias ValueType = Value
+    public typealias DisposableType = AnyDisposable
 
     @discardableResult
-    public func subscribe(_ function: @escaping (Value) -> Void) -> SubscriptionReferenceType? {
+    public func subscribe(_ function: @escaping (Value) -> Void) -> AnyDisposable? {
         let disposable = self.producer.on(value: function).start()
         return AnyDisposable(disposable)
     }
@@ -20,9 +21,10 @@ extension MutableProperty: ObservablePropertyType {
 
 extension Signal: StreamType {
     public typealias ValueType = Value
+    public typealias DisposableType = AnyDisposable
 
     @discardableResult
-    public func subscribe(_ function: @escaping (Value) -> Void) -> SubscriptionReferenceType? {
+    public func subscribe(_ function: @escaping (Value) -> Void) -> AnyDisposable? {
         let disposable = self.observe { event in
             if case let .value(value) = event {
                 function(value)
@@ -34,9 +36,10 @@ extension Signal: StreamType {
 
 extension SignalProducer: StreamType {
     public typealias ValueType = Value
+    public typealias DisposableType = AnyDisposable
 
     @discardableResult
-    public func subscribe(_ function: @escaping (Value) -> Void) -> SubscriptionReferenceType? {
+    public func subscribe(_ function: @escaping (Value) -> Void) -> AnyDisposable? {
         return AnyDisposable(self.on(value: function).start())
     }
 }
@@ -50,8 +53,8 @@ To create a `mainStore` with ReactiveSwift you'll need to use a MutableProperty 
 
 Here's an example:
 ```swift
-let mainStore = ObservableStore(
-    reducer: AppReducer(),
+let mainStore = Store(
+    reducer: appReducer,
     stateType: AppState.self,
     observable: MutableProperty(AppState(counter: 0))
 )
