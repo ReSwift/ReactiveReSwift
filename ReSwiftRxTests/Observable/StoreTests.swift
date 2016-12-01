@@ -18,7 +18,7 @@ class ObservableStoreTests: XCTestCase {
         var deInitCount = 0
 
         autoreleasepool {
-            _ = DeInitStore(reducer: TestReducer(),
+            _ = DeInitStore(reducer: testReducer,
                                       stateType: TestAppState.self,
                                       observable: ObservableProperty(TestAppState()),
                                       deInitAction: { deInitCount += 1 })
@@ -38,7 +38,7 @@ class DeInitStore<State: StateType>: Store<ObservableProperty<State>> {
     }
 
     required convenience init(
-        reducer: AnyReducer,
+        reducer: Reducer<ObservableProperty.ValueType>,
         stateType: ObservableProperty.ValueType.Type,
         observable: ObservableProperty,
         deInitAction: (() -> Void)?) {
@@ -49,7 +49,7 @@ class DeInitStore<State: StateType>: Store<ObservableProperty<State>> {
         self.deInitAction = deInitAction
     }
 
-    required init(reducer: AnyReducer,
+    required init(reducer: Reducer<ObservableProperty.ValueType>,
                   stateType: ObservableProperty.ValueType.Type,
                   observable: ObservableProperty,
                   middleware: Middleware<ObservableProperty.ValueType>) {

@@ -20,11 +20,11 @@ public protocol StoreType {
     associatedtype State: StateType
 
     /// Initializes the store with a reducer and an intial state.
-    init(reducer: AnyReducer, stateType: State.Type, observable: ObservableProperty)
+    init(reducer: Reducer<State>, stateType: State.Type, observable: ObservableProperty)
 
     /// Initializes the store with a reducer, an initial state and a list of middleware.
     /// Middleware is applied in the order in which it is passed into this constructor.
-    init(reducer: AnyReducer,
+    init(reducer: Reducer<State>,
          stateType: State.Type,
          observable: ObservableProperty,
          middleware: Middleware<State>)
@@ -33,8 +33,7 @@ public protocol StoreType {
     var observable: ObservableProperty! { get }
 
     /**
-     The main dispatch function that is used by all convenience `dispatch` methods.
-     This dispatch function can be extended by providing middlewares.
+     The `Middleware` to be called before passing the `Action` to the `dispatch` method.
      */
     var dispatchMiddleware: Middleware<State>! { get }
 
@@ -62,7 +61,7 @@ public protocol StoreType {
      store.dispatch( observable )
      ```
      
-     - parameter action: The stream of actions that are being dispatched to the store
+     - parameter stream: The stream of actions that are being dispatched to the store
      */
     func dispatch<S: StreamType>(_ stream: S) where S.ValueType: Action
 }

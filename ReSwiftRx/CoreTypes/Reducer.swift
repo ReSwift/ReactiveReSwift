@@ -8,18 +8,30 @@
 
 import Foundation
 
-public protocol AnyReducer {
-    func _handleAction(action: Action, state: StateType) -> StateType
-}
+public struct Reducer<State: StateType> {
+    private let transform: (Action, State) -> State
 
-public protocol Reducer: AnyReducer {
-    associatedtype ReducerStateType
+    public init(_ transform: @escaping (Action, State) -> State) {
+        self.transform = transform
+    }
 
-    func handleAction(action: Action, state: ReducerStateType) -> ReducerStateType
-}
+    public init(_ first: Reducer<State>, _ rest: Reducer<State>...) {
+        self = rest.reduce(first) {
+            $0.concat($1)
+        }
+    }
 
-extension Reducer {
-    public func _handleAction(action: Action, state: StateType) -> StateType {
-        return withSpecificTypes(action, state: state, function: handleAction)
+    internal func run(action: Action, state: State) -> State {
+        return transform(action, state)
+    }
+
+    public func concat(_ other: Reducer<State>) -> Reducer<State> {
+        return map(other.transform)
+    }
+
+    public func map(_ transform: @escaping (Action, State) -> State) -> Reducer<State> {
+        return Reducer<State> {
+            return transform($0, self.transform($0, $1))
+        }
     }
 }

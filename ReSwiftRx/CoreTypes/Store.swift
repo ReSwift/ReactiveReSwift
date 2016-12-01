@@ -20,10 +20,11 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType
                     where ObservableProperty.ValueType: StateType {
 
     public typealias StoreMiddleware = Middleware<ObservableProperty.ValueType>
+    public typealias StoreReducer = Reducer<ObservableProperty.ValueType>
 
     public var dispatchMiddleware: Middleware<ObservableProperty.ValueType>!
 
-    private var reducer: AnyReducer
+    private var reducer: StoreReducer
 
     public var observable: ObservableProperty!
 
@@ -31,7 +32,7 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType
 
     private var disposeBag = SubscriptionReferenceBag()
 
-    public required convenience init(reducer: AnyReducer,
+    public required convenience init(reducer: StoreReducer,
                                      stateType: ObservableProperty.ValueType.Type,
                                      observable: ObservableProperty) {
         self.init(reducer: reducer,
@@ -40,7 +41,7 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType
                   middleware: Middleware { $2 })
     }
 
-    public required init(reducer: AnyReducer,
+    public required init(reducer: StoreReducer,
                          stateType: ObservableProperty.ValueType.Type,
                          observable: ObservableProperty,
                          middleware: StoreMiddleware) {
@@ -56,10 +57,10 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType
         }
 
         isDispatching = true
-        let newState = reducer._handleAction(action: action, state: observable.value)
+        let newState = reducer.run(action: action, state: observable.value)
         isDispatching = false
 
-        observable.value = newState as! ObservableProperty.ValueType
+        observable.value = newState
     }
 
     @discardableResult

@@ -43,25 +43,21 @@ struct SetValueStringAction: Action {
 
 }
 
-struct TestReducer: Reducer {
-    func handleAction(action: Action, state: TestAppState) -> TestAppState {
-        switch action {
-        case let action as SetValueAction:
-            return TestAppState(testValue: action.value)
-        default:
-            return state
-        }
+let testReducer = Reducer<TestAppState> { action, state in
+    switch action {
+    case let action as SetValueAction:
+        return TestAppState(testValue: action.value)
+    default:
+        return state
     }
 }
 
-struct TestValueStringReducer: Reducer {
-    func handleAction(action: Action, state: TestStringAppState) -> TestStringAppState {
-        switch action {
-        case let action as SetValueStringAction:
-            return TestStringAppState(testValue: action.value)
-        default:
-            return state
-        }
+let testValueStringReducer = Reducer<TestStringAppState> { action, state in
+    switch action {
+    case let action as SetValueStringAction:
+        return TestStringAppState(testValue: action.value)
+    default:
+        return state
     }
 }
 

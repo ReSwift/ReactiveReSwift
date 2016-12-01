@@ -16,7 +16,7 @@ class StoreMiddlewareTests: XCTestCase {
      it can decorate dispatch function
      */
     func testDecorateDispatch() {
-        let store = Store(reducer: TestValueStringReducer(),
+        let store = Store(reducer: testValueStringReducer,
             stateType: TestStringAppState.self,
             observable: ObservableProperty(TestStringAppState()),
             middleware: Middleware(firstMiddleware, secondMiddleware))
@@ -34,7 +34,7 @@ class StoreMiddlewareTests: XCTestCase {
      it can dispatch actions
      */
     func testCanDispatch() {
-        let store = Store(reducer: TestValueStringReducer(),
+        let store = Store(reducer: testValueStringReducer,
             stateType: TestStringAppState.self,
             observable: ObservableProperty(TestStringAppState()),
             middleware: Middleware(firstMiddleware, secondMiddleware, dispatchingMiddleware))
@@ -53,7 +53,7 @@ class StoreMiddlewareTests: XCTestCase {
      */
     func testMiddlewareCanAccessState() {
         let property = ObservableProperty(TestStringAppState(testValue: "OK"))
-        let store = Store(reducer: TestValueStringReducer(),
+        let store = Store(reducer: testValueStringReducer,
                                     stateType: TestStringAppState.self,
                                     observable: property,
                                     middleware: stateAccessingMiddleware)

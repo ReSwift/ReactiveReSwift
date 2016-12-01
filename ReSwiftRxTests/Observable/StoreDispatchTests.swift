@@ -14,14 +14,14 @@ fileprivate typealias StoreTestType = Store<ObservableProperty<TestAppState>>
 class ObservableStoreDispatchTests: XCTestCase {
 
     fileprivate var store: StoreTestType!
-    var reducer: TestReducer!
+    var reducer: Reducer<TestAppState>!
 
     private struct EmptyAction: Action {
     }
 
     override func setUp() {
         super.setUp()
-        reducer = TestReducer()
+        reducer = testReducer
         store = Store(reducer: reducer,
                                 stateType: TestAppState.self,
                                 observable: ObservableProperty(TestAppState()))
@@ -32,11 +32,12 @@ class ObservableStoreDispatchTests: XCTestCase {
      */
     func testThrowsExceptionWhenReducersDispatch() {
         // Expectation lives in the `DispatchingReducer` class
-        let reducer = ObservableDispatchingReducer()
-        store = Store(reducer: reducer,
+        let reducerContainer = ObservableDispatchingReducer()
+        reducerContainer.setUp()
+        store = Store(reducer: reducerContainer.reducer,
                                 stateType: TestAppState.self,
                                 observable: ObservableProperty(TestAppState()))
-        reducer.store = store
+        reducerContainer.store = store
         store.dispatch(SetValueAction(10))
     }
 
@@ -55,8 +56,19 @@ class ObservableStoreDispatchTests: XCTestCase {
 }
 
 // Needs to be class so that shared reference can be modified to inject store
-class ObservableDispatchingReducer: XCTestCase, Reducer {
+class ObservableDispatchingReducer: XCTestCase {
     fileprivate var store: StoreTestType? = nil
+    fileprivate var reducer: Reducer<TestAppState>!
+
+    override func setUp() {
+        super.setUp()
+        reducer = Reducer { _, state in
+            self.expectFatalError {
+                self.store?.dispatch(SetValueAction(20))
+            }
+            return state
+        }
+    }
 
     func handleAction(action: Action, state: TestAppState) -> TestAppState {
         expectFatalError {
