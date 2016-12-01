@@ -16,8 +16,7 @@ import Foundation
  arguments.
  */
 
-public class Store<ObservableProperty: ObservablePropertyType>: StoreType
-                    where ObservableProperty.ValueType: StateType {
+public class Store<ObservableProperty: ObservablePropertyType>: StoreType where ObservableProperty.ValueType: StateType {
 
     public typealias StoreMiddleware = Middleware<ObservableProperty.ValueType>
     public typealias StoreReducer = Reducer<ObservableProperty.ValueType>
@@ -32,19 +31,11 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType
 
     private var disposeBag = SubscriptionReferenceBag()
 
-    public required convenience init(reducer: StoreReducer,
-                                     stateType: ObservableProperty.ValueType.Type,
-                                     observable: ObservableProperty) {
-        self.init(reducer: reducer,
-                  stateType: stateType,
-                  observable: observable,
-                  middleware: Middleware { $2 })
+    public required convenience init(reducer: StoreReducer, stateType: ObservableProperty.ValueType.Type, observable: ObservableProperty) {
+        self.init(reducer: reducer, stateType: stateType, observable: observable, middleware: Middleware { $2 })
     }
 
-    public required init(reducer: StoreReducer,
-                         stateType: ObservableProperty.ValueType.Type,
-                         observable: ObservableProperty,
-                         middleware: StoreMiddleware) {
+    public required init(reducer: StoreReducer, stateType: ObservableProperty.ValueType.Type, observable: ObservableProperty, middleware: StoreMiddleware) {
         self.reducer = reducer
         self.observable = observable
         self.dispatchMiddleware = middleware
@@ -52,8 +43,7 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType
 
     private func defaultDispatch(action: Action) {
         guard !isDispatching else {
-            raiseFatalError(
-                "ReSwift:IllegalDispatchFromReducer - Reducers may not dispatch actions.")
+            raiseFatalError("ReSwift:IllegalDispatchFromReducer - Reducers may not dispatch actions.")
         }
 
         isDispatching = true
@@ -65,14 +55,12 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType
 
     @discardableResult
     public func dispatch(_ action: Action) {
-        if let mappedAction = dispatchMiddleware.run(state: { self.observable.value },
-                                              dispatch: { self.dispatch($0) },
-                                              argument: action) {
+        if let mappedAction = dispatchMiddleware.run(state: { self.observable.value }, dispatch: { self.dispatch($0) }, argument: action) {
             defaultDispatch(action: mappedAction)
         }
     }
 
-    public func dispatch<S: StreamType>(_ stream: S) where S.ValueType: Action {
+    public func dispatch<S: StreamType>(_ stream: S) where S.ValueType: Action, S.DisposableType: SubscriptionReferenceType {
         disposeBag += stream.subscribe { [unowned self] action in
             self.dispatch(action)
         }

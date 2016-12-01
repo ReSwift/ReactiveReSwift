@@ -6,8 +6,6 @@
 //  Copyright © 2016 Charlotte Tortorella. All rights reserved.
 //
 
-// swiftlint:disable line_length
-
 public struct Middleware<State: StateType> {
     public typealias DispatchFunction = (Action) -> Void
     public typealias GetState = () -> State

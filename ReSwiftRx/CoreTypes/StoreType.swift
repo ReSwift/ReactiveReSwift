@@ -24,10 +24,7 @@ public protocol StoreType {
 
     /// Initializes the store with a reducer, an initial state and a list of middleware.
     /// Middleware is applied in the order in which it is passed into this constructor.
-    init(reducer: Reducer<State>,
-         stateType: State.Type,
-         observable: ObservableProperty,
-         middleware: Middleware<State>)
+    init(reducer: Reducer<State>, stateType: State.Type, observable: ObservableProperty, middleware: Middleware<State>)
 
     /// The observable of values stored in the store.
     var observable: ObservableProperty! { get }
@@ -63,5 +60,5 @@ public protocol StoreType {
      
      - parameter stream: The stream of actions that are being dispatched to the store
      */
-    func dispatch<S: StreamType>(_ stream: S) where S.ValueType: Action
+    func dispatch<S: StreamType>(_ stream: S) where S.ValueType: Action, S.DisposableType: SubscriptionReferenceType
 }

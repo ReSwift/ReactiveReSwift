@@ -7,7 +7,8 @@
 //
 
 public final class ObservableProperty<ValueType>: ObservablePropertyType {
-    internal typealias ObservablePropertySubscriptionReferenceType =
+    public typealias DisposableType = ObservablePropertySubscriptionReferenceType
+    public typealias ObservablePropertySubscriptionReferenceType =
         ObservablePropertySubscriptionReference<ValueType>
     internal var subscriptions = [ObservablePropertySubscriptionReferenceType : (ValueType) -> ()]()
     private var subscriptionToken: Int = 0
@@ -23,7 +24,7 @@ public final class ObservableProperty<ValueType>: ObservablePropertyType {
     }
 
     @discardableResult
-    public func subscribe(_ function: @escaping (ValueType) -> Void) -> SubscriptionReferenceType? {
+    public func subscribe(_ function: @escaping (ValueType) -> Void) -> DisposableType? {
         defer { subscriptionToken += 1 }
         retainReference = self
         function(value)

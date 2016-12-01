@@ -6,7 +6,7 @@
 //  Copyright © 2016 Benjamin Encz. All rights reserved.
 //
 
-internal struct ObservablePropertySubscriptionReference<T> {
+public struct ObservablePropertySubscriptionReference<T> {
     internal let key: String
     internal weak var stream: ObservableProperty<T>?
 
@@ -17,17 +17,17 @@ internal struct ObservablePropertySubscriptionReference<T> {
 }
 
 extension ObservablePropertySubscriptionReference: SubscriptionReferenceType {
-    func dispose() {
+    public func dispose() {
         stream?.unsubscribe(reference: self)
     }
 }
 
 extension ObservablePropertySubscriptionReference: Equatable, Hashable {
-    var hashValue: Int {
+    public var hashValue: Int {
         return key.hash
     }
 
-    static func == <T>(lhs: ObservablePropertySubscriptionReference<T>,
+    public static func == <T>(lhs: ObservablePropertySubscriptionReference<T>,
                         rhs: ObservablePropertySubscriptionReference<T>) -> Bool {
         return lhs.key == rhs.key
     }
