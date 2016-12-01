@@ -62,4 +62,19 @@ class StoreMiddlewareTests: XCTestCase {
 
         XCTAssertEqual(store.observable.value.testValue, "Not OK")
     }
+
+    func testMiddlewareSkipsReducersWhenPassedNil() {
+        let filteringMiddleware = Middleware<TestStringAppState> { _, _, _ in nil }.map { _, _, action in
+            XCTFail()
+            return action
+        }
+
+        let property = ObservableProperty(TestStringAppState(testValue: "OK"))
+        let store = Store(reducer: testValueStringReducer,
+                          stateType: TestStringAppState.self,
+                          observable: property,
+                          middleware: filteringMiddleware)
+
+        store.dispatch(SetValueStringAction("Action That Won't Go Through"))
+    }
 }
