@@ -1,6 +1,6 @@
 # ReactiveReSwift
 
-[![Build Status](https://img.shields.io/travis/ReSwift/ReactiveReSwift/master.svg?style=flat-square)](https://travis-ci.org/ReSwift/ReactiveReSwift) [![Code coverage status](https://img.shields.io/codecov/c/github/ReSwift/ReactiveReSwift.svg?style=flat-square)](http://codecov.io/github/ReSwift/ReactiveReSwift) [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ReactiveReSwift.svg?style=flat-square)](https://cocoapods.org/pods/ReactiveReSwift) [![Platform support](https://img.shields.io/badge/platform-ios%20%7C%20osx%20%7C%20tvos%20%7C%20watchos-lightgrey.svg?style=flat-square)](https://github.com/ReSwift/ReactiveReSwift/blob/master/LICENSE.md) [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/ReSwift/ReactiveReSwift/blob/master/LICENSE.md)
+[![Build Status](https://img.shields.io/travis/ReSwift/ReactiveReSwift/master.svg?style=flat-square)](https://travis-ci.org/ReSwift/ReactiveReSwift) [![Code coverage status](https://img.shields.io/codecov/c/github/ReSwift/ReactiveReSwift.svg?style=flat-square)](http://codecov.io/github/ReSwift/ReactiveReSwift) [![Platform support](https://img.shields.io/badge/platform-ios%20%7C%20osx%20%7C%20tvos%20%7C%20watchos-lightgrey.svg?style=flat-square)](https://github.com/ReSwift/ReactiveReSwift/blob/master/LICENSE.md) [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/ReSwift/ReactiveReSwift/blob/master/LICENSE.md)
 
 **Supported Swift Version:**: Swift 3.0.1
 
