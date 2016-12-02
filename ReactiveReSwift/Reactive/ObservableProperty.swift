@@ -8,8 +8,7 @@
 
 public final class ObservableProperty<ValueType>: ObservablePropertyType {
     public typealias DisposableType = ObservablePropertySubscriptionReferenceType
-    public typealias ObservablePropertySubscriptionReferenceType =
-        ObservablePropertySubscriptionReference<ValueType>
+    public typealias ObservablePropertySubscriptionReferenceType = ObservablePropertySubscriptionReference<ValueType>
     internal var subscriptions = [ObservablePropertySubscriptionReferenceType : (ValueType) -> ()]()
     private var subscriptionToken: Int = 0
     private var retainReference: ObservableProperty<ValueType>?

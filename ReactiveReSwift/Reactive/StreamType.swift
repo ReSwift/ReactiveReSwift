@@ -10,7 +10,7 @@ import Foundation
 
 public protocol StreamType {
     associatedtype ValueType
-    associatedtype DisposableType
+    associatedtype DisposableType: SubscriptionReferenceType
 
     func subscribe(_ function: @escaping (ValueType) -> Void) -> DisposableType?
 }

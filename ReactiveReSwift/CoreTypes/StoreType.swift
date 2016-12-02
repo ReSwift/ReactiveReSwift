@@ -60,5 +60,5 @@ public protocol StoreType {
      
      - parameter stream: The stream of actions that are being dispatched to the store
      */
-    func dispatch<S: StreamType>(_ stream: S) where S.ValueType: Action, S.DisposableType: SubscriptionReferenceType
+    func dispatch<S: StreamType>(_ stream: S) where S.ValueType: Action
 }

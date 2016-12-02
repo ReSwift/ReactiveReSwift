@@ -58,7 +58,7 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType where 
         }
     }
 
-    public func dispatch<S: StreamType>(_ stream: S) where S.ValueType: Action, S.DisposableType: SubscriptionReferenceType {
+    public func dispatch<S: StreamType>(_ stream: S) where S.ValueType: Action {
         disposeBag += stream.subscribe { [unowned self] action in
             self.dispatch(action)
         }
