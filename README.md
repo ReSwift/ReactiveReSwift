@@ -139,8 +139,11 @@ This is a very basic example that only shows a subset of ReSwift's features, rea
 Here are some examples of what your code would look like if you were to leverage certain FRP libraries when writing your application.
 
 [Documentation for ReactiveSwift](https://github.com/ReSwift/ReactiveReSwift/Docs/Reactive/RAC.md)
+
 [Documentation for ReactiveKit](https://github.com/ReSwift/ReactiveReSwift/Docs/Reactive/ReactiveKit.md)
+
 [Documentation for RxSwift](https://github.com/ReSwift/ReactiveReSwift/Docs/Reactive/RxSwift.md)
+
 [Documentation for PromiseKit](https://github.com/ReSwift/ReactiveReSwift/Docs/Reactive/PromiseKit.md)
 
 # Why ReactiveReSwift?
