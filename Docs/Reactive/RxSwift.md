@@ -10,23 +10,31 @@ import RxSwift
 
 extension Variable: ObservablePropertyType {
     public typealias ValueType = Element
-    public typealias DisposeType = Disposable
+    public typealias DisposeType = DisposableWrapper
 
-    public func subscribe(_ function: @escaping (Element) -> Void) -> Disposable? {
-        return self.asObservable().subscribe(onNext: function)
+    public func subscribe(_ function: @escaping (Element) -> Void) -> DisposableWrapper? {
+        return DisposableWrapper(disposable: asObservable().subscribe(onNext: function))
     }
 }
 
 extension Observable: StreamType {
     public typealias ValueType = Element
-    public typealias DisposeType = Disposable
+    public typealias DisposeType = DisposableWrapper
 
-    public func subscribe(_ function: @escaping (Element) -> Void) -> Disposable? {
-        return self.subscribe(onNext: function)
+    public func subscribe(_ function: @escaping (Element) -> Void) -> DisposableWrapper? {
+        return DisposableWrapper(disposable: subscribe(onNext: function))
+    }
+}
+
+public struct DisposableWrapper: SubscriptionReferenceType {
+    let disposable: Disposable
+
+    public func dispose() {
+        disposable.dispose()
     }
 }
 ```
 
-One caveat is that due to RxSwift's `Disposable`s not being extensible, you can't use the `dispatch(_:)` function on `Store` with an `Observable`.
+You'll want to use a `Variable` as the observable when you create your app's `Store`.
 
-Other than that, you're all set up!
+You're all set up!
