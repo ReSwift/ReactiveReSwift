@@ -17,6 +17,7 @@ public struct Reducer<State: StateType> {
 
     /**
      Initialises the `Reducer` with a transformative function.
+     
      - parameter transform: The function that will be able to modify passed state.
      */
     public init(_ transform: @escaping (Action, State) -> State) {

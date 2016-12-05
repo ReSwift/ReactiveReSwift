@@ -18,6 +18,7 @@ public struct Middleware<State: StateType> {
 
     /**
      Initialises the middleware with a transformative function.
+     
      - parameter transform: The function that will be able to modify passed actions.
      */
     public init(_ transform: @escaping (GetState, DispatchFunction, Action) -> Action?) {
