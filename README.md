@@ -22,10 +22,7 @@ Check out our [public gitter chat!](https://gitter.im/ReSwift/public)
 - [Why ReactiveReSwift?](#why-reswift)
 - [Getting Started Guide](#getting-started-guide)
 - [Installation](#installation)
-- [Testing](#testing)
-- [Checking Out Source Code](#checking-out-source-code)
-- [Demo](#demo)
-- [Extensions](#extensions)
+- [Reactive Extensions](#reactive-extensions)
 - [Example Projects](#example-projects)
 - [Contributing](#contributing)
 - [Credits](#credits)
@@ -138,13 +135,10 @@ This is a very basic example that only shows a subset of ReSwift's features, rea
 
 Here are some examples of what your code would look like if you were to leverage certain FRP libraries when writing your application.
 
-[Documentation for ReactiveSwift](https://github.com/ReSwift/ReactiveReSwift/Docs/Reactive/RAC.md)
-
-[Documentation for ReactiveKit](https://github.com/ReSwift/ReactiveReSwift/Docs/Reactive/ReactiveKit.md)
-
-[Documentation for RxSwift](https://github.com/ReSwift/ReactiveReSwift/Docs/Reactive/RxSwift.md)
-
-[Documentation for PromiseKit](https://github.com/ReSwift/ReactiveReSwift/Docs/Reactive/PromiseKit.md)
+- [Documentation for ReactiveSwift](https://github.com/ReSwift/ReactiveReSwift/tree/master/Docs/Reactive/RAC.md)
+- [Documentation for ReactiveKit](https://github.com/ReSwift/ReactiveReSwift/tree/master/Docs/Reactive/ReactiveKit.md)
+- [Documentation for RxSwift](https://github.com/ReSwift/ReactiveReSwift/tree/master/Docs/Reactive/RxSwift.md)
+- [Documentation for PromiseKit](https://github.com/ReSwift/ReactiveReSwift/tree/master/Docs/Reactive/PromiseKit.md)
 
 # Why ReactiveReSwift?
 
@@ -158,17 +152,9 @@ It also leads to code that is difficult to understand at a glance, since depende
 
 ReactiveReSwift attempts to solve these problem by placing strong constraints on the way applications can be written. This reduces the room for programmer error and leads to applications that can be easily understood - by inspecting the application state data structure, the actions and the reducers.
 
-This architecture provides further benefits beyond improving your code base:
-
-- Stores, Reducers, Actions and extensions are entirely platform independent - you can easily use the same business logic and share it between apps for multiple platforms (iOS, tvOS, etc.)
-- Want to collaborate with a co-worker on fixing an app crash? Use [ReSwift Recorder](https://github.com/ReSwift/ReSwift-Recorder) to record the actions that lead up to the crash and send them the JSON file so that they can replay the actions and reproduce the issue right away.
-- Maybe recorded actions can be used to build UI and integration tests?
-
-The ReactiveReSwift tooling is still in a very early stage, but aforementioned prospects excite me and hopefully others in the community as well!
-
 # Getting Started Guide
 
-[A Getting Started Guide that describes the core components of apps built with ReactiveReSwift lives here](http://reswift.github.io/ReactiveReSwift/master/getting-started-guide.html). It will be expanded in the next few weeks. To get an understanding of the core principles we recommend reading the brilliant [redux documentation](http://redux.js.org/).
+An actual getting started guide for ReactiveReSwift is coming soon, in the mean time [the documentation for ReSwift can be found here](http://reswift.github.io/ReactiveReSwift/master/getting-started-guide.html). To get an understanding of the core principles we recommend reading the brilliant [redux documentation](http://redux.js.org/).
 
 # Installation
 
@@ -190,18 +176,18 @@ import PackageDescription
 let package = Package(
     [...]
     dependencies: [
-        .Package(url: "https://github.com/ReSwift/ReSwift.git", majorVersion: XYZ)
+        .Package(url: "https://github.com/ReSwift/ReactiveReSwift.git", majorVersion: XYZ)
     ]
 )
 ```
 
-# Checking out Source Code
-
-ReactiveReSwift no longer has any carthage dependencies for development. Just checkout the project and run.
-
 # Example Projects
 
-- [CounterExample](https://github.com/ReSwift/RxCounterExample): A very simple counter app implemented with ReactiveReSwift.
+- [Counter Example](https://github.com/Qata/ReactiveCounterExample): A very simple counter app implemented with ReactiveReSwift.
+- [ReactiveSwift Counter Example](https://github.com/Qata/ReactiveReSwift-ReactiveSwiftExample): A counter example that interfaces with ReactiveSwift.
+- [ReactiveKit Counter Example](https://github.com/Qata/ReactiveReSwift-ReactiveKitExample): A counter example that interfaces with ReactiveKit.
+- [PromiseKit Counter Example](https://github.com/Qata/ReactiveReSwift-PromiseKitExample): A counter example that interfaces with PromiseKit.
+- [RxSwift Counter Example](https://github.com/Qata/ReactiveReSwift-RxSwiftExample): A counter example that interfaces with RxSwift.
 
 # Contributing
 
@@ -210,15 +196,13 @@ There's still a lot of work to do here! We would love to see you involved! You c
 # Credits
 
 - Thanks a lot to [Dan Abramov](https://github.com/gaearon) for building [Redux](https://github.com/reactjs/redux) - all ideas in here and many implementation details were provided by his library.
+- Thanks a lot to [Benjamin Encz](https://github.com/Ben-G) for building [ReSwift](https://github.com/ReSwift/ReSwift), the base from which this project was derived.
 
 # Get in touch
 
 If you have any questions, you can find the core team on twitter:
 
-- [@benjaminencz](https://twitter.com/benjaminencz)
-- [@karlbowden](https://twitter.com/karlbowden)
-- [@ARendtslev](https://twitter.com/ARendtslev)
-- [@ctietze](https://twitter.com/ctietze)
 - [@chartortorella](https://twitter.com/chartortorella)
+- [@karlbowden](https://twitter.com/karlbowden)
 
 We also have a [public gitter chat!](https://gitter.im/ReSwift/public)
