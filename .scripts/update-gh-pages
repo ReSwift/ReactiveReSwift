@@ -14,7 +14,7 @@ fi
 # ----- Configuration
 
 ORGANISATION=ReSwift
-NAME=ReSwift
+NAME=ReactiveReSwift
 BRANCH=$([ "$TRAVIS_BRANCH" == "" ] && echo "master" || echo "$TRAVIS_BRANCH")
 SHA=`git rev-parse --verify HEAD --short`
 REPO=`git config remote.origin.url`

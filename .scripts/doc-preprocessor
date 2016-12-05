@@ -98,7 +98,7 @@ if jazzy_conf['string-replacements']
     end
 end
 
-version = `cat ReSwift.podspec| grep "version " | cut -d '"' -f 2`.strip
+version = `/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" ReactiveReSwift/Info.plist`.strip
 if version
     result = result.sub '{{version}}', version
 end
