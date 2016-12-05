@@ -63,13 +63,9 @@ let testValueStringReducer = Reducer<TestStringAppState> { action, state in
 
 class TestStoreSubscriber<T> {
     var receivedStates: [T] = []
-    var subscription: (T) -> Void = { _ in }
+    var subscription: ((T) -> Void)!
 
     init() {
         subscription = { self.receivedStates.append($0) }
-    }
-
-    func newState(state: T) {
-        receivedStates.append(state)
     }
 }

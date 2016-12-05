@@ -65,13 +65,9 @@ public extension XCTestCase {
 
         waitForFutureExpectations(withTimeout: noReturnFailureWaitTime) { _ in
             defer { cleanUp() }
-            guard let assertionMessage = assertionMessage else {
-                XCTFail(funcName + " is expected to be called.", file: file, line: line)
-                return
-            }
+            guard let assertionMessage = assertionMessage else { XCTFail(funcName + " is expected to be called.", file: file, line: line); return }
             if let expectedMessage = expectedMessage {
-                XCTAssertEqual(assertionMessage, expectedMessage, funcName +
-                    " called with incorrect message.", file: file, line: line)
+                XCTAssertEqual(assertionMessage, expectedMessage, funcName + " called with incorrect message.", file: file, line: line)
             }
         }
     }

@@ -69,11 +69,4 @@ class ObservableDispatchingReducer: XCTestCase {
             return state
         }
     }
-
-    func handleAction(action: Action, state: TestAppState) -> TestAppState {
-        expectFatalError {
-            self.store?.dispatch(SetValueAction(20))
-        }
-        return state
-    }
 }

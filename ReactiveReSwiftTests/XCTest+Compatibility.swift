@@ -1,9 +1,5 @@
 import XCTest
 
-internal func dispatchAsync(execute work: @escaping @convention(block) () -> Swift.Void) {
-    DispatchQueue.global(qos: .default).async(execute: work)
-}
-
 internal func dispatchUserInitiatedAsync
     (execute work: @escaping @convention(block) () -> Swift.Void) {
     DispatchQueue.global(qos: .userInitiated).async(execute: work)
