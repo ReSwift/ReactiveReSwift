@@ -18,8 +18,8 @@ Check out our [public gitter chat!](https://gitter.im/ReSwift/public)
 
 # Table of Contents
 
-- [About ReactiveReSwift](#about-reswift)
-- [Why ReactiveReSwift?](#why-reswift)
+- [About ReactiveReSwift](#about-reactivereswift)
+- [Why ReactiveReSwift?](#why-reactivereswift)
 - [Getting Started Guide](#getting-started-guide)
 - [Installation](#installation)
 - [Reactive Extensions](#reactive-extensions)
@@ -37,7 +37,7 @@ ReactiveReSwift relies on a few principles:
 
 ![](Docs/img/reswift_concept.png)
 
-For a very simple app, that maintains a counter that can be increased and decreased, you can define the app state as following:
+For a very simple app, one that maintains a counter that can be increased and decreased, you can define the app state as following:
 
 ```swift
 struct AppState: StateType {
@@ -45,7 +45,7 @@ struct AppState: StateType {
 }
 ```
 
-You would also define two actions, one for increasing and one for decreasing the counter. In the [Getting Started Guide](http://reswift.github.io/ReactiveReSwift/master/getting-started-guide.html) you can find out how to construct complex actions. For the simple actions in this example we can an enum that conforms to action:
+You would also define two actions, one for increasing and one for decreasing the counter. For the simple actions in this example we can use an enum that conforms to action:
 
 ```swift
 enum AppAction: Action {
@@ -127,7 +127,7 @@ The `mainStore.observable.subscribe` block will be called by the `ObservableStor
 
 Button taps result in dispatched actions that will be handled by the store and its reducers, resulting in a new app state.
 
-This is a very basic example that only shows a subset of ReSwift's features, read the Getting Started Guide to see how you can build entire apps with this architecture. For a complete implementation of this example see the [CounterExample](https://github.com/ReSwift/RxCounterExample) project.
+This is a very basic example that only shows a subset of ReSwift's features, read the Getting Started Guide to see how you can build entire apps with this architecture. For a complete implementation of this example see the [ReactiveCounterExample](https://github.com/Qata/ReactiveCounterExample) project.
 
 [You can also watch this talk on the motivation behind ReSwift](https://realm.io/news/benji-encz-unidirectional-data-flow-swift/).
 
@@ -151,6 +151,14 @@ This approach involves a lot of manual steps and is thus error prone and doesn't
 It also leads to code that is difficult to understand at a glance, since dependencies can be hidden deep inside of view controllers. Lastly, you mostly end up with inconsistent code, where each developer uses the state propagation procedure they personally prefer. You can circumvent this issue by style guides and code reviews but you cannot automatically verify the adherence to these guidelines.
 
 ReactiveReSwift attempts to solve these problem by placing strong constraints on the way applications can be written. This reduces the room for programmer error and leads to applications that can be easily understood - by inspecting the application state data structure, the actions and the reducers.
+
+## Why "Reactive"?
+
+A common design pattern with Redux and its derivates is to observe your store using functional reactive programming (FRP), which the user takes care of using very similar looking boilerplate, regardless of the FRP library they've chosen.
+
+Instead of pushing that onto the user, and to encourage people to use FRP, ReactiveReSwift provides protocols to conform to so that the underlying `Store` can directly use the observables from your preferred library without subclassing.
+
+ReactiveReSwift also comes with an extremely simple implementation of a reactive observable (not functional because it doesn't provide any transformative functions). This `ObservableProperty` type allows you to use ReactiveReSwift without any other FRP libraries and not lose any of the functionality provided by ReSwift. We do still highly encourage you to use a functional reactive library with ReactiveReSwift, though.
 
 # Getting Started Guide
 
