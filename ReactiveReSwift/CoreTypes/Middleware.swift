@@ -10,7 +10,6 @@
  Middleware is a structure that allows you to modify, filter out and dispatch more
  actions, before the action being handled reaches the store.
  */
-
 public struct Middleware<State: StateType> {
     public typealias DispatchFunction = (Action) -> Void
     public typealias GetState = () -> State
@@ -34,17 +33,17 @@ public struct Middleware<State: StateType> {
             $0.concat($1)
         }
     }
-    
+
     /// Runs the underlying function of the middleware and returns the result.
     internal func run(state: GetState, dispatch: DispatchFunction, argument: Action) -> Action? {
         return transform(state, dispatch, argument)
     }
-    
+
     /// Concatenates the transform function of the passed `Middleware` onto the callee's transform.
     public func concat(_ other: Middleware<State>) -> Middleware<State> {
         return map(other.transform)
     }
-    
+
     /// Concatenates the transform function onto the callee's transform.
     public func map(_ transform: @escaping (GetState, DispatchFunction, Action) -> Action?) -> Middleware<State> {
         return Middleware<State> {

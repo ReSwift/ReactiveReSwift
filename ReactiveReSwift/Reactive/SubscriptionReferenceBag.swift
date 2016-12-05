@@ -12,6 +12,7 @@ public class SubscriptionReferenceBag {
     public init() {
     }
 
+    /// Initialise the bag with an array of subscription references.
     public init(_ references: SubscriptionReferenceType?...) {
         self.references = references.flatMap({ $0 })
     }
@@ -20,12 +21,14 @@ public class SubscriptionReferenceBag {
         dispose()
     }
 
+    /// Add a new reference to the bag if the reference is not `nil`.
     public func addReference(reference: SubscriptionReferenceType?) {
         if let reference = reference {
             references.append(reference)
         }
     }
 
+    /// Add a new reference to the bag if the reference is not `nil`.
     public static func += (lhs: SubscriptionReferenceBag, rhs: SubscriptionReferenceType?) {
         lhs.addReference(reference: rhs)
     }

@@ -12,5 +12,6 @@ public protocol StreamType {
     associatedtype ValueType
     associatedtype DisposableType: SubscriptionReferenceType
 
+    /// Register a callback to be called when new values flow down the stream.
     func subscribe(_ function: @escaping (ValueType) -> Void) -> DisposableType?
 }

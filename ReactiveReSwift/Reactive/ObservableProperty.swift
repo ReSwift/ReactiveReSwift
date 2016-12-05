@@ -6,6 +6,11 @@
 //  Copyright © 2016 Benjamin Encz. All rights reserved.
 //
 
+/**
+ This class is the default implementation of the `ObservablePropertyType` protocol. It is recommended
+ that you do not use this observable and instead use an observable from a full FRP library.
+ The existence of this class is to make ReactiveReSwift fully functional without third party libararies.
+ */
 public final class ObservableProperty<ValueType>: ObservablePropertyType {
     public typealias DisposableType = ObservablePropertySubscriptionReferenceType
     public typealias ObservablePropertySubscriptionReferenceType = ObservablePropertySubscriptionReference<ValueType>
@@ -27,8 +32,7 @@ public final class ObservableProperty<ValueType>: ObservablePropertyType {
         defer { subscriptionToken += 1 }
         retainReference = self
         function(value)
-        let reference = ObservablePropertySubscriptionReferenceType(key: String(subscriptionToken),
-                                                            stream: self)
+        let reference = ObservablePropertySubscriptionReferenceType(key: String(subscriptionToken), stream: self)
         subscriptions.updateValue(function, forKey: reference)
         return reference
     }
