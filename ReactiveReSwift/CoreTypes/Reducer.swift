@@ -34,7 +34,7 @@ public struct Reducer<State: StateType> {
         }
     }
 
-    /// Runs the underlying transform function of the reducer and returns the result.
+    /// Runs the underlying transform function of the `Reducer` and returns the result.
     internal func run(action: Action, state: State) -> State {
         return transform(action, state)
     }

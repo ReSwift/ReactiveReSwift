@@ -6,9 +6,15 @@
 //  Copyright © 2016 Benjamin Encz. All rights reserved.
 //
 
+/**
+ A class to hold subscriptions to `SubscriptionReferenceType`.
+ Very similar to `autoreleasepool` but specifically for disposable types.
+ Disposes of all held subscriptions when deallocated or `dispose()` is called.
+ */
 public class SubscriptionReferenceBag {
     fileprivate var references: [SubscriptionReferenceType] = []
 
+    /// Initialise an empty bag.
     public init() {
     }
 
@@ -35,6 +41,7 @@ public class SubscriptionReferenceBag {
 }
 
 extension SubscriptionReferenceBag: SubscriptionReferenceType {
+    /// Dispose of all subscriptions in the bag.
     public func dispose() {
         references.forEach { $0.dispose() }
         references = []

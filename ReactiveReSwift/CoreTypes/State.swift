@@ -8,4 +8,5 @@
 
 import Foundation
 
+/// The protocol that any state needs to conform to.
 public protocol StateType { }

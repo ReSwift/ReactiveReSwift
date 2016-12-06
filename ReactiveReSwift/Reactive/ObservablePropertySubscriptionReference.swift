@@ -6,6 +6,7 @@
 //  Copyright © 2016 Benjamin Encz. All rights reserved.
 //
 
+/// The subscription reference type of `ObservableProperty`.
 public struct ObservablePropertySubscriptionReference<T> {
     internal let key: String
     internal weak var stream: ObservableProperty<T>?
@@ -17,16 +18,19 @@ public struct ObservablePropertySubscriptionReference<T> {
 }
 
 extension ObservablePropertySubscriptionReference: SubscriptionReferenceType {
+    /// Dispose of the referenced subscription.
     public func dispose() {
         stream?.unsubscribe(reference: self)
     }
 }
 
 extension ObservablePropertySubscriptionReference: Equatable, Hashable {
+    /// The hash of the subscription.
     public var hashValue: Int {
         return key.hash
     }
-
+    
+    /// Compare two `ObservablePropertySubscriptionReference`s.
     public static func == <T>(lhs: ObservablePropertySubscriptionReference<T>, rhs: ObservablePropertySubscriptionReference<T>) -> Bool {
         return lhs.key == rhs.key
     }

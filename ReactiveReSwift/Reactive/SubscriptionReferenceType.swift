@@ -8,6 +8,8 @@
 
 import Foundation
 
+/// The protocol that disposable types need to conform to.
 public protocol SubscriptionReferenceType {
+    /// Dispose of the referenced subscription.
     func dispose()
 }
