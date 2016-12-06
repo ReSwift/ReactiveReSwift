@@ -14,7 +14,7 @@ ReactiveReSwift is a [Redux](https://github.com/reactjs/redux)-like implementati
 
 The ReactiveReSwift library is tiny - allowing users to dive into the code, understand every single line and [hopefully contribute](#contributing).
 
-Check out our [public gitter chat!](https://gitter.im/ReSwift/public)
+Check out our [public gitter chat!](https://gitter.im/ReactiveReSwift/Lobby)
 
 # Table of Contents
 
@@ -213,4 +213,4 @@ If you have any questions, you can find the core team on twitter:
 - [@chartortorella](https://twitter.com/chartortorella)
 - [@karlbowden](https://twitter.com/karlbowden)
 
-We also have a [public gitter chat!](https://gitter.im/ReSwift/public)
+We also have a [public gitter chat!](https://gitter.im/ReactiveReSwift/Lobby)
