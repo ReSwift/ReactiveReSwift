@@ -214,7 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				625E66851C1FF97E0027C288 /* ReactiveReSwift */,
-				625E669B1C1FFA3C0027C288 /* ReSwiftRxTests */,
+				625E669B1C1FFA3C0027C288 /* ReactiveReSwiftTests */,
 				625E66841C1FF97E0027C288 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -245,7 +245,7 @@
 			path = ReactiveReSwift;
 			sourceTree = "<group>";
 		};
-		625E669B1C1FFA3C0027C288 /* ReSwiftRxTests */ = {
+		625E669B1C1FFA3C0027C288 /* ReactiveReSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
 				625E669E1C1FFA3C0027C288 /* Info.plist */,
@@ -259,7 +259,6 @@
 				73E545D91D22BCD600D114E8 /* XCTest+Assertions.swift */,
 				73723E031D30AEF3006139F0 /* XCTest+Compatibility.swift */,
 			);
-			name = ReSwiftRxTests;
 			path = ReactiveReSwiftTests;
 			sourceTree = "<group>";
 		};
