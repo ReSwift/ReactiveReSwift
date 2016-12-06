@@ -26,6 +26,8 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType where 
 
     public var observable: ObservableProperty!
 
+    public var dispatchQueue = DispatchQueue.main
+
     private var isDispatching = false
 
     private var disposeBag = SubscriptionReferenceBag()
@@ -41,13 +43,15 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType where 
     }
 
     private func defaultDispatch(action: Action) {
-        guard !isDispatching else {
-            raiseFatalError("ReSwift:IllegalDispatchFromReducer - Reducers may not dispatch actions.")
-        }
+        dispatchQueue.async {
+            guard self.isDispatching == false else {
+                raiseFatalError("ReSwift:IllegalDispatchFromReducer - Reducers may not dispatch actions.")
+            }
 
-        isDispatching = true
-        observable.value = reducer.run(action: action, state: observable.value)
-        isDispatching = false
+            self.isDispatching = true
+            self.observable.value = self.reducer.run(action: action, state: self.observable.value)
+            self.isDispatching = false
+        }
     }
 
     @discardableResult
