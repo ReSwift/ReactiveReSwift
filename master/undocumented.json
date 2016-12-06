@@ -1,0 +1,19 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/travis/build/ReSwift/ReactiveReSwift/ReactiveReSwift/Reactive/ObservableProperty.swift",
+      "line": 26,
+      "symbol": "ObservableProperty.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/ReSwift/ReactiveReSwift/ReactiveReSwift/Reactive/ObservablePropertySubscriptionReference.swift",
+      "line": 34,
+      "symbol": "ObservablePropertySubscriptionReference.==(_:_:).T",
+      "symbol_kind": "source.lang.swift.decl.generic_type_param",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/travis/build/ReSwift/ReactiveReSwift"
+}
