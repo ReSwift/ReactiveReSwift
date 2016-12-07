@@ -127,7 +127,7 @@ The `mainStore.observable.subscribe` block will be called by the `ObservableStor
 
 Button taps result in dispatched actions that will be handled by the store and its reducers, resulting in a new app state.
 
-This is a very basic example that only shows a subset of ReSwift's features, read the Getting Started Guide to see how you can build entire apps with this architecture. For a complete implementation of this example see the [ReactiveCounterExample](https://github.com/Qata/ReactiveCounterExample) project.
+This is a very basic example that only shows a subset of ReactiveReSwift's features, read the Getting Started Guide to see how you can build entire apps with this architecture. For a complete implementation of this example see the [ReactiveCounterExample](https://github.com/Qata/ReactiveCounterExample) project.
 
 [You can also watch this talk on the motivation behind ReSwift](https://realm.io/news/benji-encz-unidirectional-data-flow-swift/).
 
@@ -168,7 +168,7 @@ ReactiveReSwift also comes with an extremely simple implementation of a reactive
 
 ## Carthage
 
-You can install ReSwift via [Carthage](https://github.com/Carthage/Carthage) by adding the following line to your `Cartfile`:
+You can install ReactiveReSwift via [Carthage](https://github.com/Carthage/Carthage) by adding the following line to your `Cartfile`:
 
 ```
 github "ReSwift/ReactiveReSwift"
@@ -176,7 +176,7 @@ github "ReSwift/ReactiveReSwift"
 
 ## Swift Package Manager
 
-You can install ReSwift via [Swift Package Manager](https://swift.org/package-manager/) by adding the following line to your `Package.swift`:
+You can install ReactiveReSwift via [Swift Package Manager](https://swift.org/package-manager/) by adding the following line to your `Package.swift`:
 
 ```
 import PackageDescription
