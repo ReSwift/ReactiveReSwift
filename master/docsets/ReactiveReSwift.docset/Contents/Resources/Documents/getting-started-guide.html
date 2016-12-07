@@ -140,7 +140,7 @@
 
 <p>ReactiveReSwift provides the infrastructure for <code>Store</code>s, <code>Action</code>s and <code>Reducer</code>s to enable a unidirectional data flow as shown below.</p>
 
-<p><img src="img/ReactiveReSwift_detail.png" alt=""></p>
+<p><img src="img/reactivereswift_concept.png" alt=""></p>
 
 <p>The following steps will describe how to set up the individual components for your ReactiveReSwift app.</p>
 <a href='#state' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='state'>State</h1>
@@ -152,7 +152,6 @@
 <p>Here&rsquo;s an example of a state struct as defined in the <a href="https://github.com/Qata/ReactiveCounterExample">Reactive Counter Example</a>:</p>
 <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">AppState</span><span class="p">:</span> <span class="kt">StateType</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nv">counter</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">var</span> <span class="nv">navigationState</span> <span class="o">=</span> <span class="kt">NavigationState</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre>
 
