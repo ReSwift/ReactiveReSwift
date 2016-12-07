@@ -2,7 +2,7 @@
 
 ReactiveReSwift provides the infrastructure for `Store`s, `Action`s and `Reducer`s to enable a unidirectional data flow as shown below.
 
-![](img/ReactiveReSwift_detail.png)
+![](img/reactivereswift_concept.png)
 
 The following steps will describe how to set up the individual components for your ReactiveReSwift app.
 
@@ -17,7 +17,6 @@ Here's an example of a state struct as defined in the [Reactive Counter Example]
 ```swift
 struct AppState: StateType {
     var counter: Int = 0
-    var navigationState = NavigationState()
 }
 ```
 
