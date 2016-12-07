@@ -41,7 +41,7 @@ For a very simple app, one that maintains a counter that can be increased and de
 
 ```swift
 struct AppState: StateType {
-  let counter: Int
+  var counter: Int
 }
 ```
 
@@ -57,32 +57,28 @@ enum AppAction: Action {
 Your reducer needs to respond to these different actions, that can be done by switching over the value of action:
 
 ```swift
-struct AppReducer: Reducer {
-	func handleAction(action: Action, state: AppState) -> AppState {
-		return AppState(
-          counter: counterReducer(action: action, counter: state.counter)
-		)
-	}
-}
-
-func counterReducer(action: Action, counter: Int) -> Int {
-	switch action as? AppAction {
+let appReducer = Reducer<AppState> { action, state in
+    switch action as? AppAction {
 	case .Increase?:
-        return counter + 1
+        state.counter += 1
 	case .Decrease?:
-        return max(0, counter - 1)
+        state.counter -= 1
 	default:
-		return counter
+        break
 	}
+    return state
 }
 ```
+
+A single `Reducer` should only deal with a single field of the state struct. You can chain together multiple reducers using `Reducer(firstReducer, secondReducer, ...)`.
+
 In order to have a predictable app state, it is important that the reducer is always free of side effects, it receives the current app state and an action and returns the new app state.
 
 To maintain our state and delegate the actions to the reducers, we need a store. Let's call it `mainStore` and define it as a global constant, for example in the app delegate file:
 
 ```swift
 let mainStore = ObservableStore(
-  reducer: AppReducer(),
+  reducer: appReducer,
   stateType: AppState.self,
   observable: ObservableProperty(AppState(counter: 0))
 )
