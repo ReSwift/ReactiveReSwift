@@ -35,7 +35,7 @@ ReactiveReSwift relies on a few principles:
 - **Actions** are a declarative way of describing a state change. Actions don't contain any code, they are consumed by the store and forwarded to reducers. Reducers will handle the actions by implementing a different state change for each action.
 - **Reducers** provide pure functions, that based on the current action and the current app state, create a new app state
 
-![](Docs/img/reswift_concept.png)
+![](Docs/img/reactivereswift_concept.png)
 
 For a very simple app, one that maintains a counter that can be increased and decreased, you can define the app state as following:
 
