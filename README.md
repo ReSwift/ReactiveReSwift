@@ -162,7 +162,7 @@ ReactiveReSwift also comes with an extremely simple implementation of a reactive
 
 # Getting Started Guide
 
-An actual getting started guide for ReactiveReSwift is coming soon, in the mean time [the documentation for ReSwift can be found here](http://reswift.github.io/ReactiveReSwift/master/getting-started-guide.html). To get an understanding of the core principles we recommend reading the brilliant [redux documentation](http://redux.js.org/).
+[The documentation for ReactiveReSwift can be found here](http://reswift.github.io/ReactiveReSwift/master/getting-started-guide.html). To get an understanding of the core principles we recommend reading the brilliant [redux documentation](http://redux.js.org/).
 
 # Installation
 
