@@ -42,14 +42,28 @@ public struct Middleware<State: StateType> {
 
     /// Concatenates the transform function of the passed `Middleware` onto the callee's transform.
     public func concat(_ other: Middleware<State>) -> Middleware<State> {
-        return map(other.transform)
+        return flatMap(other.transform)
     }
 
     /// Concatenates the transform function onto the callee's transform.
-    public func map(_ transform: @escaping (GetState, DispatchFunction, Action) -> Action?) -> Middleware<State> {
+    public func map(_ transform: @escaping (GetState, DispatchFunction, Action) -> Action) -> Middleware<State> {
+        return flatMap(transform)
+    }
+
+    /// Concatenates the transform function onto the callee's transform.
+    public func flatMap(_ transform: @escaping (GetState, DispatchFunction, Action) -> Action?) -> Middleware<State> {
         return Middleware<State> {
             if let action = self.transform($0, $1, $2) {
                 return transform($0, $1, action)
+            }
+            return nil
+        }
+    }
+
+    public func filter(_ predicate: @escaping (Action) -> Bool) -> Middleware<State> {
+        return Middleware<State> {
+            if let action = self.transform($0, $1, $2), predicate(action) {
+                return action
             }
             return nil
         }
