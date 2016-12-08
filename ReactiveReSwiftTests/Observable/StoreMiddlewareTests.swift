@@ -67,14 +67,27 @@ class StoreMiddlewareTests: XCTestCase {
      it middleware should not be executed if the previous middleware returned nil
      */
     func testMiddlewareSkipsReducersWhenPassedNil() {
-        let filteringMiddleware = Middleware<TestStringAppState> { _, _, _ in nil }.map { _, _, action in XCTFail(); return action }
+        let filteringMiddleware1 = Middleware<TestStringAppState>().filter({ _, _ in false }).sideEffect { _, _, _ in XCTFail() }
+        let filteringMiddleware2 = Middleware<TestStringAppState>().filter({ _, _ in false }).flatMap { _, _ in XCTFail(); return nil }
 
         let property = ObservableProperty(TestStringAppState(testValue: "OK"))
-        let store = Store(reducer: testValueStringReducer,
+
+        var store = Store(reducer: testValueStringReducer,
                           stateType: TestStringAppState.self,
                           observable: property,
-                          middleware: filteringMiddleware)
+                          middleware: Middleware(filteringMiddleware1, filteringMiddleware2))
+        store.dispatch(SetValueStringAction("Action That Won't Go Through"))
 
+        store = Store(reducer: testValueStringReducer,
+                           stateType: TestStringAppState.self,
+                           observable: property,
+                           middleware: filteringMiddleware1)
+        store.dispatch(SetValueStringAction("Action That Won't Go Through"))
+
+        store = Store(reducer: testValueStringReducer,
+                      stateType: TestStringAppState.self,
+                      observable: property,
+                      middleware: filteringMiddleware2)
         store.dispatch(SetValueStringAction("Action That Won't Go Through"))
     }
 }

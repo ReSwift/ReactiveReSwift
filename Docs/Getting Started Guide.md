@@ -201,11 +201,9 @@ Let's take a look at a quick example that shows how ReactiveReSwift supports Red
 The simplest example of a middleware, is one that prints all actions to the console. Here's how you can implement it:
 
 ```swift
-let loggingMiddleware = Middleware<State> { getState, dispatch, action in
+let loggingMiddleware = Middleware<State>().sideEffect { getState, dispatch, action in
     // perform middleware logic
     print(action)
-    // call next middleware
-    return action
 }
 ```
 You can define which middleware you would like to use when creating your store:
@@ -219,3 +217,12 @@ Store(
 )
 ```
 The actions will pass through the middleware in the order in which they are arranged in the `Middleware` initializer, however ideally middleware should not make any assumptions about when exactly it is called.
+
+`Middleware` supports multiple different operations.
+
+In no particular order, some of the more important operations are:
+
+- `sideEffect(_:)` Gives access to the `dispatch(_:)` function. Does not return, to ensure that only side effects reside inside.
+- `filter(_:)` If the predicate function passed to filter passes, keep the action, otherwise discard the action.
+- `map(_:)` Apply a transformative function to the action.
+- `flatMap(_:)` Essentially a `map` that can also filter out the action by returning `nil`

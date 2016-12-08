@@ -16,12 +16,17 @@ public struct Middleware<State: StateType> {
 
     private let transform: (GetState, DispatchFunction, Action) -> Action?
 
+    /// Create a blank slate Middleware.
+    public init() {
+        self.transform = { $2 }
+    }
+
     /**
      Initialises the middleware with a transformative function.
      
      - parameter transform: The function that will be able to modify passed actions.
      */
-    public init(_ transform: @escaping (GetState, DispatchFunction, Action) -> Action?) {
+    internal init(_ transform: @escaping (GetState, DispatchFunction, Action) -> Action?) {
         self.transform = transform
     }
 
@@ -40,33 +45,41 @@ public struct Middleware<State: StateType> {
         return transform(state, dispatch, argument)
     }
 
+    /// Safe encapsulation of side effects guaranteed not to affect the action being passed through the middleware.
+    public func sideEffect(_ effect: @escaping (GetState, DispatchFunction, Action) -> Void) -> Middleware<State> {
+        return Middleware<State> {
+            guard let action = self.transform($0, $1, $2) else { return nil }
+            effect($0, $1, action)
+            return action
+        }
+    }
+
     /// Concatenates the transform function of the passed `Middleware` onto the callee's transform.
     public func concat(_ other: Middleware<State>) -> Middleware<State> {
-        return flatMap(other.transform)
+        return Middleware<State> {
+            guard let action = self.transform($0, $1, $2) else { return nil }
+            return other.transform($0, $1, action)
+        }
     }
 
     /// Concatenates the transform function onto the callee's transform.
-    public func map(_ transform: @escaping (GetState, DispatchFunction, Action) -> Action) -> Middleware<State> {
+    public func map(_ transform: @escaping (GetState, Action) -> Action) -> Middleware<State> {
         return flatMap(transform)
     }
 
     /// Concatenates the transform function onto the callee's transform.
-    public func flatMap(_ transform: @escaping (GetState, DispatchFunction, Action) -> Action?) -> Middleware<State> {
+    public func flatMap(_ transform: @escaping (GetState, Action) -> Action?) -> Middleware<State> {
         return Middleware<State> {
-            if let action = self.transform($0, $1, $2) {
-                return transform($0, $1, action)
-            }
-            return nil
+            guard let action = self.transform($0, $1, $2) else { return nil }
+            return transform($0, action)
         }
     }
 
     /// Drop the Action if `predicate(action) != true`.
-    public func filter(_ predicate: @escaping (Action) -> Bool) -> Middleware<State> {
+    public func filter(_ predicate: @escaping (GetState, Action) -> Bool) -> Middleware<State> {
         return Middleware<State> {
-            if let action = self.transform($0, $1, $2), predicate(action) {
-                return action
-            }
-            return nil
+            guard let action = self.transform($0, $1, $2), predicate($0, action) else { return nil }
+            return action
         }
     }
 }
