@@ -1,6 +1,13 @@
 {
   "warnings": [
     {
+      "file": "/Users/travis/build/ReSwift/ReactiveReSwift/ReactiveReSwift/CoreTypes/Middleware.swift",
+      "line": 63,
+      "symbol": "Middleware.filter(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/travis/build/ReSwift/ReactiveReSwift/ReactiveReSwift/Reactive/ObservableProperty.swift",
       "line": 26,
       "symbol": "ObservableProperty.init(_:)",
