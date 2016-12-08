@@ -60,6 +60,7 @@ public struct Middleware<State: StateType> {
         }
     }
 
+    /// Drop the Action if `predicate(action) != true`.
     public func filter(_ predicate: @escaping (Action) -> Bool) -> Middleware<State> {
         return Middleware<State> {
             if let action = self.transform($0, $1, $2), predicate(action) {
