@@ -143,11 +143,11 @@
 - <strong>Actions</strong> are a declarative way of describing a state change. Actions don&rsquo;t contain any code, they are consumed by the store and forwarded to reducers. Reducers will handle the actions by implementing a different state change for each action.
 - <strong>Reducers</strong> provide pure functions, that based on the current action and the current app state, create a new app state</p>
 
-<p><img src="img/reswift_concept.png" alt=""></p>
+<p><img src="img/reactivereswift_concept.png" alt=""></p>
 
 <p>For a very simple app, one that maintains a counter that can be increased and decreased, you can define the app state as following:</p>
 <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">AppState</span><span class="p">:</span> <span class="kt">StateType</span> <span class="p">{</span>
-  <span class="k">let</span> <span class="nv">counter</span><span class="p">:</span> <span class="kt">Int</span>
+  <span class="k">var</span> <span class="nv">counter</span><span class="p">:</span> <span class="kt">Int</span>
 <span class="p">}</span>
 </code></pre>
 
@@ -159,31 +159,26 @@
 </code></pre>
 
 <p>Your reducer needs to respond to these different actions, that can be done by switching over the value of action:</p>
-<pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">AppReducer</span><span class="p">:</span> <span class="kt">Reducer</span> <span class="p">{</span>
-    <span class="kd">func</span> <span class="nf">handleAction</span><span class="p">(</span><span class="nv">action</span><span class="p">:</span> <span class="kt">Action</span><span class="p">,</span> <span class="nv">state</span><span class="p">:</span> <span class="kt">AppState</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AppState</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="kt">AppState</span><span class="p">(</span>
-          <span class="nv">counter</span><span class="p">:</span> <span class="nf">counterReducer</span><span class="p">(</span><span class="nv">action</span><span class="p">:</span> <span class="n">action</span><span class="p">,</span> <span class="nv">counter</span><span class="p">:</span> <span class="n">state</span><span class="o">.</span><span class="n">counter</span><span class="p">)</span>
-        <span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">counterReducer</span><span class="p">(</span><span class="nv">action</span><span class="p">:</span> <span class="kt">Action</span><span class="p">,</span> <span class="nv">counter</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">appReducer</span> <span class="o">=</span> <span class="kt">Reducer</span><span class="o">&lt;</span><span class="kt">AppState</span><span class="o">&gt;</span> <span class="p">{</span> <span class="n">action</span><span class="p">,</span> <span class="n">state</span> <span class="k">in</span>
     <span class="k">switch</span> <span class="n">action</span> <span class="k">as?</span> <span class="kt">AppAction</span> <span class="p">{</span>
     <span class="k">case</span> <span class="o">.</span><span class="kt">Increase</span><span class="p">?:</span>
-        <span class="k">return</span> <span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">state</span><span class="o">.</span><span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">case</span> <span class="o">.</span><span class="kt">Decrease</span><span class="p">?:</span>
-        <span class="k">return</span> <span class="nf">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">counter</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">state</span><span class="o">.</span><span class="n">counter</span> <span class="o">-=</span> <span class="mi">1</span>
     <span class="k">default</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">counter</span>
+        <span class="k">break</span>
     <span class="p">}</span>
+    <span class="k">return</span> <span class="n">state</span>
 <span class="p">}</span>
 </code></pre>
+
+<p>A single <code>Reducer</code> should only deal with a single field of the state struct. You can chain together multiple reducers using <code>Reducer(firstReducer, secondReducer, ...)</code>.</p>
 
 <p>In order to have a predictable app state, it is important that the reducer is always free of side effects, it receives the current app state and an action and returns the new app state.</p>
 
 <p>To maintain our state and delegate the actions to the reducers, we need a store. Let&rsquo;s call it <code>mainStore</code> and define it as a global constant, for example in the app delegate file:</p>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">mainStore</span> <span class="o">=</span> <span class="kt">ObservableStore</span><span class="p">(</span>
-  <span class="nv">reducer</span><span class="p">:</span> <span class="kt">AppReducer</span><span class="p">(),</span>
+  <span class="nv">reducer</span><span class="p">:</span> <span class="n">appReducer</span><span class="p">,</span>
   <span class="nv">stateType</span><span class="p">:</span> <span class="kt">AppState</span><span class="o">.</span><span class="k">self</span><span class="p">,</span>
   <span class="nv">observable</span><span class="p">:</span> <span class="kt">ObservableProperty</span><span class="p">(</span><span class="kt">AppState</span><span class="p">(</span><span class="nv">counter</span><span class="p">:</span> <span class="mi">0</span><span class="p">))</span>
 <span class="p">)</span>
