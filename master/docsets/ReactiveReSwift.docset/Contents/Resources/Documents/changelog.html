@@ -138,6 +138,7 @@
             
             <a href='#changelog' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='changelog'>Changelog</h1>
 <a href='#upcoming-release' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='upcoming-release'>Upcoming Release</h1>
+<a href='#3-0-0' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='3-0-0'>3.0.0</h1>
 
 <p><strong>Breaking API Changes:</strong></p>
 
@@ -154,122 +155,6 @@
 <ul>
 <li>Add Rx conforming protocols to allow easy plugging-in to FRP libraries. - @Qata</li>
 <li>Add a <code>dispatch</code> function to <code>Store</code> to allow reactive streams of <code>Action</code>s to be lifted into <code>Store</code> - @Qata</li>
-</ul>
-<a href='#3-0-0' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='3-0-0'>3.0.0</h1>
-
-<p><em>Released: 11/12/2016</em></p>
-
-<p><strong>Breaking API Changes:</strong></p>
-
-<ul>
-<li>Dropped support for Swift 2.2 and lower (#157) - @Ben-G</li>
-</ul>
-
-<p><strong>API Changes:</strong></p>
-
-<ul>
-<li>Mark <code>Store</code> as <code>open</code>, this reverts a previously accidental breaking API Change (#157) - @Ben-G</li>
-</ul>
-
-<p><strong>Other</strong>:</p>
-
-<ul>
-<li>Update to Swift 3.0.1 - @Cristiam, @Ben-G</li>
-<li>Documentation changes - @vkotovv</li>
-</ul>
-<a href='#2-1-0' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='2-1-0'>2.1.0</h1>
-
-<p><em>Released: 09/15/2016</em></p>
-
-<p><strong>Other</strong>:</p>
-
-<ul>
-<li>Swift 3 preview compatibility, maintaining Swift 2 naming - (#126) - @agentk</li>
-<li>Xcode 8 GM Swift 3 Updates (#149) - @tkersey</li>
-<li>Migrate Quick/Nimble testing to XCTest - (#127) - @agentk</li>
-<li>Automatically build docs via Travis CI (#128) - @agentk</li>
-<li>Documentation Updates &amp; Fixes- @mikekavouras, @ColinEberhardt</li>
-</ul>
-<a href='#2-0-0' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='2-0-0'>2.0.0</h1>
-
-<p><em>Released: 06/27/2016</em></p>
-
-<p><strong>Breaking API Changes</strong>:</p>
-
-<ul>
-<li>Significant Improvements to Serialization Code for <code>StandardAction</code> (relevant for recording tools) - @okla</li>
-</ul>
-
-<p><strong>Other</strong>:</p>
-
-<ul>
-<li>Swift 2.3 Updates - @agentk</li>
-<li>Documentation Updates &amp; Fixes - @okla, @gregpardo, @tomj, @askielboe, @mitsuse, @esttorhe, @RyanCCollins, @thomaspaulmann, @jlampa</li>
-</ul>
-<a href='#1-0-0' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='1-0-0'>1.0.0</h1>
-
-<p><em>Released: 03/19/2016</em></p>
-
-<p><strong>API Changes:</strong>
-- Remove callback arguments on synchronous dispatch methods - @Ben-G</p>
-
-<p><strong>Other:</strong></p>
-
-<ul>
-<li>Move all documentation source into <code>Docs</code>, except <code>Readme</code>, <code>Changelog</code> and <code>License</code> - @agentk</li>
-<li>Replace duplicated documentation with an enhanced <code>generate_docs.sh</code> build script - @agentk</li>
-<li>Set CocoaPods documentation URL - (#56) @agentk</li>
-<li>Update documentation for 1.0 release - @Ben-G</li>
-</ul>
-<a href='#0-2-5' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='0-2-5'>0.2.5</h1>
-
-<p><em>Released: 02/20/2016</em></p>
-
-<p><strong>API Changes:</strong></p>
-
-<ul>
-<li>Subscribers can now sub-select a state when they subscribe to the store (#61) - @Ben-G</li>
-<li>Rename initially dispatched Action to <code>ReSwiftInit</code> - @vfn</li>
-</ul>
-
-<p><strong>Fixes:</strong></p>
-
-<ul>
-<li>Fix retain cycle caused by middleware (issue: #66) - @Ben-G</li>
-<li>Store now holds weak references to subscribers to avoid unexpected memory managegement behavior (issue: #62) - @vfn</li>
-<li>Documentation Fixes - @victorpimentel, @vfn, @juggernate, @raheelahmad</li>
-</ul>
-
-<p><strong>Other:</strong></p>
-
-<ul>
-<li>We now have a <a href="http://reswift.github.io/ReSwift/master/">hosted documentation for ReSwift</a> - @agentk</li>
-<li>Refactored subscribers into a explicit <code>Subscription</code> typealias - @DivineDominion</li>
-<li>Refactored <code>dispatch</code> for <code>AsyncActionCreator</code> to avoid duplicate code - @sendyhalim</li>
-</ul>
-<a href='#0-2-4' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='0-2-4'>0.2.4</h1>
-
-<p><em>Released: 01/23/2016</em></p>
-
-<p><strong>API Changes:</strong></p>
-
-<ul>
-<li>Pass typed store reference into <code>ActionCreator</code>. <code>ActionCreator</code> can now access <code>Store</code>s state without the need for typecasts - @Ben-G</li>
-<li><code>Store</code> can now be initialized with an empty state, allowing reducers to hydrate the store - @Ben-G</li>
-</ul>
-
-<p><strong>Bugfixes</strong></p>
-
-<ul>
-<li>Break retain cycle when using middelware - @sendyhalim</li>
-</ul>
-
-<p><strong>Other:</strong></p>
-
-<ul>
-<li>Update Documentation to reflect renaming to ReSwift - @agentk</li>
-<li>Documentation fixes - @orta and @sendyhalim</li>
-<li>Refactoring - @dcvz and @sendyhalim</li>
 </ul>
 
           </div>
