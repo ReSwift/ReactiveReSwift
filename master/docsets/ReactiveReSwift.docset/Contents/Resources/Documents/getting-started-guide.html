@@ -318,11 +318,9 @@ To subscribe to the store a method needs to call <code>subscibe(_:)</code> on <c
 <p>Let&rsquo;s take a look at a quick example that shows how ReactiveReSwift supports Redux style middleware.</p>
 
 <p>The simplest example of a middleware, is one that prints all actions to the console. Here&rsquo;s how you can implement it:</p>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">loggingMiddleware</span> <span class="o">=</span> <span class="kt">Middleware</span><span class="o">&lt;</span><span class="kt">State</span><span class="o">&gt;</span> <span class="p">{</span> <span class="n">getState</span><span class="p">,</span> <span class="n">dispatch</span><span class="p">,</span> <span class="n">action</span> <span class="k">in</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">loggingMiddleware</span> <span class="o">=</span> <span class="kt">Middleware</span><span class="o">&lt;</span><span class="kt">State</span><span class="o">&gt;</span><span class="p">()</span><span class="o">.</span><span class="n">sideEffect</span> <span class="p">{</span> <span class="n">getState</span><span class="p">,</span> <span class="n">dispatch</span><span class="p">,</span> <span class="n">action</span> <span class="k">in</span>
     <span class="c1">// perform middleware logic</span>
     <span class="nf">print</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
-    <span class="c1">// call next middleware</span>
-    <span class="k">return</span> <span class="n">action</span>
 <span class="p">}</span>
 </code></pre>
 
@@ -336,6 +334,17 @@ To subscribe to the store a method needs to call <code>subscibe(_:)</code> on <c
 </code></pre>
 
 <p>The actions will pass through the middleware in the order in which they are arranged in the <code>Middleware</code> initializer, however ideally middleware should not make any assumptions about when exactly it is called.</p>
+
+<p><code>Middleware</code> supports multiple different operations.</p>
+
+<p>In no particular order, some of the more important operations are:</p>
+
+<ul>
+<li><code>sideEffect(_:)</code> Gives access to the <code>dispatch(_:)</code> function. Does not return, to ensure that only side effects reside inside.</li>
+<li><code>filter(_:)</code> If the predicate function passed to filter passes, keep the action, otherwise discard the action.</li>
+<li><code>map(_:)</code> Apply a transformative function to the action.</li>
+<li><code>flatMap(_:)</code> Essentially a <code>map</code> that can also filter out the action by returning <code>nil</code></li>
+</ul>
 
           </div>
         </section>
