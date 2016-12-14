@@ -1,6 +1,20 @@
 {
   "warnings": [
     {
+      "file": "/Users/travis/build/ReSwift/ReactiveReSwift/ReactiveReSwift/CoreTypes/Store.swift",
+      "line": 20,
+      "symbol": "Store",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/ReSwift/ReactiveReSwift/ReactiveReSwift/CoreTypes/Store.swift",
+      "line": 66,
+      "symbol": "Store.dispatch(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/travis/build/ReSwift/ReactiveReSwift/ReactiveReSwift/Reactive/ObservableProperty.swift",
       "line": 26,
       "symbol": "ObservableProperty.init(_:)",
