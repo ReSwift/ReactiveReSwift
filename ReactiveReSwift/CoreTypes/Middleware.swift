@@ -47,31 +47,38 @@ public struct Middleware<State: StateType> {
 
     /// Safe encapsulation of side effects guaranteed not to affect the action being passed through the middleware.
     public func sideEffect(_ effect: @escaping (GetState, DispatchFunction, Action) -> Void) -> Middleware<State> {
-        return Middleware<State> {
-            guard let action = self.transform($0, $1, $2) else { return nil }
-            effect($0, $1, action)
-            return action
+        return Middleware<State> { getState, dispatch, action in
+            self.transform(getState, dispatch, action).map { action in
+                effect(getState, dispatch, action)
+                return action
+            }
         }
     }
 
     /// Concatenates the transform function of the passed `Middleware` onto the callee's transform.
     public func concat(_ other: Middleware<State>) -> Middleware<State> {
-        return Middleware<State> {
-            guard let action = self.transform($0, $1, $2) else { return nil }
-            return other.transform($0, $1, action)
+        return Middleware<State> { getState, dispatch, action in
+            self.transform(getState, dispatch, action).flatMap {
+                other.transform(getState, dispatch, $0)
+            }
         }
     }
 
     /// Concatenates the transform function onto the callee's transform.
     public func map(_ transform: @escaping (GetState, Action) -> Action) -> Middleware<State> {
-        return flatMap(transform)
+        return Middleware<State> { getState, dispatch, action in
+            self.transform(getState, dispatch, action).map {
+                transform(getState, $0)
+            }
+        }
     }
 
     /// Concatenates the transform function onto the callee's transform.
     public func flatMap(_ transform: @escaping (GetState, Action) -> Action?) -> Middleware<State> {
-        return Middleware<State> {
-            guard let action = self.transform($0, $1, $2) else { return nil }
-            return transform($0, action)
+        return Middleware<State> { getState, dispatch, action in
+            self.transform(getState, dispatch, action).flatMap {
+                transform(getState, $0)
+            }
         }
     }
 
