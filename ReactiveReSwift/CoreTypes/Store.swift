@@ -62,13 +62,4 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType where 
             self.dispatch(action)
         }
     }
-
-    public func dispatch<S: ErroringStreamType>(_ stream: S) where S.ValueType: Action, S.ErrorType: Action {
-        disposeBag += stream.subscribe { [unowned self] action in
-            self.dispatch(action)
-        }
-        disposeBag += stream.subscribeError { [unowned self] action in
-            self.dispatch(action)
-        }
-    }
 }

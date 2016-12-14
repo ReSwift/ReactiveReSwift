@@ -8,7 +8,7 @@
 
 /// A protocol that denotes a type that sends values over time.
 public protocol StreamType {
-    /// The type of the values within the stream.
+    /// The type of the values within the `Stream`.
     associatedtype ValueType
     /** The type of the disposable object returned from a subscription.
      If you can't conform the disposable of your choice FRP library to `SubscriptionReferenceType`,
@@ -20,12 +20,4 @@ public protocol StreamType {
 
     /// Register a callback to be called when new values flow down the stream.
     func subscribe(_ function: @escaping (ValueType) -> Void) -> DisposableType?
-}
-
-/// A protocol that denotes a type that sends values over time and may error.
-public protocol ErroringStreamType: StreamType {
-    /// The type of the errors within the stream.
-    associatedtype ErrorType
-    /// Register a callback to be called when an error halts the stream.
-    func subscribeError(_ function: @escaping (ErrorType) -> Void) -> DisposableType?
 }
