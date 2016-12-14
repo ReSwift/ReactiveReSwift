@@ -25,19 +25,12 @@ public extension XCTestCase {
      - parameter testCase:        The test case to be executed that expected to fire the assertion
      method.
      */
-    public func expectFatalError(expectedMessage: String? = nil, file: StaticString = #file,
-                                 line: UInt = #line, testCase: @escaping () -> Void) {
-        expectAssertionNoReturnFunction(
-            functionName: "fatalError",
-            file: file,
-            line: line,
-            function: { (caller: @escaping (String) -> Void) -> Void in
-
-                Assertions.fatalErrorClosure = { message, _, _ in caller(message) }
-
-        }, expectedMessage: expectedMessage, testCase: testCase) { _ in
-            Assertions.fatalErrorClosure = Assertions.swiftFatalErrorClosure
-        }
+    public func expectFatalError(file: StaticString = #file, line: UInt = #line, testCase: @escaping () -> Void) {
+        expectAssertionNoReturnFunction(functionName: "fatalError",
+                                        file: file,
+                                        line: line,
+                                        function: { caller in Assertions.fatalErrorClosure = { message, _, _ in caller(message) } },
+                                        testCase: testCase) { _ in Assertions.fatalErrorClosure = Assertions.swiftFatalErrorClosure }
     }
 
     // MARK: Private Methods
@@ -48,7 +41,6 @@ public extension XCTestCase {
         file: StaticString,
         line: UInt,
         function: (_ caller: @escaping (String) -> Void) -> Void,
-        expectedMessage: String? = nil,
         testCase: @escaping () -> Void,
         cleanUp: @escaping () -> ()) {
 
@@ -65,10 +57,8 @@ public extension XCTestCase {
 
         waitForFutureExpectations(withTimeout: noReturnFailureWaitTime) { _ in
             defer { cleanUp() }
-            guard let assertionMessage = assertionMessage else { XCTFail(funcName + " is expected to be called.", file: file, line: line); return }
-            if let expectedMessage = expectedMessage {
-                XCTAssertEqual(assertionMessage, expectedMessage, funcName + " called with incorrect message.", file: file, line: line)
-            }
+
+            XCTAssertNotNil(assertionMessage)
         }
     }
     // swiftlint:enable function_parameter_count

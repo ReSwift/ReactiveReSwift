@@ -37,7 +37,7 @@ class StoreMiddlewareTests: XCTestCase {
         let store = Store(reducer: testValueStringReducer,
             stateType: TestStringAppState.self,
             observable: ObservableProperty(TestStringAppState()),
-            middleware: Middleware(firstMiddleware, secondMiddleware, dispatchingMiddleware))
+            middleware: Middleware(firstMiddleware, secondMiddleware, dispatchingMiddleware).flatMap { $1 })
 
         let subscriber = TestStoreSubscriber<TestStringAppState>()
         store.observable.subscribe(subscriber.subscription)

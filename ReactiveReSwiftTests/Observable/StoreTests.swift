@@ -45,7 +45,7 @@ class DeInitStore<State: StateType>: Store<ObservableProperty<State>> {
         self.init(reducer: reducer,
                   stateType: stateType,
                   observable: observable,
-                  middleware: Middleware { $2 })
+                  middleware: Middleware())
         self.deInitAction = deInitAction
     }
 
