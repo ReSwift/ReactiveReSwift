@@ -15,6 +15,8 @@ import Foundation
  contained within an observable.
  */
 
+import Foundation
+
 public class Store<ObservableProperty: ObservablePropertyType>: StoreType where ObservableProperty.ValueType: StateType {
 
     public typealias StoreMiddleware = Middleware<ObservableProperty.ValueType>
@@ -26,7 +28,7 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType where 
 
     public var observable: ObservableProperty!
 
-    private var isDispatching = false
+    private let dispatchingLock = NSLock()
 
     private var disposeBag = SubscriptionReferenceBag()
 
@@ -41,13 +43,11 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType where 
     }
 
     private func defaultDispatch(action: Action) {
-        guard !isDispatching else {
+        guard dispatchingLock.try() else {
             raiseFatalError("ReSwift:IllegalDispatchFromReducer - Reducers may not dispatch actions.")
         }
-
-        isDispatching = true
         observable.value = reducer.run(action: action, state: observable.value)
-        isDispatching = false
+        dispatchingLock.unlock()
     }
 
     @discardableResult
