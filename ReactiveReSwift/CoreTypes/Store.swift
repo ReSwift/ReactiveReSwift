@@ -33,7 +33,7 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType where 
     private var disposeBag = SubscriptionReferenceBag()
 
     public required convenience init(reducer: StoreReducer, stateType: ObservableProperty.ValueType.Type, observable: ObservableProperty) {
-        self.init(reducer: reducer, stateType: stateType, observable: observable, middleware: Middleware { $2 })
+        self.init(reducer: reducer, stateType: stateType, observable: observable, middleware: Middleware())
     }
 
     public required init(reducer: StoreReducer, stateType: ObservableProperty.ValueType.Type, observable: ObservableProperty, middleware: StoreMiddleware) {
@@ -52,9 +52,9 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType where 
 
     @discardableResult
     public func dispatch(_ action: Action) {
-        if let mappedAction = dispatchMiddleware.run(state: { self.observable.value }, dispatch: { self.dispatch($0) }, argument: action) {
-            defaultDispatch(action: mappedAction)
-        }
+        dispatchMiddleware
+            .run(state: { self.observable.value }, dispatch: { self.dispatch($0) }, argument: action)
+            .forEach(defaultDispatch)
     }
 
     public func dispatch<S: StreamType>(_ stream: S) where S.ValueType: Action {

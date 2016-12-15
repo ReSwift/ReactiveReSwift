@@ -90,4 +90,18 @@ class StoreMiddlewareTests: XCTestCase {
                       middleware: filteringMiddleware2)
         store.dispatch(SetValueStringAction("Action That Won't Go Through"))
     }
+
+    /**
+     it actions should be multiplied via the increase function
+     */
+    func testMiddlewareMultiplies() {
+        let multiplexingMiddleware = Middleware<CounterState>().increase { [$1, $1, $1] }
+        let property = ObservableProperty(CounterState(count: 0))
+        let store = Store(reducer: increaseByOneReducer,
+                          stateType: CounterState.self,
+                          observable: property,
+                          middleware: multiplexingMiddleware)
+        store.dispatch(NoOpAction())
+        XCTAssertEqual(store.observable.value.count, 3)
+    }
 }

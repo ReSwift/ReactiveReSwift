@@ -14,11 +14,11 @@ public struct Middleware<State: StateType> {
     public typealias DispatchFunction = (Action) -> Void
     public typealias GetState = () -> State
 
-    private let transform: (GetState, DispatchFunction, Action) -> Action?
+    private let transform: (GetState, DispatchFunction, Action) -> [Action]
 
     /// Create a blank slate Middleware.
     public init() {
-        self.transform = { $2 }
+        self.transform = { [$2] }
     }
 
     /**
@@ -26,7 +26,7 @@ public struct Middleware<State: StateType> {
      
      - parameter transform: The function that will be able to modify passed actions.
      */
-    internal init(_ transform: @escaping (GetState, DispatchFunction, Action) -> Action?) {
+    internal init(_ transform: @escaping (GetState, DispatchFunction, Action) -> [Action]) {
         self.transform = transform
     }
 
@@ -41,16 +41,16 @@ public struct Middleware<State: StateType> {
     }
 
     /// Runs the underlying function of the middleware and returns the result.
-    internal func run(state: GetState, dispatch: DispatchFunction, argument: Action) -> Action? {
+    internal func run(state: GetState, dispatch: DispatchFunction, argument: Action) -> [Action] {
         return transform(state, dispatch, argument)
     }
 
     /// Safe encapsulation of side effects guaranteed not to affect the action being passed through the middleware.
     public func sideEffect(_ effect: @escaping (GetState, DispatchFunction, Action) -> Void) -> Middleware<State> {
         return Middleware<State> { getState, dispatch, action in
-            self.transform(getState, dispatch, action).map { action in
-                effect(getState, dispatch, action)
-                return action
+            self.transform(getState, dispatch, action).map {
+                effect(getState, dispatch, $0)
+                return $0
             }
         }
     }
@@ -74,6 +74,15 @@ public struct Middleware<State: StateType> {
     }
 
     /// Concatenates the transform function onto the callee's transform.
+    public func increase(_ transform: @escaping (GetState, Action) -> [Action]) -> Middleware<State> {
+        return Middleware<State> { getState, dispatch, action in
+            self.transform(getState, dispatch, action).flatMap {
+                transform(getState, $0)
+            }
+        }
+    }
+
+    /// Concatenates the transform function onto the callee's transform.
     public func flatMap(_ transform: @escaping (GetState, Action) -> Action?) -> Middleware<State> {
         return Middleware<State> { getState, dispatch, action in
             self.transform(getState, dispatch, action).flatMap {
@@ -84,9 +93,10 @@ public struct Middleware<State: StateType> {
 
     /// Drop the Action if `predicate(action) != true`.
     public func filter(_ predicate: @escaping (GetState, Action) -> Bool) -> Middleware<State> {
-        return Middleware<State> {
-            guard let action = self.transform($0, $1, $2), predicate($0, action) else { return nil }
-            return action
+        return Middleware<State> { getState, dispatch, action in
+            self.transform(getState, dispatch, action).filter {
+                predicate(getState, $0)
+            }
         }
     }
 }
