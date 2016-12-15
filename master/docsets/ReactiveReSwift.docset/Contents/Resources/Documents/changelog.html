@@ -138,13 +138,19 @@
             
             <a href='#changelog' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='changelog'>Changelog</h1>
 <a href='#upcoming-release' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='upcoming-release'>Upcoming Release</h1>
+
+<p><strong>API Changes:</strong></p>
+
+<ul>
+<li>Add the <code>increase</code> method to <code>Middleware</code>, allowing you to transform one action into many - @Qata</li>
+</ul>
 <a href='#3-0-0' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='3-0-0'>3.0.0</h1>
 
 <p><strong>Breaking API Changes:</strong></p>
 
 <ul>
 <li>Remove all subscription as delegation (<code>StoreSubscriber</code>) - @Qata</li>
-<li>Remove <code>ActionCreator</code> since this can easily be solved with Rx as a single value stream - @Qata</li>
+<li>Remove <code>ActionCreator</code> since this can easily be solved with FRP as a single value stream - @Qata</li>
 <li>Simplify <code>Store</code> and change it to use observables - @Qata</li>
 <li>Remove the <code>Reducer</code> protocol and create a <code>Reducer</code> struct that is generic over the <code>StateType</code> of your <code>Store</code> - @Qata</li>
 <li>Remove the <code>Middleware</code> typealias and create a <code>Middleware</code> struct that is generic over the <code>StateType</code> of your <code>Store</code> - @Qata</li>
@@ -153,7 +159,7 @@
 <p><strong>API Changes:</strong></p>
 
 <ul>
-<li>Add Rx conforming protocols to allow easy plugging-in to FRP libraries. - @Qata</li>
+<li>Add FRP conforming protocols to allow easy plugging-in to FRP libraries. - @Qata</li>
 <li>Add a <code>dispatch</code> function to <code>Store</code> to allow reactive streams of <code>Action</code>s to be lifted into <code>Store</code> - @Qata</li>
 </ul>
 
