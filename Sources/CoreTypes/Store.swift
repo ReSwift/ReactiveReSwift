@@ -52,7 +52,7 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType where 
 
     public func dispatch(_ actions: Action...) {
         actions.flatMap { action in
-            dispatchMiddleware.transform({ self.observable.value }, { self.dispatch($0) }, action)
+            dispatchMiddleware.transform({ self.observable.value }, self.dispatch, action)
         }.forEach(defaultDispatch)
     }
 

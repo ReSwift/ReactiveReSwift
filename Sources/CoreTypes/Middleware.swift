@@ -11,7 +11,7 @@
  actions, before the action being handled reaches the store.
  */
 public struct Middleware<State: StateType> {
-    public typealias DispatchFunction = (Action) -> Void
+    public typealias DispatchFunction = (Action...) -> Void
     public typealias GetState = () -> State
 
     internal let transform: (GetState, DispatchFunction, Action) -> [Action]
