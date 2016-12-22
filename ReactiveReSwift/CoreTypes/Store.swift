@@ -46,14 +46,14 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType where 
         guard dispatchingLock.try() else {
             raiseFatalError("ReSwift:IllegalDispatchFromReducer - Reducers may not dispatch actions.")
         }
-        observable.value = reducer.run(action: action, state: observable.value)
+        observable.value = reducer.transform(action, observable.value)
         dispatchingLock.unlock()
     }
 
     @discardableResult
     public func dispatch(_ action: Action) {
         dispatchMiddleware
-            .run(state: { self.observable.value }, dispatch: { self.dispatch($0) }, argument: action)
+            .transform({ self.observable.value }, self.dispatch, action)
             .forEach(defaultDispatch)
     }
 

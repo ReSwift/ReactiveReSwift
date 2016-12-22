@@ -13,7 +13,7 @@ import Foundation
  by reducing actions.
  */
 public struct Reducer<State: StateType> {
-    private let transform: (Action, State) -> State
+    internal let transform: (Action, State) -> State
 
     /**
      Initialises the `Reducer` with a transformative function.
@@ -32,11 +32,6 @@ public struct Reducer<State: StateType> {
         self = rest.reduce(first) {
             $0.concat($1)
         }
-    }
-
-    /// Runs the underlying transform function of the `Reducer` and returns the result.
-    internal func run(action: Action, state: State) -> State {
-        return transform(action, state)
     }
 
     /// Concatenates the transform function of the passed `Reducer` onto the callee's transform.

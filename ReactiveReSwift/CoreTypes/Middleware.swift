@@ -14,7 +14,7 @@ public struct Middleware<State: StateType> {
     public typealias DispatchFunction = (Action) -> Void
     public typealias GetState = () -> State
 
-    private let transform: (GetState, DispatchFunction, Action) -> [Action]
+    internal let transform: (GetState, DispatchFunction, Action) -> [Action]
 
     /// Create a blank slate Middleware.
     public init() {
@@ -38,11 +38,6 @@ public struct Middleware<State: StateType> {
         self = rest.reduce(first) {
             $0.concat($1)
         }
-    }
-
-    /// Runs the underlying function of the middleware and returns the result.
-    internal func run(state: GetState, dispatch: DispatchFunction, argument: Action) -> [Action] {
-        return transform(state, dispatch, argument)
     }
 
     /// Safe encapsulation of side effects guaranteed not to affect the action being passed through the middleware.
