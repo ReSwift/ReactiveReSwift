@@ -50,11 +50,10 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType where 
         dispatchingLock.unlock()
     }
 
-    @discardableResult
-    public func dispatch(_ action: Action) {
-        dispatchMiddleware
-            .transform({ self.observable.value }, self.dispatch, action)
-            .forEach(defaultDispatch)
+    public func dispatch(_ actions: Action...) {
+        actions.flatMap { action in
+            dispatchMiddleware.transform({ self.observable.value }, { self.dispatch($0) }, action)
+        }.forEach(defaultDispatch)
     }
 
     public func dispatch<S: StreamType>(_ stream: S) where S.ValueType: Action {

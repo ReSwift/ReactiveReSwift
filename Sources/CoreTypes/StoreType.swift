@@ -47,7 +47,7 @@ public protocol StoreType {
      - returns: By default returns the dispatched action, but middlewares can change the
      return type, e.g. to return promises
      */
-    func dispatch(_ action: Action)
+    func dispatch(_ actions: Action...)
 
     /**
      Dispatches any actions that flow down the stream.
