@@ -1,21 +1,21 @@
 {
   "warnings": [
     {
-      "file": "/Users/travis/build/ReSwift/ReactiveReSwift/ReactiveReSwift/CoreTypes/Store.swift",
+      "file": "/Users/travis/build/ReSwift/ReactiveReSwift/Sources/CoreTypes/Store.swift",
       "line": 20,
       "symbol": "Store",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/ReSwift/ReactiveReSwift/ReactiveReSwift/Reactive/ObservableProperty.swift",
+      "file": "/Users/travis/build/ReSwift/ReactiveReSwift/Sources/Reactive/ObservableProperty.swift",
       "line": 26,
       "symbol": "ObservableProperty.init(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/ReSwift/ReactiveReSwift/ReactiveReSwift/Reactive/ObservablePropertySubscriptionReference.swift",
+      "file": "/Users/travis/build/ReSwift/ReactiveReSwift/Sources/Reactive/ObservablePropertySubscriptionReference.swift",
       "line": 34,
       "symbol": "ObservablePropertySubscriptionReference.==(_:_:).T",
       "symbol_kind": "source.lang.swift.decl.generic_type_param",
