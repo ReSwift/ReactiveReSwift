@@ -138,11 +138,18 @@
             
             <a href='#changelog' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='changelog'>Changelog</h1>
 <a href='#upcoming-release' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='upcoming-release'>Upcoming Release</h1>
+<a href='#3-0-1' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='3-0-1'>3.0.1</h1>
 
 <p><strong>API Changes:</strong></p>
 
 <ul>
 <li>Add the <code>increase</code> method to <code>Middleware</code>, allowing you to transform one action into many - @Qata</li>
+</ul>
+
+<p><strong>Bug Fixes:</strong></p>
+
+<ul>
+<li>Move the setting of the store observable&rsquo;s value out of the locked area, preventing updates from triggering the <q>Reducers dispatching actions</q> exception - @Qata</li>
 </ul>
 <a href='#3-0-0' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='3-0-0'>3.0.0</h1>
 
