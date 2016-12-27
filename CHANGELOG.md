@@ -1,7 +1,13 @@
 #Upcoming Release
+
+#3.0.1
 **API Changes:**
 
 - Add the `increase` method to `Middleware`, allowing you to transform one action into many - @Qata
+
+**Bug Fixes:**
+
+- Move the setting of the store observable's value out of the locked area, preventing updates from triggering the "Reducers dispatching actions" exception - @Qata
 
 #3.0.0
 **Breaking API Changes:**
