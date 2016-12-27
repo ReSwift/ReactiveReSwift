@@ -46,8 +46,9 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType where 
         guard dispatchingLock.try() else {
             raiseFatalError("ReSwift:IllegalDispatchFromReducer - Reducers may not dispatch actions.")
         }
-        observable.value = reducer.transform(action, observable.value)
+        let value = reducer.transform(action, observable.value)
         dispatchingLock.unlock()
+        observable.value = value
     }
 
     public func dispatch(_ actions: Action...) {
