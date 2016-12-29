@@ -9,7 +9,7 @@
 import Foundation
 import ReactiveReSwift
 
-let dispatchQueue = DispatchQueue(label: "TestQueue")
+let dispatchQueue = DispatchQueue.global()
 
 struct NoOpAction: Action {}
 

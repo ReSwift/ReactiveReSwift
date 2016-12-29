@@ -30,8 +30,6 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType where 
 
     private let dispatchQueue: DispatchQueue
 
-    private let dispatchingLock = NSLock()
-
     private var disposeBag = SubscriptionReferenceBag()
 
     public required init(reducer: StoreReducer,
@@ -46,12 +44,8 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType where 
     }
 
     private func defaultDispatch(action: Action) {
-        dispatchQueue.async {
-            guard self.dispatchingLock.try() else {
-                raiseFatalError("ReSwift:IllegalDispatchFromReducer - Reducers may not dispatch actions.")
-            }
+        dispatchQueue.sync {
             let value = self.reducer.transform(action, self.observable.value)
-            self.dispatchingLock.unlock()
             self.observable.value = value
         }
     }

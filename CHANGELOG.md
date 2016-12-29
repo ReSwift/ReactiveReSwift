@@ -1,4 +1,12 @@
 #Upcoming Release
+**API Changes:**
+
+- Add the `dispatchQueue:` argument to the initialiser. The queue is a DispatchQueue which is used as the execution context for  - @Qata
+- Use default arguments in the main initialiser and remove the convenience initialiser (Swift autogenerates convenience initialisers when default arguments are used) - @Qata
+
+**Bug Fixes:**
+
+- Remove the exception when dispatching from reducers. This was causing issues with asynchronous dispatching - @Qata
 
 #3.0.1
 **API Changes:**

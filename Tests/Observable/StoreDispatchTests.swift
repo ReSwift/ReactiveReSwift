@@ -22,23 +22,6 @@ class ObservableStoreDispatchTests: XCTestCase {
     override func setUp() {
         super.setUp()
         reducer = testReducer
-        store = Store(reducer: reducer,
-                                stateType: TestAppState.self,
-                                observable: ObservableProperty(TestAppState()))
-    }
-
-    /**
-     it throws an exception when a reducer dispatches an action
-     */
-    func testThrowsExceptionWhenReducersDispatch() {
-        // Expectation lives in the `DispatchingReducer` class
-        let reducerContainer = ObservableDispatchingReducer()
-        reducerContainer.setUp()
-        store = Store(reducer: reducerContainer.reducer,
-                                stateType: TestAppState.self,
-                                observable: ObservableProperty(TestAppState()))
-        reducerContainer.store = store
-        store.dispatch(SetValueAction(10))
     }
 
     /**
@@ -54,22 +37,6 @@ class ObservableStoreDispatchTests: XCTestCase {
         property.value = SetValueAction(20)
         dispatchQueue.sync {
             XCTAssertEqual(store.observable.value.testValue, 20)
-        }
-    }
-}
-
-// Needs to be class so that shared reference can be modified to inject store
-class ObservableDispatchingReducer: XCTestCase {
-    fileprivate var store: StoreTestType? = nil
-    fileprivate var reducer: Reducer<TestAppState>!
-
-    override func setUp() {
-        super.setUp()
-        reducer = Reducer { _, state in
-            self.expectFatalError {
-                self.store?.dispatch(SetValueAction(20))
-            }
-            return state
         }
     }
 }

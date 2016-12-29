@@ -37,13 +37,13 @@ class DeInitStore<State: StateType>: Store<ObservableProperty<State>> {
         deInitAction?()
     }
 
-    required init(reducer: Reducer<ObservableProperty.ValueType>,
+    convenience init(reducer: Reducer<ObservableProperty.ValueType>,
                   stateType: ObservableProperty.ValueType.Type,
                   observable: ObservableProperty,
                   middleware: Middleware<ObservableProperty.ValueType> = Middleware(),
                   dispatchQueue: DispatchQueue = DispatchQueue.main,
                   deInitAction: @escaping () -> Void) {
-        super.init(reducer: reducer,
+        self.init(reducer: reducer,
                    stateType: stateType,
                    observable: observable,
                    middleware: middleware,
