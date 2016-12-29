@@ -1,6 +1,6 @@
 //
 //  Middleware.swift
-//  FPExamples
+//  ReactiveReSwift
 //
 //  Created by Charlotte Tortorella on 25/11/16.
 //  Copyright © 2016 Charlotte Tortorella. All rights reserved.
