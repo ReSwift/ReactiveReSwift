@@ -35,13 +35,13 @@ ReactiveReSwift relies on a few principles:
 - **Actions** are a declarative way of describing a state change. Actions don't contain any code, they are consumed by the store and forwarded to reducers. Reducers will handle the actions by implementing a different state change for each action.
 - **Reducers** provide pure functions, that based on the current action and the current app state, create a new app state
 
-![](Docs/img/reswift_concept.png)
+![](Docs/img/reactivereswift_concept.png)
 
 For a very simple app, one that maintains a counter that can be increased and decreased, you can define the app state as following:
 
 ```swift
 struct AppState: StateType {
-  let counter: Int
+  var counter: Int
 }
 ```
 
@@ -57,32 +57,28 @@ enum AppAction: Action {
 Your reducer needs to respond to these different actions, that can be done by switching over the value of action:
 
 ```swift
-struct AppReducer: Reducer {
-	func handleAction(action: Action, state: AppState) -> AppState {
-		return AppState(
-          counter: counterReducer(action: action, counter: state.counter)
-		)
-	}
-}
-
-func counterReducer(action: Action, counter: Int) -> Int {
-	switch action as? AppAction {
+let appReducer = Reducer<AppState> { action, state in
+    switch action as? AppAction {
 	case .Increase?:
-        return counter + 1
+        state.counter += 1
 	case .Decrease?:
-        return max(0, counter - 1)
+        state.counter -= 1
 	default:
-		return counter
+        break
 	}
+    return state
 }
 ```
+
+A single `Reducer` should only deal with a single field of the state struct. You can chain together multiple reducers using `Reducer(firstReducer, secondReducer, ...)`.
+
 In order to have a predictable app state, it is important that the reducer is always free of side effects, it receives the current app state and an action and returns the new app state.
 
 To maintain our state and delegate the actions to the reducers, we need a store. Let's call it `mainStore` and define it as a global constant, for example in the app delegate file:
 
 ```swift
 let mainStore = ObservableStore(
-  reducer: AppReducer(),
+  reducer: appReducer,
   stateType: AppState.self,
   observable: ObservableProperty(AppState(counter: 0))
 )
@@ -127,7 +123,7 @@ The `mainStore.observable.subscribe` block will be called by the `ObservableStor
 
 Button taps result in dispatched actions that will be handled by the store and its reducers, resulting in a new app state.
 
-This is a very basic example that only shows a subset of ReSwift's features, read the Getting Started Guide to see how you can build entire apps with this architecture. For a complete implementation of this example see the [ReactiveCounterExample](https://github.com/Qata/ReactiveCounterExample) project.
+This is a very basic example that only shows a subset of ReactiveReSwift's features, read the Getting Started Guide to see how you can build entire apps with this architecture. For a complete implementation of this example see the [ReactiveCounterExample](https://github.com/Qata/ReactiveCounterExample) project.
 
 [You can also watch this talk on the motivation behind ReSwift](https://realm.io/news/benji-encz-unidirectional-data-flow-swift/).
 
@@ -135,7 +131,7 @@ This is a very basic example that only shows a subset of ReSwift's features, rea
 
 Here are some examples of what your code would look like if you were to leverage certain FRP libraries when writing your application.
 
-- [Documentation for ReactiveSwift](https://github.com/ReSwift/ReactiveReSwift/tree/master/Docs/Reactive/RAC.md)
+- [Documentation for ReactiveSwift](https://github.com/ReSwift/ReactiveReSwift/tree/master/Docs/Reactive/ReactiveSwift.md)
 - [Documentation for ReactiveKit](https://github.com/ReSwift/ReactiveReSwift/tree/master/Docs/Reactive/ReactiveKit.md)
 - [Documentation for RxSwift](https://github.com/ReSwift/ReactiveReSwift/tree/master/Docs/Reactive/RxSwift.md)
 - [Documentation for PromiseKit](https://github.com/ReSwift/ReactiveReSwift/tree/master/Docs/Reactive/PromiseKit.md)
@@ -162,13 +158,13 @@ ReactiveReSwift also comes with an extremely simple implementation of a reactive
 
 # Getting Started Guide
 
-An actual getting started guide for ReactiveReSwift is coming soon, in the mean time [the documentation for ReSwift can be found here](http://reswift.github.io/ReactiveReSwift/master/getting-started-guide.html). To get an understanding of the core principles we recommend reading the brilliant [redux documentation](http://redux.js.org/).
+[The documentation for ReactiveReSwift can be found here](http://reswift.github.io/ReactiveReSwift/master/getting-started-guide.html). To get an understanding of the core principles we recommend reading the brilliant [redux documentation](http://redux.js.org/).
 
 # Installation
 
 ## Carthage
 
-You can install ReSwift via [Carthage](https://github.com/Carthage/Carthage) by adding the following line to your `Cartfile`:
+You can install ReactiveReSwift via [Carthage](https://github.com/Carthage/Carthage) by adding the following line to your `Cartfile`:
 
 ```
 github "ReSwift/ReactiveReSwift"
@@ -176,7 +172,7 @@ github "ReSwift/ReactiveReSwift"
 
 ## Swift Package Manager
 
-You can install ReSwift via [Swift Package Manager](https://swift.org/package-manager/) by adding the following line to your `Package.swift`:
+You can install ReactiveReSwift via [Swift Package Manager](https://swift.org/package-manager/) by adding the following line to your `Package.swift`:
 
 ```
 import PackageDescription

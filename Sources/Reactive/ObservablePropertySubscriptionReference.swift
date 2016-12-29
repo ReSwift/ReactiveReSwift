@@ -29,7 +29,7 @@ extension ObservablePropertySubscriptionReference: Equatable, Hashable {
     public var hashValue: Int {
         return key.hash
     }
-    
+
     /// Compare two `ObservablePropertySubscriptionReference`s.
     public static func == <T>(lhs: ObservablePropertySubscriptionReference<T>, rhs: ObservablePropertySubscriptionReference<T>) -> Bool {
         return lhs.key == rhs.key

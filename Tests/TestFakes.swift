@@ -9,6 +9,8 @@
 import Foundation
 import ReactiveReSwift
 
+let dispatchQueue = DispatchQueue(label: "TestQueue")
+
 struct NoOpAction: Action {}
 
 struct CounterState: StateType {

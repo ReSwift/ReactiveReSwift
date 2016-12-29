@@ -47,11 +47,14 @@ class ObservableStoreDispatchTests: XCTestCase {
     func testLiftingWorksAsExpected() {
         let property = ObservableProperty(SetValueAction(10))
         store = Store(reducer: reducer,
-                                stateType: TestAppState.self,
-                                observable: ObservableProperty(TestAppState()))
+                      stateType: TestAppState.self,
+                      observable: ObservableProperty(TestAppState()),
+                      dispatchQueue: dispatchQueue)
         store.dispatch(property)
         property.value = SetValueAction(20)
-        XCTAssertEqual(store.observable.value.testValue, 20)
+        dispatchQueue.sync {
+            XCTAssertEqual(store.observable.value.testValue, 20)
+        }
     }
 }
 

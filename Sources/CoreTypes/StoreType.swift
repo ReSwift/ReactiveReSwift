@@ -19,12 +19,9 @@ public protocol StoreType {
     associatedtype ObservableProperty: ObservablePropertyType
     associatedtype State: StateType
 
-    /// Initializes the store with a reducer and an intial state.
-    init(reducer: Reducer<State>, stateType: State.Type, observable: ObservableProperty)
-
     /// Initializes the store with a reducer, an initial state and a list of middleware.
     /// Middleware is applied in the order in which it is passed into this constructor.
-    init(reducer: Reducer<State>, stateType: State.Type, observable: ObservableProperty, middleware: Middleware<State>)
+    init(reducer: Reducer<State>, stateType: State.Type, observable: ObservableProperty, middleware: Middleware<State>, dispatchQueue: DispatchQueue)
 
     /// The observable of values stored in the store.
     var observable: ObservableProperty! { get }
@@ -47,7 +44,7 @@ public protocol StoreType {
      - returns: By default returns the dispatched action, but middlewares can change the
      return type, e.g. to return promises
      */
-    func dispatch(_ action: Action)
+    func dispatch(_ actions: Action...)
 
     /**
      Dispatches any actions that flow down the stream.

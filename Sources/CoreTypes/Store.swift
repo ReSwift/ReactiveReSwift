@@ -15,6 +15,8 @@ import Foundation
  contained within an observable.
  */
 
+import Foundation
+
 public class Store<ObservableProperty: ObservablePropertyType>: StoreType where ObservableProperty.ValueType: StateType {
 
     public typealias StoreMiddleware = Middleware<ObservableProperty.ValueType>
@@ -26,39 +28,38 @@ public class Store<ObservableProperty: ObservablePropertyType>: StoreType where 
 
     public var observable: ObservableProperty!
 
-    public var dispatchQueue = DispatchQueue.main
+    private let dispatchQueue: DispatchQueue
 
-    private var isDispatching = false
+    private let dispatchingLock = NSLock()
 
     private var disposeBag = SubscriptionReferenceBag()
 
-    public required convenience init(reducer: StoreReducer, stateType: ObservableProperty.ValueType.Type, observable: ObservableProperty) {
-        self.init(reducer: reducer, stateType: stateType, observable: observable, middleware: Middleware { $2 })
-    }
-
-    public required init(reducer: StoreReducer, stateType: ObservableProperty.ValueType.Type, observable: ObservableProperty, middleware: StoreMiddleware) {
+    public required init(reducer: StoreReducer,
+                         stateType: ObservableProperty.ValueType.Type,
+                         observable: ObservableProperty,
+                         middleware: StoreMiddleware = Middleware(),
+                         dispatchQueue: DispatchQueue = DispatchQueue.main) {
         self.reducer = reducer
         self.observable = observable
         self.dispatchMiddleware = middleware
+        self.dispatchQueue = dispatchQueue
     }
 
     private func defaultDispatch(action: Action) {
         dispatchQueue.async {
-            guard self.isDispatching == false else {
+            guard self.dispatchingLock.try() else {
                 raiseFatalError("ReSwift:IllegalDispatchFromReducer - Reducers may not dispatch actions.")
             }
-
-            self.isDispatching = true
-            self.observable.value = self.reducer.run(action: action, state: self.observable.value)
-            self.isDispatching = false
+            let value = self.reducer.transform(action, self.observable.value)
+            self.dispatchingLock.unlock()
+            self.observable.value = value
         }
     }
 
-    @discardableResult
-    public func dispatch(_ action: Action) {
-        if let mappedAction = dispatchMiddleware.run(state: { self.observable.value }, dispatch: { self.dispatch($0) }, argument: action) {
-            defaultDispatch(action: mappedAction)
-        }
+    public func dispatch(_ actions: Action...) {
+        actions.flatMap { action in
+            dispatchMiddleware.transform({ self.observable.value }, self.dispatch, action)
+        }.forEach(defaultDispatch)
     }
 
     public func dispatch<S: StreamType>(_ stream: S) where S.ValueType: Action {
