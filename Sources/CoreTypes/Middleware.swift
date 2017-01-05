@@ -87,10 +87,10 @@ public struct Middleware<State: StateType> {
     }
 
     /// Drop the Action if `predicate(action) != true`.
-    public func filter(_ predicate: @escaping (GetState, Action) -> Bool) -> Middleware<State> {
+    public func filter(_ isIncluded: @escaping (GetState, Action) -> Bool) -> Middleware<State> {
         return Middleware<State> { getState, dispatch, action in
             self.transform(getState, dispatch, action).filter {
-                predicate(getState, $0)
+                isIncluded(getState, $0)
             }
         }
     }
