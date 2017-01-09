@@ -209,7 +209,7 @@ There's still a lot of work to do here! We would love to see you involved! You c
 
 If you have any questions, you can find the core team on twitter:
 
-- [@chartortorella](https://twitter.com/chartortorella) ![Follow](https://img.shields.io/twitter/follow/chartortorella.svg?style=social&label=Follow)
-- [@karlbowden](https://twitter.com/karlbowden) ![Follow](https://img.shields.io/twitter/follow/karlbowden.svg?style=social&label=Follow)
+- [@chartortorella](https://twitter.com/chartortorella)
+- [@karlbowden](https://twitter.com/karlbowden)
 
 We also have a [public gitter chat!](https://gitter.im/ReactiveReSwift/Lobby)
