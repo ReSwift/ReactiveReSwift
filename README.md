@@ -1,6 +1,14 @@
 # ReactiveReSwift
 
-[![Build Status](https://img.shields.io/travis/ReSwift/ReactiveReSwift/master.svg?style=flat-square)](https://travis-ci.org/ReSwift/ReactiveReSwift) [![Code coverage status](https://img.shields.io/codecov/c/github/ReSwift/ReactiveReSwift.svg?style=flat-square)](http://codecov.io/github/ReSwift/ReactiveReSwift) [![Platform support](https://img.shields.io/badge/platform-ios%20%7C%20osx%20%7C%20tvos%20%7C%20watchos-lightgrey.svg?style=flat-square)](https://github.com/ReSwift/ReactiveReSwift/blob/master/LICENSE.md) [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/ReSwift/ReactiveReSwift/blob/master/LICENSE.md) [![Join the chat at https://gitter.im/ReactiveReSwift/Lobby](https://badges.gitter.im/ReactiveReSwift/Lobby.svg)](https://gitter.im/ReactiveReSwift/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://img.shields.io/travis/ReSwift/ReactiveReSwift/master.svg?style=flat-square)](https://travis-ci.org/ReSwift/ReactiveReSwift)
+
+[![Code coverage status](https://img.shields.io/codecov/c/github/ReSwift/ReactiveReSwift.svg?style=flat-square)](http://codecov.io/github/ReSwift/ReactiveReSwift)
+[![Platform support](https://img.shields.io/badge/platform-ios%20%7C%20osx%20%7C%20tvos%20%7C%20watchos-lightgrey.svg?style=flat-square)](https://github.com/ReSwift/ReactiveReSwift/blob/master/LICENSE.md)
+![Xcode 8.1](https://img.shields.io/badge/Xcode-8.1-orange.svg)
+![Swift 3.0.1](https://img.shields.io/badge/Swift-3.0.1-orange.svg)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-blue.svg)](#installation)
+[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/ReSwift/ReactiveReSwift/blob/master/LICENSE.md)
+[![Join the chat at https://gitter.im/ReactiveReSwift/Lobby](https://badges.gitter.im/ReactiveReSwift/Lobby.svg)](https://gitter.im/ReactiveReSwift/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 **Supported Swift Version:**: Swift 3.0.1
 
