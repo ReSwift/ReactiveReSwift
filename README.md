@@ -6,7 +6,7 @@
 ![Xcode 8.1](https://img.shields.io/badge/Xcode-8.1-orange.svg)
 ![Swift 3.0.1](https://img.shields.io/badge/Swift-3.0.1-orange.svg)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/ReSwift/ReactiveReSwift/blob/master/LICENSE.md)
-[![Join the chat at https://gitter.im/ReactiveReSwift/Lobby](https://badges.gitter.im/ReactiveReSwift/Lobby.svg)](https://gitter.im/ReactiveReSwift/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/ReactiveReSwift/Lobby](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/ReactiveReSwift/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ReactiveReSwift is a [Redux](https://github.com/reactjs/redux)-like implementation of the unidirectional data flow architecture in Swift, derived from [ReSwift](https://github.com/ReSwift/ReSwift). ReactiveReSwift helps you to separate three important concerns of your app's components:
 
