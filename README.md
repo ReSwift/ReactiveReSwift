@@ -1,11 +1,11 @@
 # ReactiveReSwift
 
-[![Build Status](https://img.shields.io/travis/ReSwift/ReactiveReSwift/master.svg?style=flat-square)](https://travis-ci.org/ReSwift/ReactiveReSwift)
-[![Code coverage status](https://img.shields.io/codecov/c/github/ReSwift/ReactiveReSwift.svg?style=flat-square)](http://codecov.io/github/ReSwift/ReactiveReSwift)
-[![Platform support](https://img.shields.io/badge/platform-ios%20%7C%20osx%20%7C%20tvos%20%7C%20watchos-lightgrey.svg?style=flat-square)](https://github.com/ReSwift/ReactiveReSwift/blob/master/LICENSE.md)
+[![Build Status](https://img.shields.io/travis/ReSwift/ReactiveReSwift/master.svg)](https://travis-ci.org/ReSwift/ReactiveReSwift)
+[![Code coverage status](https://img.shields.io/codecov/c/github/ReSwift/ReactiveReSwift.svg)](http://codecov.io/github/ReSwift/ReactiveReSwift)
+[![Platform support](https://img.shields.io/badge/platform-ios%20%7C%20osx%20%7C%20tvos%20%7C%20watchos-lightgrey.svg)](https://github.com/ReSwift/ReactiveReSwift/blob/master/LICENSE.md)
 ![Xcode 8.1](https://img.shields.io/badge/Xcode-8.1-orange.svg)
 ![Swift 3.0.1](https://img.shields.io/badge/Swift-3.0.1-orange.svg)
-[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/ReSwift/ReactiveReSwift/blob/master/LICENSE.md)
+[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ReSwift/ReactiveReSwift/blob/master/LICENSE.md)
 [![Join the chat at https://gitter.im/ReactiveReSwift/Lobby](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/ReactiveReSwift/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ReactiveReSwift is a [Redux](https://github.com/reactjs/redux)-like implementation of the unidirectional data flow architecture in Swift, derived from [ReSwift](https://github.com/ReSwift/ReSwift). ReactiveReSwift helps you to separate three important concerns of your app's components:
