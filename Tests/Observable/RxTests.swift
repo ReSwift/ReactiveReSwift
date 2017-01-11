@@ -25,6 +25,34 @@ class RxTests: XCTestCase {
         XCTAssertEqual(receivedValue, values.2)
     }
 
+    func testObservablePropertyMapsValues() {
+        let values = (10, 20, 30)
+        var receivedValue: Int?
+        let property = ObservableProperty(values.0)
+        property.map { $0 * 10 }.subscribe {
+            receivedValue = $0
+        }
+        XCTAssertEqual(receivedValue, values.0 * 10)
+        property.value = values.1
+        XCTAssertEqual(receivedValue, values.1 * 10)
+        property.value = values.2
+        XCTAssertEqual(receivedValue, values.2 * 10)
+    }
+
+    func testObservablePropertyFiltersValues() {
+        let values = [10, 10, 20, 20, 30, 30, 30]
+        var lastReceivedValue: Int?
+        var receivedValues: [Int] = []
+        let property = ObservableProperty(10)
+        property.distinct().subscribe {
+            XCTAssertNotEqual(lastReceivedValue, $0)
+            lastReceivedValue = $0
+            receivedValues += [$0]
+        }
+        values.forEach { property.value = $0 }
+        XCTAssertEqual(receivedValues, [10, 20, 30])
+    }
+
     func testObservablePropertyDisposesOfReferences() {
         let property = ObservableProperty(())
         let reference = property.subscribe({})
