@@ -135,7 +135,7 @@ Here are some examples of what your code would look like if you were to leverage
 - [Documentation for ReactiveKit](https://github.com/ReSwift/ReactiveReSwift/tree/master/Docs/Reactive/ReactiveKit.md)
 - [Documentation for PromiseKit](https://github.com/ReSwift/ReactiveReSwift/tree/master/Docs/Reactive/PromiseKit.md)
 - [Documentation for RxSwift](https://github.com/ReSwift/ReactiveReSwift/tree/master/Docs/Reactive/RxSwift.md)
-- [Documentation for PromiseKit](https://github.com/ReSwift/ReactiveReSwift/tree/master/Docs/Reactive/CwlSignal.md)
+- [Documentation for CwlSignal](https://github.com/ReSwift/ReactiveReSwift/tree/master/Docs/Reactive/CwlSignal.md)
 
 # Why ReactiveReSwift?
 
