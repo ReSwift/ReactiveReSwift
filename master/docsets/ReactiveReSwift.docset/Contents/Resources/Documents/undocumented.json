@@ -9,8 +9,22 @@
     },
     {
       "file": "/Users/travis/build/ReSwift/ReactiveReSwift/Sources/Reactive/ObservableProperty.swift",
-      "line": 26,
+      "line": 27,
       "symbol": "ObservableProperty.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/ReSwift/ReactiveReSwift/Sources/Reactive/ObservableProperty.swift",
+      "line": 41,
+      "symbol": "ObservableProperty.map(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/ReSwift/ReactiveReSwift/Sources/Reactive/ObservableProperty.swift",
+      "line": 58,
+      "symbol": "ObservableProperty.distinct()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
