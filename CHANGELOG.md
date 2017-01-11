@@ -3,6 +3,7 @@
 
 - Add the `dispatchQueue:` argument to the initialiser. The queue is a DispatchQueue which is used as the execution context for  - @Qata
 - Use default arguments in the main initialiser and remove the convenience initialiser (Swift autogenerates convenience initialisers when default arguments are used) - @Qata
+- Add `map(_:)` and `distinct()` to `ObservableProperty` - @Qata
 
 **Bug Fixes:**
 
