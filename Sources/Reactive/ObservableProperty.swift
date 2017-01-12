@@ -48,7 +48,7 @@ public class ObservableProperty<ValueType>: ObservablePropertyType {
 
     internal func unsubscribe(reference: ObservablePropertySubscriptionReferenceType) {
         subscriptions.removeValue(forKey: reference)
-        if subscriptions.count == 0 {
+        if subscriptions.isEmpty {
             retainReference = nil
         }
     }
