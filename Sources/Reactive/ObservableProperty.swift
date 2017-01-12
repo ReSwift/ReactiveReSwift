@@ -40,7 +40,7 @@ public class ObservableProperty<ValueType>: ObservablePropertyType {
 
     public func map<U>(_ transform: @escaping (ValueType) -> U) -> ObservableProperty<U> {
         let property = ObservableProperty<U>(transform(value))
-        disposeBag += subscribe { value in
+        property.disposeBag += subscribe { value in
             property.value = transform(value)
         }
         return property
@@ -57,7 +57,7 @@ public class ObservableProperty<ValueType>: ObservablePropertyType {
 extension ObservableProperty where ValueType: Equatable {
     public func distinct() -> ObservableProperty<ValueType> {
         let property = ObservableProperty(value)
-        disposeBag += subscribe { value in
+        property.disposeBag += subscribe { value in
             if value != property.value {
                 property.value = value
             }
