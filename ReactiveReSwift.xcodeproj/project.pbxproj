@@ -33,10 +33,6 @@
 		9E1F6E7F1DDD190B00912955 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6E7B1DDD190B00912955 /* Store.swift */; };
 		9E1F6E801DDD190B00912955 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6E7B1DDD190B00912955 /* Store.swift */; };
 		9E1F6E811DDD190B00912955 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6E7B1DDD190B00912955 /* Store.swift */; };
-		9E1F6E821DDD190B00912955 /* StoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6E7C1DDD190B00912955 /* StoreType.swift */; };
-		9E1F6E831DDD190B00912955 /* StoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6E7C1DDD190B00912955 /* StoreType.swift */; };
-		9E1F6E841DDD190B00912955 /* StoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6E7C1DDD190B00912955 /* StoreType.swift */; };
-		9E1F6E851DDD190B00912955 /* StoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6E7C1DDD190B00912955 /* StoreType.swift */; };
 		9E1F6F261DE7C01F00912955 /* MiddlewareFakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F251DE7C01F00912955 /* MiddlewareFakes.swift */; };
 		9E1F6F271DE7C01F00912955 /* MiddlewareFakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F251DE7C01F00912955 /* MiddlewareFakes.swift */; };
 		9E1F6F281DE7C01F00912955 /* MiddlewareFakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F251DE7C01F00912955 /* MiddlewareFakes.swift */; };
@@ -126,7 +122,6 @@
 		625E66B81C1FFC880027C288 /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		625E66B91C1FFC880027C288 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		9E1F6E7B1DDD190B00912955 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
-		9E1F6E7C1DDD190B00912955 /* StoreType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreType.swift; sourceTree = "<group>"; };
 		9E1F6F251DE7C01F00912955 /* MiddlewareFakes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiddlewareFakes.swift; sourceTree = "<group>"; };
 		9E1F6F3F1DE7D15200912955 /* StoreDispatchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreDispatchTests.swift; path = Observable/StoreDispatchTests.swift; sourceTree = "<group>"; };
 		9E1F6F401DE7D15200912955 /* StoreMiddlewareTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreMiddlewareTests.swift; path = Observable/StoreMiddlewareTests.swift; sourceTree = "<group>"; };
@@ -252,7 +247,6 @@
 				625E66B61C1FFC880027C288 /* Action.swift */,
 				9E1F6FB81DEE810400912955 /* Middleware.swift */,
 				9E1F6E7B1DDD190B00912955 /* Store.swift */,
-				9E1F6E7C1DDD190B00912955 /* StoreType.swift */,
 				625E66B81C1FFC880027C288 /* Reducer.swift */,
 				625E66B91C1FFC880027C288 /* State.swift */,
 			);
@@ -592,7 +586,6 @@
 				9E1F6FBC1DEE810400912955 /* Middleware.swift in Sources */,
 				25DBCF431C30C16000D63A58 /* State.swift in Sources */,
 				9E1F6F831DED0CB000912955 /* SubscriptionReferenceType.swift in Sources */,
-				9E1F6E851DDD190B00912955 /* StoreType.swift in Sources */,
 				9E1F6FA31DED120A00912955 /* StreamType.swift in Sources */,
 				9E1F6F8D1DED0D1100912955 /* ObservablePropertySubscriptionReference.swift in Sources */,
 				9E1F6F881DED0CEA00912955 /* ObservableProperty.swift in Sources */,
@@ -611,7 +604,6 @@
 				9E1F6FBB1DEE810400912955 /* Middleware.swift in Sources */,
 				25DBCF5A1C30C19500D63A58 /* State.swift in Sources */,
 				9E1F6F821DED0CB000912955 /* SubscriptionReferenceType.swift in Sources */,
-				9E1F6E841DDD190B00912955 /* StoreType.swift in Sources */,
 				9E1F6FA21DED120A00912955 /* StreamType.swift in Sources */,
 				9E1F6F8C1DED0D1100912955 /* ObservablePropertySubscriptionReference.swift in Sources */,
 				9E1F6F871DED0CEA00912955 /* ObservableProperty.swift in Sources */,
@@ -644,7 +636,6 @@
 				9E1F6FBA1DEE810400912955 /* Middleware.swift in Sources */,
 				25DBCF961C30C4F000D63A58 /* State.swift in Sources */,
 				9E1F6F811DED0CB000912955 /* SubscriptionReferenceType.swift in Sources */,
-				9E1F6E831DDD190B00912955 /* StoreType.swift in Sources */,
 				9E1F6FA11DED120A00912955 /* StreamType.swift in Sources */,
 				9E1F6F8B1DED0D1100912955 /* ObservablePropertySubscriptionReference.swift in Sources */,
 				9E1F6F861DED0CEA00912955 /* ObservableProperty.swift in Sources */,
@@ -674,7 +665,6 @@
 				625E66BC1C1FFC880027C288 /* Action.swift in Sources */,
 				9E1F6F8F1DED0D5400912955 /* SubscriptionReferenceBag.swift in Sources */,
 				9E1F6FB91DEE810400912955 /* Middleware.swift in Sources */,
-				9E1F6E821DDD190B00912955 /* StoreType.swift in Sources */,
 				9E1F6F801DED0CB000912955 /* SubscriptionReferenceType.swift in Sources */,
 				9E1F6FA01DED120A00912955 /* StreamType.swift in Sources */,
 				9E1F6F8A1DED0D1100912955 /* ObservablePropertySubscriptionReference.swift in Sources */,

@@ -19,7 +19,6 @@ class ObservableStoreTests: XCTestCase {
 
         autoreleasepool {
             _ = DeInitStore(reducer: testReducer,
-                                      stateType: TestAppState.self,
                                       observable: ObservableProperty(TestAppState()),
                                       deInitAction: { deInitCount += 1 })
         }
@@ -37,27 +36,23 @@ class DeInitStore<State: StateType>: Store<ObservableProperty<State>> {
         deInitAction?()
     }
 
-    convenience init(reducer: Reducer<ObservableProperty.ValueType>,
-                  stateType: ObservableProperty.ValueType.Type,
-                  observable: ObservableProperty,
-                  middleware: Middleware<ObservableProperty.ValueType> = Middleware(),
+    convenience init(reducer: Reducer<ObservableProperty<State>.ValueType>,
+                  observable: ObservableProperty<State>,
+                  middleware: Middleware<ObservableProperty<State>.ValueType> = Middleware(),
                   dispatchQueue: DispatchQueue = DispatchQueue.main,
                   deInitAction: @escaping () -> Void) {
         self.init(reducer: reducer,
-                   stateType: stateType,
                    observable: observable,
                    middleware: middleware,
                    dispatchQueue: dispatchQueue)
         self.deInitAction = deInitAction
     }
 
-    required init(reducer: Reducer<ObservableProperty.ValueType>,
-                  stateType: ObservableProperty.ValueType.Type,
-                  observable: ObservableProperty,
-                  middleware: Middleware<ObservableProperty.ValueType>,
+    required init(reducer: Reducer<ObservableProperty<State>.ValueType>,
+                  observable: ObservableProperty<State>,
+                  middleware: Middleware<ObservableProperty<State>.ValueType>,
                   dispatchQueue: DispatchQueue) {
         super.init(reducer: reducer,
-                   stateType: stateType,
                    observable: observable,
                    middleware: middleware,
                    dispatchQueue: dispatchQueue)

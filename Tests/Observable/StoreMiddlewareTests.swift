@@ -18,7 +18,6 @@ class StoreMiddlewareTests: XCTestCase {
      */
     func testDecorateDispatch() {
         let store = Store(reducer: testValueStringReducer,
-            stateType: TestStringAppState.self,
             observable: ObservableProperty(TestStringAppState()),
             middleware: Middleware(firstMiddleware, secondMiddleware),
             dispatchQueue: dispatchQueue)
@@ -39,7 +38,6 @@ class StoreMiddlewareTests: XCTestCase {
      */
     func testCanDispatch() {
         let store = Store(reducer: testValueStringReducer,
-            stateType: TestStringAppState.self,
             observable: ObservableProperty(TestStringAppState()),
             middleware: Middleware(firstMiddleware, secondMiddleware, dispatchingMiddleware).flatMap { $1 },
             dispatchQueue: dispatchQueue)
@@ -61,7 +59,6 @@ class StoreMiddlewareTests: XCTestCase {
     func testMiddlewareCanAccessState() {
         let property = ObservableProperty(TestStringAppState(testValue: "OK"))
         let store = Store(reducer: testValueStringReducer,
-                                    stateType: TestStringAppState.self,
                                     observable: property,
                                     middleware: stateAccessingMiddleware,
                                     dispatchQueue: dispatchQueue)
@@ -83,19 +80,16 @@ class StoreMiddlewareTests: XCTestCase {
         let property = ObservableProperty(TestStringAppState(testValue: "OK"))
 
         var store = Store(reducer: testValueStringReducer,
-                          stateType: TestStringAppState.self,
                           observable: property,
                           middleware: Middleware(filteringMiddleware1, filteringMiddleware2))
         store.dispatch(SetValueStringAction("Action That Won't Go Through"))
 
         store = Store(reducer: testValueStringReducer,
-                           stateType: TestStringAppState.self,
                            observable: property,
                            middleware: filteringMiddleware1)
         store.dispatch(SetValueStringAction("Action That Won't Go Through"))
 
         store = Store(reducer: testValueStringReducer,
-                      stateType: TestStringAppState.self,
                       observable: property,
                       middleware: filteringMiddleware2)
         store.dispatch(SetValueStringAction("Action That Won't Go Through"))
@@ -108,7 +102,6 @@ class StoreMiddlewareTests: XCTestCase {
         let multiplexingMiddleware = Middleware<CounterState>().increase { [$1, $1, $1] }
         let property = ObservableProperty(CounterState(count: 0))
         let store = Store(reducer: increaseByOneReducer,
-                          stateType: CounterState.self,
                           observable: property,
                           middleware: multiplexingMiddleware,
                           dispatchQueue: dispatchQueue)
