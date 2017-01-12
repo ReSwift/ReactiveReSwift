@@ -1,4 +1,9 @@
 #Upcoming Release
+**Breaking API Changes:**
+
+- Remove StoreType - @Qata
+- Remove stateType: label from Store.init (this was required for StoreType to work) - @Qata
+
 **API Changes:**
 
 - Add the `dispatchQueue:` argument to the initialiser. The queue is a DispatchQueue which is used as the execution context for  - @Qata
