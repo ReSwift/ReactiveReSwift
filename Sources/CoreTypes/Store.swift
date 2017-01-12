@@ -17,23 +17,18 @@ import Foundation
 
 import Foundation
 
-public class Store<ObservableProperty: ObservablePropertyType>: StoreType where ObservableProperty.ValueType: StateType {
+public class Store<ObservableProperty: ObservablePropertyType> where ObservableProperty.ValueType: StateType {
 
     public typealias StoreMiddleware = Middleware<ObservableProperty.ValueType>
     public typealias StoreReducer = Reducer<ObservableProperty.ValueType>
 
     public var dispatchMiddleware: Middleware<ObservableProperty.ValueType>!
-
     private var reducer: StoreReducer
-
     public var observable: ObservableProperty!
-
     private let dispatchQueue: DispatchQueue
-
     private var disposeBag = SubscriptionReferenceBag()
 
     public required init(reducer: StoreReducer,
-                         stateType: ObservableProperty.ValueType.Type,
                          observable: ObservableProperty,
                          middleware: StoreMiddleware = Middleware(),
                          dispatchQueue: DispatchQueue = DispatchQueue.main) {

@@ -30,7 +30,6 @@ class ObservableStoreDispatchTests: XCTestCase {
     func testLiftingWorksAsExpected() {
         let property = ObservableProperty(SetValueAction(10))
         store = Store(reducer: reducer,
-                      stateType: TestAppState.self,
                       observable: ObservableProperty(TestAppState()),
                       dispatchQueue: dispatchQueue)
         store.dispatch(property)
