@@ -46,6 +46,16 @@ public class ObservableProperty<ValueType>: ObservablePropertyType {
         return property
     }
 
+    public func distinct(_ equal: @escaping (ValueType, ValueType) -> Bool) -> ObservableProperty<ValueType> {
+        let property = ObservableProperty(value)
+        property.disposeBag += subscribe { value in
+            if !equal(value, property.value) {
+                property.value = value
+            }
+        }
+        return property
+    }
+
     internal func unsubscribe(reference: ObservablePropertySubscriptionReferenceType) {
         subscriptions.removeValue(forKey: reference)
         if subscriptions.isEmpty {
@@ -56,12 +66,6 @@ public class ObservableProperty<ValueType>: ObservablePropertyType {
 
 extension ObservableProperty where ValueType: Equatable {
     public func distinct() -> ObservableProperty<ValueType> {
-        let property = ObservableProperty(value)
-        property.disposeBag += subscribe { value in
-            if value != property.value {
-                property.value = value
-            }
-        }
-        return property
+        return distinct(==)
     }
 }
