@@ -5,6 +5,7 @@
 
 - Remove StoreType - @Qata
 - Remove stateType: label from Store.init (this was required for StoreType to work) - @Qata
+- Change DispatchQueue handling location from Store to ObservableProperty - @Qata
 
 **API Changes:**
 
