@@ -45,9 +45,9 @@
 		9E1F6F4E1DE7D15200912955 /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F411DE7D15200912955 /* StoreTests.swift */; };
 		9E1F6F4F1DE7D15200912955 /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F411DE7D15200912955 /* StoreTests.swift */; };
 		9E1F6F501DE7D15200912955 /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F411DE7D15200912955 /* StoreTests.swift */; };
-		9E1F6F571DE7D15200912955 /* RxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F441DE7D15200912955 /* RxTests.swift */; };
-		9E1F6F581DE7D15200912955 /* RxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F441DE7D15200912955 /* RxTests.swift */; };
-		9E1F6F591DE7D15200912955 /* RxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F441DE7D15200912955 /* RxTests.swift */; };
+		9E1F6F571DE7D15200912955 /* ReactiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F441DE7D15200912955 /* ReactiveTests.swift */; };
+		9E1F6F581DE7D15200912955 /* ReactiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F441DE7D15200912955 /* ReactiveTests.swift */; };
+		9E1F6F591DE7D15200912955 /* ReactiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6F441DE7D15200912955 /* ReactiveTests.swift */; };
 		9E1F6F6B1DECFFCA00912955 /* ReactiveReSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 625E66861C1FF97E0027C288 /* ReactiveReSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9E1F6F6C1DECFFCC00912955 /* ReactiveReSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 625E66861C1FF97E0027C288 /* ReactiveReSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9E1F6F6D1DECFFCF00912955 /* ReactiveReSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 625E66861C1FF97E0027C288 /* ReactiveReSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -126,7 +126,7 @@
 		9E1F6F3F1DE7D15200912955 /* StoreDispatchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreDispatchTests.swift; path = Observable/StoreDispatchTests.swift; sourceTree = "<group>"; };
 		9E1F6F401DE7D15200912955 /* StoreMiddlewareTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreMiddlewareTests.swift; path = Observable/StoreMiddlewareTests.swift; sourceTree = "<group>"; };
 		9E1F6F411DE7D15200912955 /* StoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreTests.swift; path = Observable/StoreTests.swift; sourceTree = "<group>"; };
-		9E1F6F441DE7D15200912955 /* RxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RxTests.swift; path = Observable/RxTests.swift; sourceTree = "<group>"; };
+		9E1F6F441DE7D15200912955 /* ReactiveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReactiveTests.swift; path = Observable/ReactiveTests.swift; sourceTree = "<group>"; };
 		9E1F6F7F1DED0CB000912955 /* SubscriptionReferenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionReferenceType.swift; sourceTree = "<group>"; };
 		9E1F6F841DED0CEA00912955 /* ObservableProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableProperty.swift; sourceTree = "<group>"; };
 		9E1F6F891DED0D1100912955 /* ObservablePropertySubscriptionReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservablePropertySubscriptionReference.swift; sourceTree = "<group>"; };
@@ -232,7 +232,7 @@
 				625E669E1C1FFA3C0027C288 /* Info.plist */,
 				621C06851C277759008029AE /* ReducerTests.swift */,
 				9E1F6F251DE7C01F00912955 /* MiddlewareFakes.swift */,
-				9E1F6F441DE7D15200912955 /* RxTests.swift */,
+				9E1F6F441DE7D15200912955 /* ReactiveTests.swift */,
 				9E1F6F3F1DE7D15200912955 /* StoreDispatchTests.swift */,
 				9E1F6F401DE7D15200912955 /* StoreMiddlewareTests.swift */,
 				9E1F6F411DE7D15200912955 /* StoreTests.swift */,
@@ -619,7 +619,7 @@
 				9E1F6F4A1DE7D15200912955 /* StoreDispatchTests.swift in Sources */,
 				9E1F6F501DE7D15200912955 /* StoreTests.swift in Sources */,
 				25DBCF731C30C34000D63A58 /* ReducerTests.swift in Sources */,
-				9E1F6F591DE7D15200912955 /* RxTests.swift in Sources */,
+				9E1F6F591DE7D15200912955 /* ReactiveTests.swift in Sources */,
 				25DBCF751C30C34000D63A58 /* TestFakes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -651,7 +651,7 @@
 				9E1F6F491DE7D15200912955 /* StoreDispatchTests.swift in Sources */,
 				9E1F6F4F1DE7D15200912955 /* StoreTests.swift in Sources */,
 				25DBCF9E1C30C50000D63A58 /* ReducerTests.swift in Sources */,
-				9E1F6F581DE7D15200912955 /* RxTests.swift in Sources */,
+				9E1F6F581DE7D15200912955 /* ReactiveTests.swift in Sources */,
 				25DBCFA01C30C50000D63A58 /* TestFakes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -683,7 +683,7 @@
 				9E1F6F261DE7C01F00912955 /* MiddlewareFakes.swift in Sources */,
 				9E1F6F481DE7D15200912955 /* StoreDispatchTests.swift in Sources */,
 				9E1F6F4E1DE7D15200912955 /* StoreTests.swift in Sources */,
-				9E1F6F571DE7D15200912955 /* RxTests.swift in Sources */,
+				9E1F6F571DE7D15200912955 /* ReactiveTests.swift in Sources */,
 				621C06861C277759008029AE /* ReducerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

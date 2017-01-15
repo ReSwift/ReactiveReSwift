@@ -9,7 +9,7 @@
 @testable import ReactiveReSwift
 import XCTest
 
-class RxTests: XCTestCase {
+class ReactiveTests: XCTestCase {
 
     func testObservablePropertySendsNewValues() {
         let values = (10, 20, 30)
@@ -62,7 +62,7 @@ class RxTests: XCTestCase {
     }
 
     func testSubscriptionBagDisposesOfReferences() {
-        let property = ObservableProperty(())
+        let property = ObservableProperty(()).deliveredOn(DispatchQueue.global())
         let bag = SubscriptionReferenceBag(property.subscribe({}))
         bag += property.subscribe({})
         XCTAssertEqual(property.subscriptions.count, 2)
@@ -76,5 +76,4 @@ class RxTests: XCTestCase {
         reference?.dispose()
         reference?.dispose()
     }
-
 }

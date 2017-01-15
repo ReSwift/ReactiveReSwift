@@ -18,9 +18,13 @@ public class ObservableProperty<ValueType>: ObservablePropertyType {
     private var subscriptionToken: Int = 0
     private var retainReference: ObservableProperty<ValueType>?
     fileprivate var disposeBag = SubscriptionReferenceBag()
+    private var queue: DispatchQueue?
     public var value: ValueType {
         didSet {
-            subscriptions.forEach { $0.value(value) }
+            let closure = {
+                self.subscriptions.forEach { $0.value(self.value) }
+            }
+            queue?.async(execute: closure) ?? closure()
         }
     }
 
@@ -53,6 +57,12 @@ public class ObservableProperty<ValueType>: ObservablePropertyType {
                 property.value = value
             }
         }
+        return property
+    }
+
+    public func deliveredOn(_ queue: DispatchQueue) -> ObservableProperty<ValueType> {
+        let property = map({ $0 })
+        property.queue = queue
         return property
     }
 

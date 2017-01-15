@@ -25,24 +25,19 @@ open class Store<ObservableProperty: ObservablePropertyType> where ObservablePro
     public var dispatchMiddleware: Middleware<ObservableProperty.ValueType>!
     private var reducer: StoreReducer
     public var observable: ObservableProperty!
-    private let dispatchQueue: DispatchQueue
     private var disposeBag = SubscriptionReferenceBag()
 
     public required init(reducer: StoreReducer,
                          observable: ObservableProperty,
-                         middleware: StoreMiddleware = Middleware(),
-                         dispatchQueue: DispatchQueue = DispatchQueue.main) {
+                         middleware: StoreMiddleware = Middleware()) {
         self.reducer = reducer
         self.observable = observable
         self.dispatchMiddleware = middleware
-        self.dispatchQueue = dispatchQueue
     }
 
     private func defaultDispatch(action: Action) {
-        dispatchQueue.sync {
-            let value = self.reducer.transform(action, self.observable.value)
-            self.observable.value = value
-        }
+        let value = self.reducer.transform(action, self.observable.value)
+        self.observable.value = value
     }
 
     public func dispatch(_ actions: Action...) {
