@@ -7,8 +7,8 @@ Pod::Spec.new do |s|
   s.license           = { :type => "MIT", :file => "LICENSE.md" }
   s.documentation_url = "https://reswift.github.io/ReactiveReSwift"
   s.author            = {
-    "Benjamin Encz" => "me@benjamin-encz.de",
-    "Charlotte Tortorella" => "charlotte@monadic.consulting"
+    "Charlotte Tortorella" => "charlotte@monadic.consulting",
+    "Karl Bowden" => "karl@bearded.sexy"
   }
   s.source            = {
     :git => "https://github.com/ReSwift/ReactiveReSwift",
