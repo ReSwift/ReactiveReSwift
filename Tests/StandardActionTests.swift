@@ -5,6 +5,7 @@
 //  Created by Benjamin Encz on 12/29/15.
 //  Copyright © 2015 Benjamin Encz. All rights reserved.
 //
+
 import XCTest
 import ReactiveReSwift
 
@@ -137,5 +138,52 @@ class StandardActionInitSerializationTests: XCTestCase {
         let deserializedAction = StandardAction(dictionary: [:])
 
         XCTAssertNil(deserializedAction)
+    }
+}
+
+class StandardActionConvertibleInit: XCTestCase {
+
+    /**
+     it initializer returns nil when invalid dictionary is passed in
+     */
+    func testInitWithStandardAction() {
+        let standardAction = StandardAction(type: "Test", payload: ["value": 10 as AnyObject])
+        let action = SetValueAction(standardAction)
+
+        XCTAssertEqual(action.value, 10)
+    }
+
+    func testInitWithStringStandardAction() {
+        let standardAction = StandardAction(type: "Test", payload: ["value": "10" as AnyObject])
+        let action = SetValueStringAction(standardAction)
+
+        XCTAssertEqual(action.value, "10")
+    }
+
+}
+
+class StandardActionConvertibleTests: XCTestCase {
+
+    /**
+     it can be converted to a standard action
+     */
+    func testConvertToStandardAction() {
+        let action = SetValueAction(5)
+
+        let standardAction = action.toStandardAction()
+
+        XCTAssertEqual(standardAction.type, "SetValueAction")
+        XCTAssertEqual(standardAction.isTypedAction, true)
+        XCTAssertEqual(standardAction.payload?["value"] as? Int, 5)
+    }
+
+    func testConvertToStringStandardAction() {
+        let action = SetValueStringAction("5")
+
+        let standardAction = action.toStandardAction()
+
+        XCTAssertEqual(standardAction.type, "SetValueStringAction")
+        XCTAssertEqual(standardAction.isTypedAction, true)
+        XCTAssertEqual(standardAction.payload?["value"] as? String, "5")
     }
 }
