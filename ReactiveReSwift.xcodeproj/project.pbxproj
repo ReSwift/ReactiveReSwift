@@ -79,6 +79,13 @@
 		9E1F6FBA1DEE810400912955 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6FB81DEE810400912955 /* Middleware.swift */; };
 		9E1F6FBB1DEE810400912955 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6FB81DEE810400912955 /* Middleware.swift */; };
 		9E1F6FBC1DEE810400912955 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F6FB81DEE810400912955 /* Middleware.swift */; };
+		FC03AA1B1E26BF330034FBFA /* StandardActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC03AA1A1E26BF330034FBFA /* StandardActionTests.swift */; };
+		FC03AA1C1E26BF330034FBFA /* StandardActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC03AA1A1E26BF330034FBFA /* StandardActionTests.swift */; };
+		FC03AA1D1E26BF330034FBFA /* StandardActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC03AA1A1E26BF330034FBFA /* StandardActionTests.swift */; };
+		FC15F3FB1E21C72100CF4886 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC15F3FA1E21C72100CF4886 /* Coding.swift */; };
+		FC15F3FC1E21C72100CF4886 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC15F3FA1E21C72100CF4886 /* Coding.swift */; };
+		FC15F3FD1E21C72100CF4886 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC15F3FA1E21C72100CF4886 /* Coding.swift */; };
+		FC15F3FE1E21C72100CF4886 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC15F3FA1E21C72100CF4886 /* Coding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +141,8 @@
 		9E1F6F9A1DED120A00912955 /* ObservablePropertyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservablePropertyType.swift; sourceTree = "<group>"; };
 		9E1F6F9B1DED120A00912955 /* StreamType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamType.swift; sourceTree = "<group>"; };
 		9E1F6FB81DEE810400912955 /* Middleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
+		FC03AA1A1E26BF330034FBFA /* StandardActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardActionTests.swift; sourceTree = "<group>"; };
+		FC15F3FA1E21C72100CF4886 /* Coding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +229,7 @@
 			children = (
 				625E66861C1FF97E0027C288 /* ReactiveReSwift.h */,
 				625E66881C1FF97E0027C288 /* Info.plist */,
+				FC15F3F91E21C6C500CF4886 /* Utils */,
 				625E66B51C1FFC880027C288 /* CoreTypes */,
 				9E1F6F7E1DED0C4D00912955 /* Reactive */,
 			);
@@ -237,6 +247,7 @@
 				9E1F6F401DE7D15200912955 /* StoreMiddlewareTests.swift */,
 				9E1F6F411DE7D15200912955 /* StoreTests.swift */,
 				259737FA1C2C618A00869B8F /* TestFakes.swift */,
+				FC03AA1A1E26BF330034FBFA /* StandardActionTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -264,6 +275,14 @@
 				9E1F6F7F1DED0CB000912955 /* SubscriptionReferenceType.swift */,
 			);
 			path = Reactive;
+			sourceTree = "<group>";
+		};
+		FC15F3F91E21C6C500CF4886 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FC15F3FA1E21C72100CF4886 /* Coding.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -589,6 +608,7 @@
 				9E1F6FA31DED120A00912955 /* StreamType.swift in Sources */,
 				9E1F6F8D1DED0D1100912955 /* ObservablePropertySubscriptionReference.swift in Sources */,
 				9E1F6F881DED0CEA00912955 /* ObservableProperty.swift in Sources */,
+				FC15F3FE1E21C72100CF4886 /* Coding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,6 +627,7 @@
 				9E1F6FA21DED120A00912955 /* StreamType.swift in Sources */,
 				9E1F6F8C1DED0D1100912955 /* ObservablePropertySubscriptionReference.swift in Sources */,
 				9E1F6F871DED0CEA00912955 /* ObservableProperty.swift in Sources */,
+				FC15F3FD1E21C72100CF4886 /* Coding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,6 +641,7 @@
 				9E1F6F501DE7D15200912955 /* StoreTests.swift in Sources */,
 				25DBCF731C30C34000D63A58 /* ReducerTests.swift in Sources */,
 				9E1F6F591DE7D15200912955 /* ReactiveTests.swift in Sources */,
+				FC03AA1D1E26BF330034FBFA /* StandardActionTests.swift in Sources */,
 				25DBCF751C30C34000D63A58 /* TestFakes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -639,6 +661,7 @@
 				9E1F6FA11DED120A00912955 /* StreamType.swift in Sources */,
 				9E1F6F8B1DED0D1100912955 /* ObservablePropertySubscriptionReference.swift in Sources */,
 				9E1F6F861DED0CEA00912955 /* ObservableProperty.swift in Sources */,
+				FC15F3FC1E21C72100CF4886 /* Coding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,6 +675,7 @@
 				9E1F6F4F1DE7D15200912955 /* StoreTests.swift in Sources */,
 				25DBCF9E1C30C50000D63A58 /* ReducerTests.swift in Sources */,
 				9E1F6F581DE7D15200912955 /* ReactiveTests.swift in Sources */,
+				FC03AA1C1E26BF330034FBFA /* StandardActionTests.swift in Sources */,
 				25DBCFA01C30C50000D63A58 /* TestFakes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -671,6 +695,7 @@
 				9E1F6F851DED0CEA00912955 /* ObservableProperty.swift in Sources */,
 				625E66BE1C1FFC880027C288 /* Reducer.swift in Sources */,
 				625E66BF1C1FFC880027C288 /* State.swift in Sources */,
+				FC15F3FB1E21C72100CF4886 /* Coding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,6 +709,7 @@
 				9E1F6F481DE7D15200912955 /* StoreDispatchTests.swift in Sources */,
 				9E1F6F4E1DE7D15200912955 /* StoreTests.swift in Sources */,
 				9E1F6F571DE7D15200912955 /* ReactiveTests.swift in Sources */,
+				FC03AA1B1E26BF330034FBFA /* StandardActionTests.swift in Sources */,
 				621C06861C277759008029AE /* ReducerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
