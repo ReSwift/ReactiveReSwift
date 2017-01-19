@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang='en'>
   <head>
-    <title>Reducer Struct Reference</title>
+    <title>Coding Protocol Reference</title>
     <link rel='stylesheet' type='text/css' href='../css/jazzy.css' />
     <link rel='stylesheet' type='text/css' href='../css/highlight.css' />
     <meta charset='utf-8'>
@@ -10,9 +10,9 @@
   </head>
   <body>
 
-    <a name='//apple_ref/swift/Struct/Reducer' class='dashAnchor'></a>
+    <a name='//apple_ref/swift/Protocol/Coding' class='dashAnchor'></a>
 
-    <a title='Reducer Struct Reference'></a>
+    <a title='Coding Protocol Reference'></a>
 
     <header class='header'>
       <p class='header-col header-col--primary'>
@@ -40,7 +40,7 @@
     <p class='breadcrumbs'>
       <a class='breadcrumb' href='../index.html'>ReactiveReSwift Reference</a>
       <img class='carat' src='../img/carat.png' />
-      Reducer Struct Reference
+      Coding Protocol Reference
     </p>
 
     <div class='content-wrapper'>
@@ -155,15 +155,8 @@
 
         <section class='section'>
           <div class='section-content'>
-            <h1>Reducer</h1>
-              <div class='declaration'>
-                <div class='language'>
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Reducer</span><span class="o">&lt;</span><span class="kt">State</span><span class="p">:</span> <span class="kt"><a href="../Core.html#/s:P15ReactiveReSwift9StateType">StateType</a></span><span class="o">&gt;</span></code></pre>
-
-                </div>
-              </div>
-            <p>Reducer is a structure that allows you to modify the current state
-by reducing actions.</p>
+            <h1>Coding</h1>
+            <p>Undocumented</p>
 
           </div>
         </section>
@@ -175,9 +168,9 @@ by reducing actions.</p>
                 <li class="item">
                   <div class="item-heading">
                     <code>
-                    <a name="/s:FV15ReactiveReSwift7ReducercFFTPS_6Action_x_xGS0_x_"></a>
-                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FV15ReactiveReSwift7ReducercFFTPS_6Action_x_xGS0_x_">init(_:)</a>
+                    <a name="/s:FP15ReactiveReSwift6CodingcFT10dictionaryGVs10DictionarySSPs9AnyObject___GSqx_"></a>
+                    <a name="//apple_ref/swift/Method/init(dictionary:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP15ReactiveReSwift6CodingcFT10dictionaryGVs10DictionarySSPs9AnyObject___GSqx_">init(dictionary:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -185,40 +178,12 @@ by reducing actions.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Initialises the <code>Reducer</code> with a transformative function.</p>
+                        <p>Undocumented</p>
 
-                      </div>
-                      <div class="declaration">
-                        <h5>Declaration</h5>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">transform</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Core.html#/s:P15ReactiveReSwift6Action">Action</a></span><span class="p">,</span> <span class="kt">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">State</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h5>Parameters</h5>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>transform</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The function that will be able to modify passed state.</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                       <div class="slightly-smaller">
                         
-                          <a href="https://github.com/ReSwift/ReactiveReSwift/tree/master/Sources/CoreTypes/Reducer.swift#L23-L25" class="button">Show on GitHub</a>
+                          <a href="https://github.com/ReSwift/ReactiveReSwift/tree/master/Sources/Utils/Coding.swift#L" class="button">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -226,9 +191,9 @@ by reducing actions.</p>
                 <li class="item">
                   <div class="item-heading">
                     <code>
-                    <a name="/s:FV15ReactiveReSwift7ReducercFtGS0_x_GSaGS0_x___GS0_x_"></a>
-                    <a name="//apple_ref/swift/Method/init(_:_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FV15ReactiveReSwift7ReducercFtGS0_x_GSaGS0_x___GS0_x_">init(_:_:)</a>
+                    <a name="/s:vP15ReactiveReSwift6Coding24dictionaryRepresentationGVs10DictionarySSPs9AnyObject__"></a>
+                    <a name="//apple_ref/swift/Property/dictionaryRepresentation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP15ReactiveReSwift6Coding24dictionaryRepresentationGVs10DictionarySSPs9AnyObject__">dictionaryRepresentation</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -236,83 +201,12 @@ by reducing actions.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Initialises the <code>Reducer</code> by concatenating the transformative functions from
-the <code>Reducer</code>s that were passed in.</p>
+                        <p>Undocumented</p>
 
-                      </div>
-                      <div class="declaration">
-                        <h5>Declaration</h5>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">first</span><span class="p">:</span> <span class="kt">Reducer</span><span class="o">&lt;</span><span class="kt">State</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">_</span> <span class="nv">rest</span><span class="p">:</span> <span class="kt">Reducer</span><span class="o">&lt;</span><span class="kt">State</span><span class="o">&gt;...</span><span class="p">)</span></code></pre>
-
-                        </div>
                       </div>
                       <div class="slightly-smaller">
                         
-                          <a href="https://github.com/ReSwift/ReactiveReSwift/tree/master/Sources/CoreTypes/Reducer.swift#L31-L35" class="button">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div class="item-heading">
-                    <code>
-                    <a name="/s:FV15ReactiveReSwift7Reducer6concatFGS0_x_GS0_x_"></a>
-                    <a name="//apple_ref/swift/Method/concat(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FV15ReactiveReSwift7Reducer6concatFGS0_x_GS0_x_">concat(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Concatenates the transform function of the passed <code>Reducer</code> onto the callee&rsquo;s transform.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h5>Declaration</h5>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">concat</span><span class="p">(</span><span class="n">_</span> <span class="nv">other</span><span class="p">:</span> <span class="kt">Reducer</span><span class="o">&lt;</span><span class="kt">State</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Reducer</span><span class="o">&lt;</span><span class="kt">State</span><span class="o">&gt;</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        
-                          <a href="https://github.com/ReSwift/ReactiveReSwift/tree/master/Sources/CoreTypes/Reducer.swift#L38-L40" class="button">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div class="item-heading">
-                    <code>
-                    <a name="/s:FV15ReactiveReSwift7Reducer3mapFFTPS_6Action_x_xGS0_x_"></a>
-                    <a name="//apple_ref/swift/Method/map(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FV15ReactiveReSwift7Reducer3mapFFTPS_6Action_x_xGS0_x_">map(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Concatenates the transform function onto the callee&rsquo;s transform.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h5>Declaration</h5>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">map</span><span class="p">(</span><span class="n">_</span> <span class="nv">transform</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Core.html#/s:P15ReactiveReSwift6Action">Action</a></span><span class="p">,</span> <span class="kt">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Reducer</span><span class="o">&lt;</span><span class="kt">State</span><span class="o">&gt;</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        
-                          <a href="https://github.com/ReSwift/ReactiveReSwift/tree/master/Sources/CoreTypes/Reducer.swift#L43-L47" class="button">Show on GitHub</a>
+                          <a href="https://github.com/ReSwift/ReactiveReSwift/tree/master/Sources/Utils/Coding.swift#L" class="button">Show on GitHub</a>
                       </div>
                     </section>
                   </div>

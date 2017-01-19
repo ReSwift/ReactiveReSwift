@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang='en'>
   <head>
-    <title>Credits  Reference</title>
+    <title>Other Structs  Reference</title>
     <link rel='stylesheet' type='text/css' href='css/jazzy.css' />
     <link rel='stylesheet' type='text/css' href='css/highlight.css' />
     <meta charset='utf-8'>
@@ -11,7 +11,7 @@
   <body>
 
 
-    <a title='Credits  Reference'></a>
+    <a title='Other Structs  Reference'></a>
 
     <header class='header'>
       <p class='header-col header-col--primary'>
@@ -39,7 +39,7 @@
     <p class='breadcrumbs'>
       <a class='breadcrumb' href='index.html'>ReactiveReSwift Reference</a>
       <img class='carat' src='img/carat.png' />
-      Credits  Reference
+      Other Structs  Reference
     </p>
 
     <div class='content-wrapper'>
@@ -154,18 +154,105 @@
 
         <section class='section'>
           <div class='section-content'>
-            
-            <a href='#credits' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='credits'>Credits</h1>
-
-<ul>
-<li>Huge thanks to <a href="https://github.com/evancz">Evan Czaplicki</a> for creating <a href="https://github.com/elm-lang">Elm</a>, the first language to implement unidirectional data flow as a paradigm.</li>
-<li>Thanks a lot to <a href="https://github.com/gaearon">Dan Abramov</a> for building <a href="https://github.com/reactjs/redux">Redux</a>, many ideas in here were provided by his library.</li>
-<li>Thanks a lot to <a href="https://github.com/Ben-G">Benjamin Encz</a> for building <a href="https://github.com/ReSwift/ReSwift">ReSwift</a>, the base from which this project was derived.</li>
-</ul>
+            <h1>Other Structs</h1>
+            <p>The following structs are available globally.</p>
 
           </div>
         </section>
 
+        <section class='section'>
+          <div class='section-content'>
+            <div class="task-group">
+              <ul class='item-container'>
+                <li class="item">
+                  <div class="item-heading">
+                    <code>
+                    <a name="/s:V15ReactiveReSwift14StandardAction"></a>
+                    <a name="//apple_ref/swift/Struct/StandardAction" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V15ReactiveReSwift14StandardAction">StandardAction</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is ReSwift&rsquo;s built in action type, it is the only built in type that conforms to the
+<code><a href="Core.html#/s:P15ReactiveReSwift6Action">Action</a></code> protocol. <code>StandardAction</code> can be serialized and can therefore be used with developer
+tools that restore state between app launches.</p>
+
+<p>The downside of <code>StandardAction</code> is that it carries its payload as an untyped dictionary which does
+not play well with Swift&rsquo;s type system.</p>
+
+<p>It is recommended that you define your own types that conform to <code><a href="Core.html#/s:P15ReactiveReSwift6Action">Action</a></code> - if you want to be able
+to serialize your custom action types, you can implement <code><a href="Protocols/StandardActionConvertible.html">StandardActionConvertible</a></code> which will
+make it possible to generate a <code>StandardAction</code> from your typed action - the best of both worlds!</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h5>Declaration</h5>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">StandardAction</span><span class="p">:</span> <span class="kt"><a href="Core.html#/s:P15ReactiveReSwift6Action">Action</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        
+                          <a href="Structs/StandardAction.html" class="button">See more</a>
+                        
+                          <a href="https://github.com/ReSwift/ReactiveReSwift/tree/master/Sources/CoreTypes/Action.swift#L22-L43" class="button">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Coding%20Extension"></a>
+                <a name="//apple_ref/swift/Section/Coding Extension" class="dashAnchor"></a>
+                <a href="#/Coding%20Extension">
+                  <h3 class="section-name">Coding Extension</h3>
+                </a>
+              </div>
+              <ul class='item-container'>
+                <li class="item">
+                  <div class="item-heading">
+                    <code>
+                    <a name="/s:V15ReactiveReSwift11ReSwiftInit"></a>
+                    <a name="//apple_ref/swift/Struct/ReSwiftInit" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V15ReactiveReSwift11ReSwiftInit">ReSwiftInit</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initial Action that is dispatched as soon as the store is created.
+Reducers respond to this action by configuring their intial state.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h5>Declaration</h5>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ReSwiftInit</span><span class="p">:</span> <span class="kt"><a href="Core.html#/s:P15ReactiveReSwift6Action">Action</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        
+                          <a href="https://github.com/ReSwift/ReactiveReSwift/tree/master/Sources/CoreTypes/Action.swift#L120" class="button">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
       </article>
     </div>
