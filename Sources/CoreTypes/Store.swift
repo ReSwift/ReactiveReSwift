@@ -22,28 +22,23 @@ open class Store<ObservableProperty: ObservablePropertyType> where ObservablePro
     public typealias StoreMiddleware = Middleware<ObservableProperty.ValueType>
     public typealias StoreReducer = Reducer<ObservableProperty.ValueType>
 
-    public var dispatchMiddleware: Middleware<ObservableProperty.ValueType>!
-    private var reducer: StoreReducer
-    public var observable: ObservableProperty!
-    private var disposeBag = SubscriptionReferenceBag()
+    public private(set) var observable: ObservableProperty
+    private let middleware: StoreMiddleware
+    private let reducer: StoreReducer
+    private let disposeBag = SubscriptionReferenceBag()
 
-    public required init(reducer: StoreReducer,
-                         observable: ObservableProperty,
-                         middleware: StoreMiddleware = Middleware()) {
+    public required init(reducer: StoreReducer, observable: ObservableProperty, middleware: StoreMiddleware = Middleware()) {
         self.reducer = reducer
         self.observable = observable
-        self.dispatchMiddleware = middleware
-    }
-
-    private func defaultDispatch(action: Action) {
-        let value = self.reducer.transform(action, self.observable.value)
-        self.observable.value = value
+        self.middleware = middleware
     }
 
     public func dispatch(_ actions: Action...) {
         actions.flatMap { action in
-            dispatchMiddleware.transform({ self.observable.value }, self.dispatch, action)
-        }.forEach(defaultDispatch)
+            middleware.transform({ self.observable.value }, self.dispatch, action)
+        }.forEach { action in
+            observable.value = reducer.transform(action, observable.value)
+        }
     }
 
     public func dispatch<S: StreamType>(_ stream: S) where S.ValueType: Action {
