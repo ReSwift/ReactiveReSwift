@@ -8,15 +8,6 @@
 
 import Foundation
 
-/**
- This class is the default implementation of the `Store` protocol. You will use this
- store in most of your applications. You shouldn't need to implement your own store.
- You initialize the store with a reducer and an initial application state,
- contained within an observable.
- */
-
-import Foundation
-
 open class Store<ObservableProperty: ObservablePropertyType> where ObservableProperty.ValueType: StateType {
 
     public typealias StoreMiddleware = Middleware<ObservableProperty.ValueType>
