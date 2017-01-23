@@ -1,5 +1,11 @@
 #Upcoming Release
 
+#3.0.3
+**Breaking API Changes:**
+
+- Change all of Store's instance variables to be immutable except `observable`, whose setter is now private - @Qata
+- Change all of Store's instance variables to not be implicitly unwrapped optionals because that was gross - @Qata
+
 #3.0.2
 **Breaking API Changes:**
 
