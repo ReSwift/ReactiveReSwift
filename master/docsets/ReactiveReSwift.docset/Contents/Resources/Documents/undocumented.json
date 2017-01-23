@@ -24,13 +24,6 @@
     {
       "file": "/Users/travis/build/ReSwift/ReactiveReSwift/Sources/CoreTypes/Store.swift",
       "line": 25,
-      "symbol": "Store.dispatchMiddleware",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/ReSwift/ReactiveReSwift/Sources/CoreTypes/Store.swift",
-      "line": 27,
       "symbol": "Store.observable",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
@@ -44,14 +37,14 @@
     },
     {
       "file": "/Users/travis/build/ReSwift/ReactiveReSwift/Sources/CoreTypes/Store.swift",
-      "line": 43,
+      "line": 36,
       "symbol": "Store.dispatch(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/ReSwift/ReactiveReSwift/Sources/CoreTypes/Store.swift",
-      "line": 49,
+      "line": 44,
       "symbol": "Store.dispatch(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
