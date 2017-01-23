@@ -26,7 +26,7 @@ public struct StandardAction: Action {
     public let payload: [String: AnyObject]?
     /// Indicates whether this action will be deserialized as a typed action or as a standard action
     public let isTypedAction: Bool
-    
+
     /**
      Initializes this `StandardAction` with a type, a payload and information about whether this is
      a typed action or not.
@@ -50,7 +50,7 @@ private let isTypedActionKey = "isTypedAction"
 let reSwiftNull = "ReSwift_Null"
 
 extension StandardAction: Coding {
-    
+
     public init?(dictionary: [String: AnyObject]) {
         guard let type = dictionary[typeKey] as? String,
             let isTypedAction = dictionary[isTypedActionKey] as? Bool else { return nil }
@@ -58,10 +58,10 @@ extension StandardAction: Coding {
         self.payload = dictionary[payloadKey] as? [String: AnyObject]
         self.isTypedAction = isTypedAction
     }
-    
+
     public var dictionaryRepresentation: [String: AnyObject] {
         let payload: AnyObject = self.payload as AnyObject? ?? reSwiftNull as AnyObject
-        
+
         return [typeKey: type as NSString,
                 payloadKey: payload,
                 isTypedActionKey: isTypedAction as NSNumber]
@@ -89,7 +89,7 @@ public protocol StandardActionConvertible: Action {
      development, you can feel free to use the unsafe `!` operator.
      */
     init (_ standardAction: StandardAction)
-    
+
     /**
      Use the information from your custom action to generate a `StandardAction`. The `type` of the
      StandardAction should typically match the type name of your custom action type. You also need
@@ -114,7 +114,3 @@ public protocol StandardActionConvertible: Action {
 /// All actions that want to be able to be dispatched to a store need to conform to this protocol
 /// Currently it is just a marker protocol with no requirements.
 public protocol Action { }
-
-/// Initial Action that is dispatched as soon as the store is created.
-/// Reducers respond to this action by configuring their intial state.
-public struct ReSwiftInit: Action {}
