@@ -35,6 +35,6 @@ public struct DisposableWrapper: SubscriptionReferenceType {
 }
 ```
 
-You'll want to use a `Variable` as the observable when you create your app's `Store`.
+You'll want to use a `Variable` as the observable to wrap your app's state struct when you create the `Store`.
 
 You're all set up!
