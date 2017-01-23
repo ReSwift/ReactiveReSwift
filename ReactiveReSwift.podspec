@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "ReactiveReSwift"
-  s.version           = "3.0.2"
+  s.version           = "3.0.3"
   s.summary           = "Unidirectional Data Flow in Swift - Inspired by ReSwift and Elm"
   s.homepage          = "https://github.com/ReSwift/ReactiveReSwift"
   s.license           = 'MIT'
