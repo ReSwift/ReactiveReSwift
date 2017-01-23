@@ -25,10 +25,10 @@ open class Store<ObservableProperty: ObservablePropertyType> where ObservablePro
     }
 
     public func dispatch(_ actions: Action...) {
-        actions.flatMap { action in
-            middleware.transform({ self.observable.value }, self.dispatch, action)
-        }.forEach { action in
-            observable.value = reducer.transform(action, observable.value)
+        actions.forEach { action in
+            middleware.transform({ self.observable.value }, self.dispatch, action).forEach { action in
+                observable.value = reducer.transform(action, observable.value)
+            }
         }
     }
 
