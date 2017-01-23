@@ -13,7 +13,7 @@ open class Store<ObservableProperty: ObservablePropertyType> where ObservablePro
     public typealias StoreMiddleware = Middleware<ObservableProperty.ValueType>
     public typealias StoreReducer = Reducer<ObservableProperty.ValueType>
 
-    public private(set) var observable: ObservableProperty
+    open private(set) var observable: ObservableProperty
     private let middleware: StoreMiddleware
     private let reducer: StoreReducer
     private let disposeBag = SubscriptionReferenceBag()
