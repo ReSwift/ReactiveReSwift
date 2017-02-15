@@ -1,5 +1,10 @@
 #Upcoming Release
 
+#3.0.4
+**API Changes:**
+
+- Change Reducer.transform to be publicly accessible - @Qata
+
 #3.0.3
 **Breaking API Changes:**
 
