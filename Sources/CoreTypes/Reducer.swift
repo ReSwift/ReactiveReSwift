@@ -13,7 +13,7 @@ import Foundation
  by reducing actions.
  */
 public struct Reducer<State: StateType> {
-    internal let transform: (Action, State) -> State
+    public let transform: (Action, State) -> State
 
     /**
      Initialises the `Reducer` with a transformative function.
