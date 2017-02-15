@@ -59,7 +59,7 @@ public struct Middleware<State: StateType> {
         }
     }
 
-    /// Concatenates the transform function onto the callee's transform.
+    /// Transform the action into another action.
     public func map(_ transform: @escaping (GetState, Action) -> Action) -> Middleware<State> {
         return Middleware<State> { getState, dispatch, action in
             self.transform(getState, dispatch, action).map {
@@ -68,8 +68,14 @@ public struct Middleware<State: StateType> {
         }
     }
 
-    /// Concatenates the transform function onto the callee's transform.
+    @available(*, renamed: "flatMap(_:)")
+    /// One to many pattern allowing one action to be turned into multiple.
     public func increase(_ transform: @escaping (GetState, Action) -> [Action]) -> Middleware<State> {
+        return flatMap(transform)
+    }
+
+    /// One to many pattern allowing one action to be turned into multiple.
+    public func flatMap(_ transform: @escaping (GetState, Action) -> [Action]) -> Middleware<State> {
         return Middleware<State> { getState, dispatch, action in
             self.transform(getState, dispatch, action).flatMap {
                 transform(getState, $0)
@@ -77,7 +83,7 @@ public struct Middleware<State: StateType> {
         }
     }
 
-    /// Concatenates the transform function onto the callee's transform.
+    /// Filters while mapping actions to new actions.
     public func flatMap(_ transform: @escaping (GetState, Action) -> Action?) -> Middleware<State> {
         return Middleware<State> { getState, dispatch, action in
             self.transform(getState, dispatch, action).flatMap {
@@ -86,7 +92,7 @@ public struct Middleware<State: StateType> {
         }
     }
 
-    /// Drop the Action if `predicate(action) != true`.
+    /// Drop the action iff `isIncluded(action) != true`.
     public func filter(_ isIncluded: @escaping (GetState, Action) -> Bool) -> Middleware<State> {
         return Middleware<State> { getState, dispatch, action in
             self.transform(getState, dispatch, action).filter {

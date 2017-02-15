@@ -1,4 +1,7 @@
 #Upcoming Release
+**API Changes:**
+
+- Rename `Middleware.increase(_:)` to `Middleware.flatMap(_:)` - @Qata
 
 #3.0.4
 **API Changes:**
