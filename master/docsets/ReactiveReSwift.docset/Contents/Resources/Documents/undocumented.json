@@ -15,6 +15,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/travis/build/ReSwift/ReactiveReSwift/Sources/CoreTypes/Reducer.swift",
+      "line": 16,
+      "symbol": "Reducer.transform",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/travis/build/ReSwift/ReactiveReSwift/Sources/CoreTypes/Store.swift",
       "line": 11,
       "symbol": "Store",
@@ -82,13 +89,6 @@
       "line": 78,
       "symbol": "ObservableProperty.distinct()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/ReSwift/ReactiveReSwift/Sources/Reactive/ObservablePropertySubscriptionReference.swift",
-      "line": 34,
-      "symbol": "ObservablePropertySubscriptionReference.==(_:_:).T",
-      "symbol_kind": "source.lang.swift.decl.generic_type_param",
       "warning": "undocumented"
     },
     {
