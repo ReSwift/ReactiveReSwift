@@ -4,6 +4,7 @@
 **API Changes:**
 
 - Change Reducer.transform to be publicly accessible - @Qata
+- Change Store.observable to be open with a private setter - @Qata
 
 #3.0.3
 **Breaking API Changes:**
