@@ -15,6 +15,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/travis/build/ReSwift/ReactiveReSwift/Sources/CoreTypes/Middleware.swift",
+      "line": 73,
+      "symbol": "Middleware.increase(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/travis/build/ReSwift/ReactiveReSwift/Sources/CoreTypes/Reducer.swift",
       "line": 16,
       "symbol": "Reducer.transform",

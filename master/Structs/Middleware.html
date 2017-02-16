@@ -19,7 +19,7 @@
         <a class='header-link' href='../index.html'>
           ReactiveReSwift Docs
         </a>
-         (75% documented)
+         (74% documented)
       </p>
     
         <p class='header-col header-col--secondary'>
@@ -307,7 +307,7 @@ the middleware that was passed in.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Concatenates the transform function onto the callee&rsquo;s transform.</p>
+                        <p>Transform the action into another action.</p>
 
                       </div>
                       <div class="declaration">
@@ -338,20 +338,51 @@ the middleware that was passed in.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Concatenates the transform function onto the callee&rsquo;s transform.</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h5>Declaration</h5>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">increase</span><span class="p">(</span><span class="n">_</span> <span class="nv">transform</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">GetState</span><span class="p">,</span> <span class="kt"><a href="../Core.html#/s:P15ReactiveReSwift6Action">Action</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Core.html#/s:P15ReactiveReSwift6Action">Action</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Middleware</span><span class="o">&lt;</span><span class="kt">State</span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Middleware</span><span class="o">&lt;</span><span class="kt">State</span><span class="p">:</span> <span class="kt"><a href="../Core.html#/s:P15ReactiveReSwift9StateType">StateType</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
                         
-                          <a href="https://github.com/ReSwift/ReactiveReSwift/tree/master/Sources/CoreTypes/Middleware.swift#L72-L78" class="button">Show on GitHub</a>
+                          <a href="https://github.com/ReSwift/ReactiveReSwift/tree/master/Sources/CoreTypes/Middleware.swift#L73-L75" class="button">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div class="item-heading">
+                    <code>
+                    <a name="/s:FV15ReactiveReSwift10Middleware7flatMapFFTFT_xPS_6Action__GSaPS1___GS0_x_"></a>
+                    <a name="//apple_ref/swift/Method/flatMap(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV15ReactiveReSwift10Middleware7flatMapFFTFT_xPS_6Action__GSaPS1___GS0_x_">flatMap(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>One to many pattern allowing one action to be turned into multiple.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h5>Declaration</h5>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">flatMap</span><span class="p">(</span><span class="n">_</span> <span class="nv">transform</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">GetState</span><span class="p">,</span> <span class="kt"><a href="../Core.html#/s:P15ReactiveReSwift6Action">Action</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Core.html#/s:P15ReactiveReSwift6Action">Action</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Middleware</span><span class="o">&lt;</span><span class="kt">State</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        
+                          <a href="https://github.com/ReSwift/ReactiveReSwift/tree/master/Sources/CoreTypes/Middleware.swift#L78-L84" class="button">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -369,7 +400,7 @@ the middleware that was passed in.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Concatenates the transform function onto the callee&rsquo;s transform.</p>
+                        <p>Filters while mapping actions to new actions.</p>
 
                       </div>
                       <div class="declaration">
@@ -382,7 +413,7 @@ the middleware that was passed in.</p>
                       </div>
                       <div class="slightly-smaller">
                         
-                          <a href="https://github.com/ReSwift/ReactiveReSwift/tree/master/Sources/CoreTypes/Middleware.swift#L81-L87" class="button">Show on GitHub</a>
+                          <a href="https://github.com/ReSwift/ReactiveReSwift/tree/master/Sources/CoreTypes/Middleware.swift#L87-L93" class="button">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -400,7 +431,7 @@ the middleware that was passed in.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Drop the Action if <code>predicate(action) != true</code>.</p>
+                        <p>Drop the action iff <code>isIncluded(action) != true</code>.</p>
 
                       </div>
                       <div class="declaration">
@@ -413,7 +444,7 @@ the middleware that was passed in.</p>
                       </div>
                       <div class="slightly-smaller">
                         
-                          <a href="https://github.com/ReSwift/ReactiveReSwift/tree/master/Sources/CoreTypes/Middleware.swift#L90-L96" class="button">Show on GitHub</a>
+                          <a href="https://github.com/ReSwift/ReactiveReSwift/tree/master/Sources/CoreTypes/Middleware.swift#L96-L102" class="button">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
