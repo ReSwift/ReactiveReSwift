@@ -66,7 +66,7 @@ class StoreMiddlewareTests: XCTestCase {
      */
     func testMiddlewareSkipsReducersWhenPassedNil() {
         let filteringMiddleware1 = Middleware<TestStringAppState>().filter({ _, _ in false }).sideEffect { _, _, _ in XCTFail() }
-        let filteringMiddleware2 = Middleware<TestStringAppState>().filter({ _, _ in false }).flatMap { _, _ in XCTFail(); return nil }
+        let filteringMiddleware2 = Middleware<TestStringAppState>().filter({ _, _ in false }).flatMap { _, _ -> Action? in XCTFail(); return nil }
 
         let property = ObservableProperty(TestStringAppState(testValue: "OK"))
 
