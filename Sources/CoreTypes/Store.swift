@@ -26,7 +26,10 @@ open class Store<ObservableProperty: ObservablePropertyType> where ObservablePro
 
     public func dispatch(_ actions: Action...) {
         actions.forEach { action in
-            middleware.transform({ self.observable.value }, dispatch, action).forEach { action in
+            let dispatchFunction: (Action...) -> Void = { [weak self] (actions: Action...) in
+                actions.forEach { self?.dispatch($0) }
+            }
+            middleware.transform({ self.observable.value }, dispatchFunction, action).forEach { action in
                 observable.value = reducer.transform(action, observable.value)
             }
         }

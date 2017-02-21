@@ -14,7 +14,7 @@ public struct Middleware<State: StateType> {
     public typealias DispatchFunction = (Action...) -> Void
     public typealias GetState = () -> State
 
-    internal let transform: (GetState, DispatchFunction, Action) -> [Action]
+    internal let transform: (GetState, @escaping DispatchFunction, Action) -> [Action]
 
     /// Create a blank slate Middleware.
     public init() {
@@ -26,7 +26,7 @@ public struct Middleware<State: StateType> {
      
      - parameter transform: The function that will be able to modify passed actions.
      */
-    internal init(_ transform: @escaping (GetState, DispatchFunction, Action) -> [Action]) {
+    internal init(_ transform: @escaping (GetState, @escaping DispatchFunction, Action) -> [Action]) {
         self.transform = transform
     }
 
@@ -41,7 +41,7 @@ public struct Middleware<State: StateType> {
     }
 
     /// Safe encapsulation of side effects guaranteed not to affect the action being passed through the middleware.
-    public func sideEffect(_ effect: @escaping (GetState, DispatchFunction, Action) -> Void) -> Middleware<State> {
+    public func sideEffect(_ effect: @escaping (GetState, @escaping DispatchFunction, Action) -> Void) -> Middleware<State> {
         return Middleware<State> { getState, dispatch, action in
             self.transform(getState, dispatch, action).map {
                 effect(getState, dispatch, $0)

@@ -8,7 +8,7 @@
 
 import XCTest
 import Foundation
-import ReactiveReSwift
+@testable import ReactiveReSwift
 
 // swiftlint:disable function_body_length
 class StoreMiddlewareTests: XCTestCase {
@@ -97,5 +97,19 @@ class StoreMiddlewareTests: XCTestCase {
                           middleware: multiplexingMiddleware)
         store.dispatch(NoOpAction())
         XCTAssertEqual(store.observable.value.count, 3)
+    }
+
+    func testMiddlewareEscapingSideEffect() {
+        //All that's needed is to make sure this code compiles
+        let middleware = Middleware<CounterState>().sideEffect { (state, dispatchFunction, action) in
+            _ = state()
+            if action is SetValueStringAction {
+                DispatchQueue.global().sync {
+                    dispatchFunction(NoOpAction())
+                }
+            }
+        }
+        let assert: (Action...) -> Void = { (actions: Action...) in XCTAssertTrue(actions.first! is NoOpAction) }
+        _ = middleware.transform({ CounterState() }, assert, SetValueStringAction(""))
     }
 }

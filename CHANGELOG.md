@@ -2,6 +2,7 @@
 **API Changes:**
 
 - Rename `Middleware.increase(_:)` to `Middleware.flatMap(_:)` - @Qata
+- Make `Middleware.sideEffect(_:)` supply an escaping dispatch function - @Qata
 
 #3.0.4
 **API Changes:**
