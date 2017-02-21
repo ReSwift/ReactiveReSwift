@@ -58,7 +58,7 @@
     },
     {
       "file": "/Users/travis/build/ReSwift/ReactiveReSwift/Sources/CoreTypes/Store.swift",
-      "line": 35,
+      "line": 38,
       "symbol": "Store.dispatch(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
