@@ -76,8 +76,8 @@ class StoreMiddlewareTests: XCTestCase {
         store.dispatch(SetValueStringAction("Action That Won't Go Through"))
 
         store = Store(reducer: testValueStringReducer,
-                           observable: property,
-                           middleware: filteringMiddleware1)
+                      observable: property,
+                      middleware: filteringMiddleware1)
         store.dispatch(SetValueStringAction("Action That Won't Go Through"))
 
         store = Store(reducer: testValueStringReducer,
