@@ -100,16 +100,16 @@ class StoreMiddlewareTests: XCTestCase {
     }
 
     func testMiddlewareEscapingSideEffect() {
-        //All that's needed is to make sure this code compiles
         let middleware = Middleware<CounterState>().sideEffect { (state, dispatchFunction, action) in
-            _ = state()
             if action is SetValueStringAction {
                 DispatchQueue.global().sync {
                     dispatchFunction(NoOpAction())
                 }
             }
         }
-        let assert: (Action...) -> Void = { (actions: Action...) in XCTAssertTrue(actions.first! is NoOpAction) }
-        _ = middleware.transform({ CounterState() }, assert, SetValueStringAction(""))
+        let store = Store(reducer: increaseByOneReducer,
+                          observable: ObservableProperty(CounterState(count: 0)),
+                          middleware: middleware)
+        store.dispatch(SetValueStringAction(""))
     }
 }
