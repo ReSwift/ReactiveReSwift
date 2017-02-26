@@ -55,7 +55,6 @@ Here's an example:
 ```swift
 let mainStore = Store(
     reducer: appReducer,
-    stateType: AppState.self,
     observable: MutableProperty(AppState(counter: 0))
 )
 ```
