@@ -1,4 +1,8 @@
 #Upcoming Release
+**Breaking API Changes:**
+
+- Change Reducer to a generic function type - @Qata
+
 **API Changes:**
 
 - Rename `Middleware.increase(_:)` to `Middleware.flatMap(_:)` - @Qata

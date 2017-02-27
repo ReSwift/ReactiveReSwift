@@ -18,7 +18,7 @@ open class Store<ObservableProperty: ObservablePropertyType> where ObservablePro
     private let reducer: StoreReducer
     private let disposeBag = SubscriptionReferenceBag()
 
-    public required init(reducer: StoreReducer, observable: ObservableProperty, middleware: StoreMiddleware = Middleware()) {
+    public required init(reducer: @escaping StoreReducer, observable: ObservableProperty, middleware: StoreMiddleware = Middleware()) {
         self.reducer = reducer
         self.observable = observable
         self.middleware = middleware
@@ -30,7 +30,7 @@ open class Store<ObservableProperty: ObservablePropertyType> where ObservablePro
                 actions.forEach { self?.dispatch($0) }
             }
             middleware.transform({ self.observable.value }, dispatchFunction, action).forEach { action in
-                observable.value = reducer.transform(action, observable.value)
+                observable.value = reducer(action, observable.value)
             }
         }
     }

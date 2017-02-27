@@ -56,7 +56,7 @@ enum AppAction: Action {
 Your reducer needs to respond to these different actions, that can be done by switching over the value of action:
 
 ```swift
-let appReducer = Reducer<AppState> { action, state in
+let appReducer: Reducer<AppState> = { action, state in
     switch action as? AppAction {
 	case .Increase?:
         state.counter += 1
@@ -69,7 +69,7 @@ let appReducer = Reducer<AppState> { action, state in
 }
 ```
 
-A single `Reducer` should only deal with a single field of the state struct. You can chain together multiple reducers using `Reducer(firstReducer, secondReducer, ...)`.
+A single `Reducer` should only deal with a single field of the state struct. You can nest multiple reducers within your main reducer to provide separation of concerns.
 
 In order to have a predictable app state, it is important that the reducer is always free of side effects, it receives the current app state and an action and returns the new app state.
 
