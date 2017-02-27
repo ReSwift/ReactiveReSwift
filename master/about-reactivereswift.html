@@ -18,7 +18,7 @@
         <a class='header-link' href='index.html'>
           ReactiveReSwift Docs
         </a>
-         (74% documented)
+         (73% documented)
       </p>
     
         <p class='header-col header-col--secondary'>
@@ -94,9 +94,6 @@
               </li>
               <li class='nav-group-task'>
                 <a class='nav-group-task-link' href='Core.html#/s:P15ReactiveReSwift6Action'>Action</a>
-              </li>
-              <li class='nav-group-task'>
-                <a class='nav-group-task-link' href='Structs/Reducer.html'>Reducer</a>
               </li>
               <li class='nav-group-task'>
                 <a class='nav-group-task-link' href='Structs/Middleware.html'>Middleware</a>
@@ -175,7 +172,7 @@
 </code></pre>
 
 <p>Your reducer needs to respond to these different actions, that can be done by switching over the value of action:</p>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">appReducer</span> <span class="o">=</span> <span class="kt">Reducer</span><span class="o">&lt;</span><span class="kt">AppState</span><span class="o">&gt;</span> <span class="p">{</span> <span class="n">action</span><span class="p">,</span> <span class="n">state</span> <span class="k">in</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">appReducer</span><span class="p">:</span> <span class="kt">Reducer</span><span class="o">&lt;</span><span class="kt">AppState</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span> <span class="n">action</span><span class="p">,</span> <span class="n">state</span> <span class="k">in</span>
     <span class="k">switch</span> <span class="n">action</span> <span class="k">as?</span> <span class="kt">AppAction</span> <span class="p">{</span>
     <span class="k">case</span> <span class="o">.</span><span class="kt">Increase</span><span class="p">?:</span>
         <span class="n">state</span><span class="o">.</span><span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -188,7 +185,7 @@
 <span class="p">}</span>
 </code></pre>
 
-<p>A single <code>Reducer</code> should only deal with a single field of the state struct. You can chain together multiple reducers using <code>Reducer(firstReducer, secondReducer, ...)</code>.</p>
+<p>A single <code>Reducer</code> should only deal with a single field of the state struct. You can nest multiple reducers within your main reducer to provide separation of concerns.</p>
 
 <p>In order to have a predictable app state, it is important that the reducer is always free of side effects, it receives the current app state and an action and returns the new app state.</p>
 

@@ -22,13 +22,6 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/ReSwift/ReactiveReSwift/Sources/CoreTypes/Reducer.swift",
-      "line": 16,
-      "symbol": "Reducer.transform",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/travis/build/ReSwift/ReactiveReSwift/Sources/CoreTypes/Store.swift",
       "line": 11,
       "symbol": "Store",
