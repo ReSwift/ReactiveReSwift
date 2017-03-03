@@ -187,9 +187,11 @@
 <p>In order to have a predictable app state, it is important that the reducer is always free of side effects, it receives the current app state and an action and returns the new app state.</p>
 
 <p>To maintain our state and delegate the actions to the reducers, we need a store. Let&rsquo;s call it <code>mainStore</code> and define it as a global constant, for example in the app delegate file:</p>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">mainStore</span> <span class="o">=</span> <span class="kt">Store</span><span class="p">(</span>
+<pre class="highlight swift"><code><span class="n">fileprivate</span> <span class="k">let</span> <span class="nv">initialState</span> <span class="o">=</span> <span class="kt">AppState</span><span class="p">(</span><span class="nv">counter</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="nv">mainStore</span> <span class="o">=</span> <span class="kt">Store</span><span class="p">(</span>
   <span class="nv">reducer</span><span class="p">:</span> <span class="n">appReducer</span><span class="p">,</span>
-  <span class="nv">observable</span><span class="p">:</span> <span class="kt">ObservableProperty</span><span class="p">(</span><span class="kt">AppState</span><span class="p">(</span><span class="nv">counter</span><span class="p">:</span> <span class="mi">0</span><span class="p">))</span>
+  <span class="nv">observable</span><span class="p">:</span> <span class="kt">ObservableProperty</span><span class="p">(</span><span class="n">initialState</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="kd">@UIApplicationMain</span>
