@@ -39,7 +39,7 @@ ReactiveReSwift relies on a few principles:
 For a very simple app, one that maintains a counter that can be increased and decreased, you can define the app state as following:
 
 ```swift
-struct AppState: StateType {
+struct AppState {
   var counter: Int
 }
 ```
@@ -76,9 +76,8 @@ In order to have a predictable app state, it is important that the reducer is al
 To maintain our state and delegate the actions to the reducers, we need a store. Let's call it `mainStore` and define it as a global constant, for example in the app delegate file:
 
 ```swift
-let mainStore = ObservableStore(
+let mainStore = Store(
   reducer: appReducer,
-  stateType: AppState.self,
   observable: ObservableProperty(AppState(counter: 0))
 )
 
