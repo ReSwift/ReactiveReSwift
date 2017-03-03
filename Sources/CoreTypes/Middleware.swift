@@ -10,7 +10,7 @@
  Middleware is a structure that allows you to modify, filter out and dispatch more
  actions, before the action being handled reaches the store.
  */
-public struct Middleware<State: StateType> {
+public struct Middleware<State> {
     public typealias DispatchFunction = (Action...) -> Void
     public typealias GetState = () -> State
 

@@ -13,15 +13,15 @@ let dispatchQueue = DispatchQueue.global()
 
 struct NoOpAction: Action {}
 
-struct CounterState: StateType {
+struct CounterState {
     var count: Int = 0
 }
 
-struct TestAppState: StateType {
+struct TestAppState {
     var testValue: Int?
 }
 
-struct TestStringAppState: StateType {
+struct TestStringAppState {
     var testValue: String?
 }
 

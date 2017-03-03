@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class Store<ObservableProperty: ObservablePropertyType> where ObservableProperty.ValueType: StateType {
+open class Store<ObservableProperty: ObservablePropertyType> {
 
     public typealias StoreMiddleware = Middleware<ObservableProperty.ValueType>
     public typealias StoreReducer = Reducer<ObservableProperty.ValueType>

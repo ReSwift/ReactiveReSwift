@@ -29,7 +29,7 @@ class ObservableStoreTests: XCTestCase {
 }
 
 // Used for deinitialization test
-class DeInitStore<State: StateType>: Store<ObservableProperty<State>> {
+class DeInitStore<State>: Store<ObservableProperty<State>> {
     var deInitAction: (() -> Void)?
 
     deinit {
