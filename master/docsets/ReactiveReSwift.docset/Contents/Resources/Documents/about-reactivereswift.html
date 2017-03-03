@@ -156,7 +156,7 @@
 <p><img src="img/reactivereswift_concept.png" alt=""></p>
 
 <p>For a very simple app, one that maintains a counter that can be increased and decreased, you can define the app state as following:</p>
-<pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">AppState</span><span class="p">:</span> <span class="kt">StateType</span> <span class="p">{</span>
+<pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">AppState</span> <span class="p">{</span>
   <span class="k">var</span> <span class="nv">counter</span><span class="p">:</span> <span class="kt">Int</span>
 <span class="p">}</span>
 </code></pre>
@@ -187,9 +187,8 @@
 <p>In order to have a predictable app state, it is important that the reducer is always free of side effects, it receives the current app state and an action and returns the new app state.</p>
 
 <p>To maintain our state and delegate the actions to the reducers, we need a store. Let&rsquo;s call it <code>mainStore</code> and define it as a global constant, for example in the app delegate file:</p>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">mainStore</span> <span class="o">=</span> <span class="kt">ObservableStore</span><span class="p">(</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">mainStore</span> <span class="o">=</span> <span class="kt">Store</span><span class="p">(</span>
   <span class="nv">reducer</span><span class="p">:</span> <span class="n">appReducer</span><span class="p">,</span>
-  <span class="nv">stateType</span><span class="p">:</span> <span class="kt">AppState</span><span class="o">.</span><span class="k">self</span><span class="p">,</span>
   <span class="nv">observable</span><span class="p">:</span> <span class="kt">ObservableProperty</span><span class="p">(</span><span class="kt">AppState</span><span class="p">(</span><span class="nv">counter</span><span class="p">:</span> <span class="mi">0</span><span class="p">))</span>
 <span class="p">)</span>
 
