@@ -76,9 +76,11 @@ In order to have a predictable app state, it is important that the reducer is al
 To maintain our state and delegate the actions to the reducers, we need a store. Let's call it `mainStore` and define it as a global constant, for example in the app delegate file:
 
 ```swift
+fileprivate let initialState = AppState(counter: 0)
+
 let mainStore = Store(
   reducer: appReducer,
-  observable: ObservableProperty(AppState(counter: 0))
+  observable: ObservableProperty(initialState)
 )
 
 @UIApplicationMain
