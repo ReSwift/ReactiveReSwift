@@ -1,4 +1,11 @@
 #Upcoming Release
+
+#3.0.6
+**Breaking API Changes:**
+
+- Remove `StateType` - @Qata
+
+#3.0.5
 **Breaking API Changes:**
 
 - Change Reducer to a generic function type - @Qata
