@@ -40,7 +40,7 @@ For a very simple app, one that maintains a counter that can be increased and de
 
 ```swift
 struct AppState {
-  var counter: Int
+  let counter: Int
 }
 ```
 
@@ -48,7 +48,7 @@ You would also define two actions, one for increasing and one for decreasing the
 
 ```swift
 enum AppAction: Action {
-	case Increase
+    case Increase
     case Decrease
 }
 ```
@@ -58,14 +58,13 @@ Your reducer needs to respond to these different actions, that can be done by sw
 ```swift
 let appReducer: Reducer<AppState> = { action, state in
     switch action as? AppAction {
-	case .Increase?:
-        state.counter += 1
-	case .Decrease?:
-        state.counter -= 1
-	default:
-        break
-	}
-    return state
+    case .Increase?:
+        return AppState(counter: state.counter + 1)
+    case .Decrease?:
+        return AppState(counter: state.counter - 1)
+    default:
+        return state
+    }
 }
 ```
 
