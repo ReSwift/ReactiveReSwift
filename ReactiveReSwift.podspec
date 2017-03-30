@@ -1,14 +1,13 @@
 Pod::Spec.new do |s|
   s.name              = "ReactiveReSwift"
-  s.version           = "3.0.3"
+  s.version           = "3.0.6"
   s.summary           = "Unidirectional Data Flow in Swift - Inspired by ReSwift and Elm"
   s.homepage          = "https://github.com/ReSwift/ReactiveReSwift"
   s.license           = 'MIT'
   s.license           = { :type => "MIT", :file => "LICENSE.md" }
   s.documentation_url = "https://reswift.github.io/ReactiveReSwift"
   s.author            = {
-    "Charlotte Tortorella" => "charlotte@monadic.consulting",
-    "Karl Bowden" => "karl@bearded.sexy"
+    "Charlotte Tortorella" => "charlotte@monadic.consulting"
   }
   s.source            = {
     :git => "https://github.com/ReSwift/ReactiveReSwift",
@@ -22,5 +21,5 @@ Pod::Spec.new do |s|
 
   s.requires_arc = true
   s.source_files = 'Sources/**/*.swift'
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.1' }
 end
