@@ -48,8 +48,8 @@ You would also define two actions, one for increasing and one for decreasing the
 
 ```swift
 enum AppAction: Action {
-    case Increase
-    case Decrease
+    case increase
+    case decrease
 }
 ```
 
@@ -58,9 +58,9 @@ Your reducer needs to respond to these different actions, that can be done by sw
 ```swift
 let appReducer: Reducer<AppState> = { action, state in
     switch action as? AppAction {
-    case .Increase?:
+    case .increase?:
         return AppState(counter: state.counter + 1)
-    case .Decrease?:
+    case .decrease?:
         return AppState(counter: state.counter - 1)
     default:
         return state
