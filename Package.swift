@@ -1,9 +1,9 @@
 import PackageDescription
 
 let package = Package(
-    name: "ReSwiftRx",
+    name: "ReactiveReSwift",
     exclude: [
-      "ReSwiftRxTests",
+      "Tests",
       "Carthage",
       "Docs"
     ]
