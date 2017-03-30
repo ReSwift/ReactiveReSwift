@@ -163,17 +163,17 @@
 
 <p>You would also define two actions, one for increasing and one for decreasing the counter. For the simple actions in this example we can use an enum that conforms to action:</p>
 <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">AppAction</span><span class="p">:</span> <span class="kt">Action</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="kt">Increase</span>
-    <span class="k">case</span> <span class="kt">Decrease</span>
+    <span class="k">case</span> <span class="n">increase</span>
+    <span class="k">case</span> <span class="n">decrease</span>
 <span class="p">}</span>
 </code></pre>
 
 <p>Your reducer needs to respond to these different actions, that can be done by switching over the value of action:</p>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">appReducer</span><span class="p">:</span> <span class="kt">Reducer</span><span class="o">&lt;</span><span class="kt">AppState</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span> <span class="n">action</span><span class="p">,</span> <span class="n">state</span> <span class="k">in</span>
     <span class="k">switch</span> <span class="n">action</span> <span class="k">as?</span> <span class="kt">AppAction</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="o">.</span><span class="kt">Increase</span><span class="p">?:</span>
+    <span class="k">case</span> <span class="o">.</span><span class="n">increase</span><span class="p">?:</span>
         <span class="k">return</span> <span class="kt">AppState</span><span class="p">(</span><span class="nv">counter</span><span class="p">:</span> <span class="n">state</span><span class="o">.</span><span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="k">case</span> <span class="o">.</span><span class="kt">Decrease</span><span class="p">?:</span>
+    <span class="k">case</span> <span class="o">.</span><span class="n">decrease</span><span class="p">?:</span>
         <span class="k">return</span> <span class="kt">AppState</span><span class="p">(</span><span class="nv">counter</span><span class="p">:</span> <span class="n">state</span><span class="o">.</span><span class="n">counter</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
     <span class="k">default</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">state</span>
