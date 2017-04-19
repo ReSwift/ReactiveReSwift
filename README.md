@@ -154,7 +154,7 @@ A common design pattern with Redux and its derivates is to observe your store us
 
 Instead of pushing that onto the user, and to encourage people to use FRP, ReactiveReSwift provides protocols to conform to so that the underlying `Store` can directly use the observables from your preferred library without subclassing.
 
-ReactiveReSwift also comes with an extremely simple implementation of a functional reactive observable. This `ObservableProperty` type allows you to use ReactiveReSwift without any other FRP libraries and not lose any of the functionality provided by ReSwift. We do still highly encourage you to use a functional reactive library with ReactiveReSwift, though.
+ReactiveReSwift also comes with an extremely simple implementation of a functional reactive observable. This `ObservableProperty` type allows you to use ReactiveReSwift without any other FRP libraries and not lose any of the functionality provided by ReSwift. That said, we do still highly encourage you to use a functional reactive library with ReactiveReSwift.
 
 # Getting Started Guide
 
