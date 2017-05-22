@@ -105,13 +105,13 @@ class CounterViewController: UIViewController {
 
   @IBAction func increaseButtonTapped(sender: UIButton) {
     mainStore.dispatch(
-      AppState.CounterActionIncrease
+      AppAction.increase
     )
   }
 
   @IBAction func decreaseButtonTapped(sender: UIButton) {
     mainStore.dispatch(
-      AppState.CounterActionDecrease
+      AppAction.decrease
     )
   }
 
