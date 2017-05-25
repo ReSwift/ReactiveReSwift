@@ -185,6 +185,12 @@ let package = Package(
 )
 ```
 
+# Roadmap
+
+## Swift 4
+
+- Change serialisation to use `Codable` and `Decodable` protocols provided by Swift 4.
+
 # Example Projects
 
 - [Counter Example](https://github.com/Qata/ReactiveCounterExample): A very simple counter app implemented with ReactiveReSwift.
