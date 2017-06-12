@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
     "Charlotte Tortorella" => "charlotte@monadic.consulting"
   }
   s.source            = {
-    :git => "https://github.com/ReSwift/ReactiveReSwift",
+    :git => "https://github.com/ReSwift/ReactiveReSwift.git",
     :tag => s.version.to_s
   }
 
