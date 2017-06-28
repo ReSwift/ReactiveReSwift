@@ -145,9 +145,9 @@ In the example above we only select a single property from the overall applicati
 
 When subscribing within a ViewController you will typically update the view from within the `subscribe` block.
 
-#Beyond the Basics
+# Beyond the Basics
 
-##Asynchronous Operations
+## Asynchronous Operations
 
 Conceptually asynchronous operations can simply be treated as state updates that occur at a later point in time. Here's a simple example of how to tie an asynchronous network request to `ReactiveReSwift` state update:
 
