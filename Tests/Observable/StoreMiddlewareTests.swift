@@ -10,7 +10,6 @@ import XCTest
 import Foundation
 @testable import ReactiveReSwift
 
-// swiftlint:disable function_body_length
 class StoreMiddlewareTests: XCTestCase {
 
     /**
