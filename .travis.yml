@@ -17,7 +17,7 @@ env:
 
 matrix:
   include:
-    - env: SCHEME="macOS"  SDK="macosx10.12"          DESTINATION="arch=x86_64"
+    - env: SCHEME="macOS"  SDK="macosx10.13"          DESTINATION="arch=x86_64"
     - env: SCHEME="iOS"    SDK="iphonesimulator11.0"  DESTINATION="OS=11.0,name=iPhone 7 Plus" UPDATE_DOCS="true"
     - env: SCHEME="tvOS"   SDK="appletvsimulator11.0"  DESTINATION="OS=11.0,name=Apple TV 1080p"
 
