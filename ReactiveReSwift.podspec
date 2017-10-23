@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "ReactiveReSwift"
-  s.version           = "3.0.6"
+  s.version           = "4.0.0"
   s.summary           = "Unidirectional Data Flow in Swift - Inspired by ReSwift and Elm"
   s.homepage          = "https://github.com/ReSwift/ReactiveReSwift"
   s.license           = 'MIT'
@@ -21,5 +21,5 @@ Pod::Spec.new do |s|
 
   s.requires_arc = true
   s.source_files = 'Sources/**/*.swift'
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.1' }
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
 end
