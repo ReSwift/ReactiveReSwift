@@ -1,5 +1,10 @@
 #Upcoming Release
 
+#4.0.1
+**API Changes:**
+
+- `dispatch(_ stream:)` now returns a subscription reference.
+
 #3.0.6
 **Breaking API Changes:**
 
