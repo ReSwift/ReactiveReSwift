@@ -39,7 +39,7 @@ extension SignalProducer: StreamType {
     public typealias DisposableType = AnyDisposable
 
     @discardableResult
-    public func subscribe(_ function: @escaping (Value) -> Void) -> AnyDisposable? {
+    public func subscribe(_ function: @escaping (Value) -> Void) -> AnyDisposable {
         return AnyDisposable(self.on(value: function).start())
     }
 }

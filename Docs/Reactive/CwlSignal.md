@@ -12,14 +12,14 @@ extension Signal: StreamType {
     public typealias ValueType = T
     public typealias DisposableType = DisposableWrapper<T>
 
-    public func subscribe(_ function: @escaping (T) -> Void) -> DisposableWrapper<T>? {
+    public func subscribe(_ function: @escaping (T) -> Void) -> DisposableWrapper<T> {
         return DisposableWrapper(disposable: subscribeValues(handler: function))
     }
 }
 
 public struct DisposableWrapper<T>: SubscriptionReferenceType {
     let disposable: SignalEndpoint<T>
-    
+
     public func dispose() {
         disposable.cancel()
     }

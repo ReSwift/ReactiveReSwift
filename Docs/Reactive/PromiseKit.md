@@ -9,9 +9,9 @@ extension Promise: StreamType {
     public typealias ValueType = T
     public typealias DisposableType = DisposableFake
 
-    public func subscribe(_ function: @escaping (T) -> Void) -> DisposableFake? {
+    public func subscribe(_ function: @escaping (T) -> Void) -> DisposableFake {
         _ = self.then(execute: function)
-        return nil
+        return .init()
     }
 }
 

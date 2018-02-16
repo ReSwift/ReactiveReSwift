@@ -36,7 +36,7 @@ open class Store<ObservableProperty: ObservablePropertyType> {
     }
 
     @discardableResult
-    public func dispatch<S: StreamType>(_ stream: S) -> SubscriptionReferenceType? where S.ValueType: Action {
+    public func dispatch<S: StreamType>(_ stream: S) -> SubscriptionReferenceType where S.ValueType: Action {
         let disposable = stream.subscribe { [unowned self] action in
             self.dispatch(action)
         }

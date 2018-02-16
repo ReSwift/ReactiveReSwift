@@ -33,7 +33,7 @@ public class ObservableProperty<ValueType>: ObservablePropertyType {
     }
 
     @discardableResult
-    public func subscribe(_ function: @escaping (ValueType) -> Void) -> DisposableType? {
+    public func subscribe(_ function: @escaping (ValueType) -> Void) -> DisposableType {
         defer { subscriptionToken += 1 }
         retainReference = self
         function(value)

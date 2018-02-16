@@ -57,7 +57,7 @@ class ReactiveTests: XCTestCase {
         let property = ObservableProperty(())
         let reference = property.subscribe({})
         XCTAssertEqual(property.subscriptions.count, 1)
-        reference?.dispose()
+        reference.dispose()
         XCTAssertEqual(property.subscriptions.count, 0)
     }
 
@@ -73,7 +73,7 @@ class ReactiveTests: XCTestCase {
     func testThatDisposingOfAReferenceTwiceIsOkay() {
         let property = ObservableProperty(())
         let reference = property.subscribe({})
-        reference?.dispose()
-        reference?.dispose()
+        reference.dispose()
+        reference.dispose()
     }
 }
