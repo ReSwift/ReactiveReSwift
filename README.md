@@ -1,7 +1,6 @@
 # ReactiveReSwift
 
 [![Build Status](https://img.shields.io/travis/ReSwift/ReactiveReSwift/master.svg)](https://travis-ci.org/ReSwift/ReactiveReSwift)
-[![Code coverage status](https://img.shields.io/codecov/c/github/ReSwift/ReactiveReSwift.svg)](http://codecov.io/github/ReSwift/ReactiveReSwift)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ReSwift/ReactiveReSwift/blob/master/LICENSE.md)
 [![Join the chat at https://gitter.im/ReactiveReSwift/Lobby](https://badges.gitter.im/ReactiveReSwift/Lobby.svg)](https://gitter.im/ReactiveReSwift/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
