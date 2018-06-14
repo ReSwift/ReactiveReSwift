@@ -13,7 +13,7 @@ extension MutableProperty: ObservablePropertyType {
     public typealias DisposableType = AnyDisposable
 
     @discardableResult
-    public func subscribe(_ function: @escaping (Value) -> Void) -> AnyDisposable? {
+    public func subscribe(_ function: @escaping (Value) -> Void) -> AnyDisposable {
         let disposable = self.producer.on(value: function).start()
         return AnyDisposable(disposable)
     }
@@ -24,13 +24,14 @@ extension Signal: StreamType {
     public typealias DisposableType = AnyDisposable
 
     @discardableResult
-    public func subscribe(_ function: @escaping (Value) -> Void) -> AnyDisposable? {
-        let disposable = self.observe { event in
-            if case let .value(value) = event {
+    public func subscribe(_ function: @escaping (Value) -> Void) -> AnyDisposable {
+        let composite = CompositeDisposable()
+        composite += observeResult {
+            if case .success(let value) = $0 {
                 function(value)
             }
         }
-        return disposable.map { AnyDisposable($0) }
+        return AnyDisposable(composite)
     }
 }
 
