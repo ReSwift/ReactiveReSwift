@@ -20,7 +20,7 @@ public class SubscriptionReferenceBag {
 
     /// Initialise the bag with an array of subscription references.
     public init(_ references: SubscriptionReferenceType?...) {
-        self.references = references.flatMap({ $0 })
+        self.references = references.compactMap { $0 }
     }
 
     deinit {

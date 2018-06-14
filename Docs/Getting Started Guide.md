@@ -61,7 +61,7 @@ You can do this implementing a top-level reducer. This reducer will then call in
 Here's an example in which we construct a new state, by calling sub-reducers with different sub-states:
 
 ```swift
-let appReducer = Reducer(authenticationReducer, bookmarksReducer, repositoriesReducer)
+let appReducer = concatReducers(authenticationReducer, bookmarksReducer, repositoriesReducer)
 
 let authenticationReducer = Reducer<State> { action, state in
     var state = state

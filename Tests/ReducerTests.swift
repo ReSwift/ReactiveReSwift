@@ -38,10 +38,7 @@ class ReducerTests: XCTestCase {
     func testCallsReducersOnce() {
         let mockReducer1 = MockReducerContainer()
         let mockReducer2 = MockReducerContainer()
-
-        let combinedReducer: Reducer<CounterState> = { action, state in
-            mockReducer2.reducer(action, mockReducer1.reducer(action, state))
-        }
+        let combinedReducer = concatReducers(mockReducer1.reducer, mockReducer2.reducer)
 
         _ = combinedReducer(NoOpAction(), CounterState())
 
@@ -55,10 +52,7 @@ class ReducerTests: XCTestCase {
      it combines the results from each individual reducer correctly
      */
     func testCombinesReducerResults() {
-        let combinedReducer: Reducer<CounterState> = { action, state in
-            increaseByTwoReducer(action, increaseByOneReducer(action, state))
-        }
-
+        let combinedReducer = concatReducers(increaseByOneReducer, increaseByTwoReducer)
         let newState = combinedReducer(NoOpAction(), CounterState())
 
         XCTAssertEqual(newState.count, 3)
