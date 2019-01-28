@@ -25,7 +25,7 @@ open class Store<ObservableProperty: ObservablePropertyType> {
         self.middleware = middleware
     }
 
-    open func dispatch(_ actions: Action...) {
+    open func dispatch(_ actions: [Action]) {
         actions.forEach { action in
             let dispatchFunction: (Action...) -> Void = { [weak self] (actions: Action...) in
                 actions.forEach { self?.dispatch($0) }
@@ -34,6 +34,10 @@ open class Store<ObservableProperty: ObservablePropertyType> {
                 observable.value = reducer(action, observable.value)
             }
         }
+    }
+
+    open func dispatch(_ actions: Action...) {
+        self.dispatch(actions)
     }
 
     @discardableResult
