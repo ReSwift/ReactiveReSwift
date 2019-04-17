@@ -52,7 +52,7 @@ class ReducerTests: XCTestCase {
      it combines the results from each individual reducer correctly
      */
     func testCombinesReducerResults() {
-        let combinedReducer = concatReducers(increaseByOneReducer, increaseByTwoReducer)
+        let combinedReducer = concatReducers(first: increaseByOneReducer, rest: [increaseByTwoReducer])
         let newState = combinedReducer(NoOpAction(), CounterState())
 
         XCTAssertEqual(newState.count, 3)
