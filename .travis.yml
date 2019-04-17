@@ -17,9 +17,9 @@ env:
 
 matrix:
   include:
-    - env: SCHEME="macOS"  SDK="macosx10.13"          DESTINATION="arch=x86_64"
-    - env: SCHEME="iOS"    SDK="iphonesimulator11.3"  DESTINATION="OS=11.3,name=iPhone X" UPDATE_DOCS="true"
-    - env: SCHEME="tvOS"   SDK="appletvsimulator11.3"  DESTINATION="OS=11.3,name=Apple TV 4K"
+    - env: SCHEME="macOS"  SDK="macosx10.14"          DESTINATION="arch=x86_64"
+    - env: SCHEME="iOS"    SDK="iphonesimulator12.2"  DESTINATION="OS=12.2,name=iPhone X" UPDATE_DOCS="true"
+    - env: SCHEME="tvOS"   SDK="appletvsimulator12.2"  DESTINATION="OS=12.2,name=Apple TV 4K"
 
 script:
   - set -o pipefail
