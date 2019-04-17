@@ -26,10 +26,10 @@ extension ObservablePropertySubscriptionReference: SubscriptionReferenceType {
 
 extension ObservablePropertySubscriptionReference: Equatable, Hashable {
     /// The hash of the subscription.
-    public var hashValue: Int {
-        return key.hash
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(key)
     }
-
+    
     /// Compare two `ObservablePropertySubscriptionReference`s.
     public static func == <T>(lhs: ObservablePropertySubscriptionReference<T>, rhs: ObservablePropertySubscriptionReference<T>) -> Bool {
         return lhs.key == rhs.key
