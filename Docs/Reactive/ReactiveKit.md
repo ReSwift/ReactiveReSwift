@@ -13,7 +13,7 @@ extension Signal: StreamType {
     public typealias DisposableType = DisposableWrapper
 
     public func subscribe(_ function: @escaping (Element) -> Void) -> DisposableWrapper {
-        return DisposableWrapper(disposable: self.observeNext(with: function))
+        return DisposableWrapper(disposable: observeNext(with: function))
     }
 }
 
